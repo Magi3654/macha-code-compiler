@@ -43,16 +43,17 @@ export default class CustomVisitor extends CompiladorVisitor {
 
 		if (consola) {
 			if (/[\+\-\\/]/.test(id)) {
-				this.alerts.push(`"${id}" no debe contener operadores`);
+				this.alerts.push(`오모!"${id}" no debe contener operadores`);
 			} else if (this.memory.has(id)) {
-				this.alerts.push(`Ups! el identificador "${id}" ya está declarado`);
+				this.alerts.push(`오모! el identificador "${id}" ya está declarado`);
 			} else if (/^[0-9]+/.test(id)) {
-				this.alerts.push("Ups! el identificador contiene números, intenta de nuevo.");
+				this.alerts.push("오모! el identificador contiene números, intenta de nuevo.");
 			} else {
 				this.memory.set(id, value);
-				this.alerts.push(`Variable "${id}" declarada con valor ${value}`);
+				this.alerts.push(`대박! todo esta en orden. Variable "${id}" declarada con valor ${value}`);
 			}
 			consola.innerHTML = `${this.alerts.join('\n')}`;
+			
 		}
 		return null;
 	}

@@ -40,7 +40,6 @@ const Page = () => {
     <main className=" justify-between items-center h-screen bg-lime-100">
       <div className="flex flex-col items-center">
         <h1 className="text-4xl font-bold text-lime-900 mb-8">Bienvenido a Macha Code</h1>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mx-8">
           <section className="bg-white rounded-lg shadow-md p-8 mb-8">
             <h2 className="text-2xl font-bold mb-4 text-lime-900">Ingresa tu código</h2>
@@ -83,12 +82,15 @@ const Page = () => {
       </div>
 
       <section className="bg-white rounded-lg shadow-md p-8 mt-6 mb-2 self-end mx-8">
-        <h2 className="text-2xl font-bold mb-4 text-lime-900">Consola</h2>
-        <p className="text-lg text-center text-lime-700 mb-4">.</p>
-        <textarea className="block w-full h-20 px-8 py-2 resize-none border border-lime-300"  id="consola">
-          
-        </textarea>
-      </section>
+      <h2 className="text-2xl font-bold mb-4 text-lime-900">Consola</h2>
+      
+      <textarea
+        className="block w-full px-8 py-2 resize-none border border-lime-300"
+        id="consola"
+        rows="8" // Número de filas inicial
+        style={{ height: 'auto', minHeight: '80px' }} // Altura inicial y altura mínima
+      />
+    </section>
   </main>
   
 
