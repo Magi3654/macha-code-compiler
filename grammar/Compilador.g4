@@ -11,7 +11,7 @@ content: expr
         ; 
 
 declaracion: PR GEULSSI 
-           | PR GEULSSI '=' expr
+           | PR GEULSSI '=' expr 
            ;        
         
 expr: '(' expr ')'                       #parentesis
@@ -25,5 +25,6 @@ expr: '(' expr ')'                       #parentesis
     GEULSSI                           #geulssi
     |
     SUJJA                             #sujja
+    
     ;
 
