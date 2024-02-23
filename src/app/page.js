@@ -23,16 +23,10 @@ const Page = () => {
     //console.log(cleanInput);
 
     console.log(analizar(cleanInput));
-    const [errores, resultado] = analizar(cleanInput);
-
-    console.log(errores);
-    if (errores && Object.keys(errores).length === 0) {
-      setConsola('대박! Todo se encuentra en orden');
-    } else if (errores) {
-      setConsola(Object.values(errores).join(', '));
-    } else {
-      setConsola('Hubo un error al analizar el código');
-    }
+    const calculadedResult = analizar(cleanInput);
+     
+    //setResult(calculadedResult.toString());
+   
     
   };
   const clearArea= ()=>{
@@ -90,8 +84,8 @@ const Page = () => {
 
       <section className="bg-white rounded-lg shadow-md p-8 mt-6 mb-2 self-end mx-8">
         <h2 className="text-2xl font-bold mb-4 text-lime-900">Consola</h2>
-        <p className="text-lg text-center text-lime-700 mb-4">Esta sección permanece en la parte inferior.</p>
-        <textarea className="block w-full h-20 px-8 py-2 resize-none border border-lime-300"  value={consola}>
+        <p className="text-lg text-center text-lime-700 mb-4">.</p>
+        <textarea className="block w-full h-20 px-8 py-2 resize-none border border-lime-300"  id="consola">
           
         </textarea>
       </section>

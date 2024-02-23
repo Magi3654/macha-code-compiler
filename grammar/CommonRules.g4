@@ -12,7 +12,7 @@ NANU           :       '/' ;
 DO             :       '+' ;
 PPAEDA         :       '-' ;
 
-//SUJJA: [0-9]+; //NUMEROS 
+SUJJA: [0-9]+; //NUMEROS 
 
 GEULSSI: [a-zA-Z0-9_+\-*/]+; //ID O LETRAS
 

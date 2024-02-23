@@ -10,16 +10,20 @@ content: expr
         declaracion*
         ; 
 
-declaracion: PR GEULSSI | PR GEULSSI '=' expr;        
+declaracion: PR GEULSSI 
+           | PR GEULSSI '=' expr
+           ;        
         
-expr: '(' expr ')' 
+expr: '(' expr ')'                       #parentesis
     |
-    expr expr
+    expr expr                           #impmulti
     |
-    expr operation=(GOPSSEM|NANU) expr
+    expr operation=(GOPSSEM|NANU) expr  #muldiv
     |
-    expr operation=(DO|PPAEDA) expr
+    expr operation=(DO|PPAEDA) expr   #sumres
     |
-    GEULSSI
+    GEULSSI                           #geulssi
+    |
+    SUJJA                             #sujja
     ;
 
