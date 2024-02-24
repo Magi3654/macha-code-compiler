@@ -22,7 +22,6 @@ const Page = () => {
     const cleanInput = validLines.join('\n'); // Unir las líneas limpias nuevamente
     //console.log(cleanInput);
 
-    console.log(analizar(cleanInput));
     const calculadedResult = analizar(cleanInput);
      
     //setResult(calculadedResult.toString());

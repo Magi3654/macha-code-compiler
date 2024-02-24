@@ -24,8 +24,14 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by CompiladorParser#declaracion.
-	visitDeclaracion(ctx) {
+	// Visit a parse tree produced by CompiladorParser#validAssign.
+	visitValidAssign(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by CompiladorParser#invalidAssign.
+	visitInvalidAssign(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

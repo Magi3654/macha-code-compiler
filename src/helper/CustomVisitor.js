@@ -10,6 +10,8 @@ export default class CustomVisitor extends CompiladorVisitor {
 		super();
 		this.memory = new HashMap();
 		this.alerts = [];
+		this.alertsgood =[];
+		this.consola = document.getElementById('consola');
 	}
 	// Visit a parse tree produced by CompiladorParser#file.
 	visitFile(ctx) {
@@ -28,36 +30,48 @@ export default class CustomVisitor extends CompiladorVisitor {
 	visitContent(ctx) {
 	  return this.visitChildren(ctx);
 	}
+	// Visit a parse tree produced by CompiladorParser#validAssign.
+	visitValidAssign(ctx) {
+		const idToken = ctx.GEULSSI().getText();
+		if (!idToken) {
+			this.alerts.push("오모! Declaración de variable incompleta");
+			return null;
+		}
+		let value = 0;
 
-	
-	// Visit a parse tree produced by CompiladorParser#declaracion.
-	visitDeclaracion(ctx) {
-		const id = ctx.GEULSSI() ? ctx.GEULSSI().getText() : null;
-		let value = null;
-
-		const consola = document.getElementById('consola');
+		
 
 		if (ctx.expr()) {
 			value = this.visit(ctx.expr());
 		}
-
-		if (consola) {
-			if (/[\+\-\\/]/.test(id)) {
-				this.alerts.push(`오모!"${id}" no debe contener operadores`);
-			} else if (this.memory.has(id)) {
-				this.alerts.push(`오모! el identificador "${id}" ya está declarado`);
-			} else if (/^[0-9]+/.test(id)) {
-				this.alerts.push("오모! el identificador contiene números, intenta de nuevo.");
-			} else {
-				this.memory.set(id, value);
-				this.alerts.push(`대박! todo esta en orden. Variable "${id}" declarada con valor ${value}`);
+		console.log(value);
+		if (this.consola) {
+			if (/[\+\-\\/]/.test(idToken)) {
+				this.alerts.push(`오모!"${idToken}" no debe contener operadores`);
+			} else if (this.memory.has(idToken)) {
+				this.alerts.push(`오모! el identificador "${idToken}" ya está declarado`);
+			} else if (/^\d/.test(idToken)) {
+				this.alerts.push("오모! el identificador no puede comenzar con un número");
+			} else if (idToken !== null) { // Verificar si id no es nulo
+				this.memory.set(idToken, value);
+				this.alertsgood.push(`대박! todo esta en orden. Variable "${idToken}" declarada con valor ${value}`);
 			}
-			consola.innerHTML = `${this.alerts.join('\n')}`;
-			
+			this.consola.innerHTML += `${this.alerts.join('\n')}`;
+			this.consola.innerHTML += `${this.alertsgood.join('\n')}`;
 		}
 		return null;
 	}
+  
+  
+	  // Visit a parse tree produced by CompiladorParser#invalidAssign.
+	  visitInvalidAssign(ctx) {
+		this.alerts.push("오모! Declaración de variable invalida");
+		 this.consola.innerHTML = `${this.alerts.join('\n')}`
+		return null;
 
+	}
+  
+  
 	// Visit a parse tree produced by CompiladorParser#expr.
 	visitExpr(ctx) {
 	  return this.visitChildren(ctx);
@@ -77,8 +91,10 @@ export default class CustomVisitor extends CompiladorVisitor {
 	  // Visit a parse tree produced by CompiladorParser#sumres.
 	visitSumres(ctx) {
 		const left = this.visit(ctx.expr(0));
+		console.log(left);
 		const right = this.visit(ctx.expr(1));
-		if (ctx.op.type === CompiladorParser.ADD) return left + right;
+		console.log(right);
+		if (ctx.operation.type === CompiladorParser.DO) return left + right;
 		return left - right;
 	  }
   
