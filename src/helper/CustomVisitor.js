@@ -118,8 +118,10 @@ export default class CustomVisitor extends CompiladorVisitor {
 	  // Visit a parse tree produced by CompiladorParser#muldiv.
 	visitMuldiv(ctx) {
 		const left = this.visit(ctx.expr(0));
+		console.log(left);
 		const right = this.visit(ctx.expr(1));
-		if (ctx.op.type === CompiladorParser.MULDIV) return left * right ;
+		console.log(right);
+		if (ctx.operation.type === CompiladorParser.GOPSSEM) return left * right ;
 		return Math.floor(left / right);
 	}
 
