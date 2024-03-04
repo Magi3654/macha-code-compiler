@@ -5,28 +5,24 @@ file: start+;
 
 start: CHICHAK '{' content '}';
 
-content: expr 
-        |
-        declaracion*
-        ; 
+content: main*;
 
-declaracion: PR GEULSSI          #validAssign
-           | PR GEULSSI '=' expr #validAssign
-           | PR ID = (CHINCHA | SUJJA)          #invalidAssign
-           | PR ID = (CHINCHA | SUJJA)  '=' expr #invalidAssign
-           ;        
-        
-expr: '(' expr ')'                       #parentesis
-    |
-    expr expr                           #impmulti
-    |
-    expr operation=(GOPSSEM|NANU) expr  #muldiv
-    |
-    expr operation=(DO|PPAEDA) expr   #sumres
-    |
-    GEULSSI                           #geulssi
-    |
-    SUJJA                             #sujja
-    
+main: declaracion
+    | asignacion
+    | ddaeng
     ;
 
+declaracion: PR GEULSSI ('=' expr)? #validAssign
+           | PR ID = (CHINCHA | SUJJA) ('=' expr)? #invalidAssign
+           ;
+
+expr: '(' expr ')'                       #parentesis
+    | expr operation=(GOPSSEM | NANU) expr         #muldiv
+    | expr operation=(DO | PPAEDA) expr            #sumres
+    | GEULSSI                             #geulssi
+    | SUJJA                               #sujja
+    ;
+
+asignacion: GEULSSI '=' expr;
+
+ddaeng: .+?;  
