@@ -18,19 +18,24 @@ class CustomErrorListener extends antlr4.error.ErrorListener {
         const errorTextarea = document.getElementById('consola');
 		//const contenedorError = document.getElementById('contenedorError');
 
-        if(msg.includes("no viable alternative at input")){
+        if (msg.includes("no viable alternative at input")) {
             const typeWrong = offendingSymbol.text;
-            errorTextarea.innerHTML += `Incorrect data type "${typeWrong}" on line ${line} <br>`;
-		    //contenedorError.classList.remove('hidden');
+            errorTextarea.value += `Incorrect data type "${typeWrong}" on line ${line}\n`;
+            // Hacer que el textarea se desplace automáticamente al final para ver los mensajes más recientes
+            errorTextarea.scrollTop = errorTextarea.scrollHeight;
+        } else {
+            const errorMessage = `Syntax error on line ${line}: ${msg}\n`;
+            errorTextarea.value += errorMessage;
+            // Agrega la clase para que el texto aparezca en rojo
+            errorTextarea.classList.add('text-red-500');
         }
-        else{
-            errorTextarea.innerHTML += `Syntax error on line ${line}: ${msg} <br>`;
-            //contenedorError.classList.remove('hidden');
-            console.log(`Syntax error on line ${line}: ${msg}`);
-            
-            // Error que detiene el proceso
-            // throw new Error(`Syntax error on line ${line}: ${msg}`);
-        }
+        
+        // Limpiar el contenido del textarea después de un tiempo determinado (por ejemplo, 5 segundos)
+        setTimeout(() => {
+            errorTextarea.value = '';
+            // Remueve la clase después de limpiar el textarea
+            errorTextarea.classList.remove('text-red-500');
+        }, 5000); // 5000 milisegundos = 5 segundos
     }
 }
 
