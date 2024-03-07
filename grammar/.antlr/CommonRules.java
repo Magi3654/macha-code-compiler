@@ -1,4 +1,4 @@
-// Generated from /home/mrsmin/Escritorio/automatas/automatas 2/lecture02/grammar/CommonRules.g4 by ANTLR 4.13.1
+// Generated from /home/mrsmin/Escritorio/automatas/automatas 2/macha-code-compiler/grammar/CommonRules.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

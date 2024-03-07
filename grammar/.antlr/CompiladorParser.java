@@ -1,4 +1,4 @@
-// Generated from /home/mrsmin/Escritorio/automatas/automatas 2/lecture02/grammar/Compilador.g4 by ANTLR 4.13.1
+// Generated from /home/mrsmin/Escritorio/automatas/automatas 2/macha-code-compiler/grammar/Compilador.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
