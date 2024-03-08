@@ -9,6 +9,7 @@ content: main*;
 
 main: declaracion
     | asignacion
+    | impresion
     | ddaeng
     ;
 
@@ -26,3 +27,5 @@ expr: '(' expr ')'                       #parentesis
 asignacion: GEULSSI '=' expr;
 
 ddaeng: .+?;  
+
+impresion: PRINT '(' expr ')';

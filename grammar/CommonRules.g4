@@ -12,6 +12,8 @@ NANU           :       '/' ;
 DO             :       '+' ;
 PPAEDA         :       '-' ;
 
+PRINT          :   'inswae';
+
 SUJJA: [0-9]+; //NUMEROS 
 
 
