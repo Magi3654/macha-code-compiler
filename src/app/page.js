@@ -6,7 +6,6 @@ import { analizar } from '@/module/generador';
 const Page = () => {
   const [expressions, setExpressions] = useState('');
   const [result, setResult] = useState('');
-  const [consola, setConsola]= useState('');
 
   const inputChange = (e) => {
     const input = e.target.value;
@@ -89,7 +88,7 @@ const Page = () => {
           className="block w-full px-8 py-2 resize-none border border-lime-300 text-red-500" // Estilos de color rojo
           id="consola"
           rows="8"
-          value={consola} // Mostrar mensajes de consola
+          // Mostrar mensajes de consola
           style={{ height: 'auto', minHeight: '80px' }}
         />
       </section>
