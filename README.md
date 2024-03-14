@@ -1,6 +1,21 @@
+# Macha code 맞아
+
+### 안녕하세요 to Macha !!
+
+Macha code is a new programming language with a general purpose of high-level design and inspired by the Korean language to be simple for learning for new programmers, the development is thought to be used to create desktop apps.
+
+This language has an understanding of the basic rules of programming, such as declarations, assignation of variables, and printing the value of each one. The particularity of this language is writing on the Romanization of Korean words so if you love the Korean culture and the language Macha you will love it.
+
+### Getting Started 시작! 
+
+To start coding on **Macha** you need to know these basics:
+ 
+- All instructions on **Macha** are written on separated lines
+- The variables need to have the data type defined
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Configure your compiler of Macha Code
 
 First, run the development server:
 
@@ -29,11 +44,5 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# syntax-analizer
-# macha-code-compiler
 # macha-code-compiler
