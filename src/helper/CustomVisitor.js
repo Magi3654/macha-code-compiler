@@ -36,12 +36,12 @@ export default class CustomVisitor extends CompiladorVisitor {
     }
     // Visit a parse tree produced by CompiladorParser#file.
     visitFile(ctx) {
-        //console.log("VISITANDO FILE");
+        console.log("VISITANDO FILE");
         return this.visitChildren(ctx);
     }
     // Visit a parse tree produced by CompiladorParser#start.
     visitStart(ctx) {
-        //console.log("VISITANDO START");
+        console.log("VISITANDO START");
         return this.visitChildren(ctx);
     }
     // Visit a parse tree produced by CompiladorParser#content.
@@ -92,8 +92,8 @@ export default class CustomVisitor extends CompiladorVisitor {
         }
     
         // Obtener el valor de la expresión
-        let value = ctx.expr() ? ctx.expr().getText() : '';
-    
+        let value = ctx.expr() ? this.visit(ctx.expr()) : '';
+        
         // Verificar si la expresión es null
         if (value === null) {
             this.addUniqueError(`오모! Falta expresión para la variable "${idToken}"`);
@@ -149,19 +149,47 @@ export default class CustomVisitor extends CompiladorVisitor {
         }
         return null;
     }
+    // Visit a parse tree produced by CompiladorParser#asignacion.
+    visitAsignacion(ctx) {
+        console.log('VISITANDO ASINGNACION');
+        const idToken = ctx.GEULSSI().getText();
+        const value = ctx.expr() ? this.visit(ctx.expr()) : null;
+        // Verificar si el identificador ya está en la memoria
+        if (this.memory.has(idToken)) {
+            this.console.push(`Error: El identificador "${idToken}" ya ha sido declarado.`);
+        } else {
+            this.memory.set(idToken, value);
+            console.log(this.memory);
+            this.alertsgood.push(`Variable "${idToken}" asignada con valor ${value}`);
+        }
+        // Ejemplo de agregar mensaje de éxito de forma única
+        const successMessage = `Variable "${idToken}" asignada con valor ${value}`;
+        this.addUniqueMessage(successMessage);
+
+        this.updateConsole();
+        return null;
+    }
         
     visitParentesis(ctx) {
-        //console.log("VISITANDO PARENTESIS");
+        console.log("VISITANDO PARENTESIS");
         return this.visit(ctx.expr());
     }
+    // Visit a parse tree produced by CompiladorParser#implicitMult.
+	visitImplicitMult(ctx) {
+        console.log("VISITANDO implimul");
+        let results = this.visitChildren(ctx);
+        return results[0] * results[1];
+      }
+  
 
     visitSujja(ctx) {
         console.log("VISITANDO NUMEROS ");
+        console.log(ctx.SUJJA().getText());
         return parseInt(ctx.SUJJA().getText());
     }
 
     visitSumres(ctx) {
-        //console.log("VISITANDO ENTRANDO EN LA SUMA");
+        console.log("VISITANDO ENTRANDO EN LA SUMA");
         const left = this.visit(ctx.expr(0));
 		console.log(left);
 		const right = this.visit(ctx.expr(1));
@@ -170,19 +198,12 @@ export default class CustomVisitor extends CompiladorVisitor {
 		return left - right;
     }
 
-    visitImpmulti(ctx) {
-        //console.log("VISITANDO MULTI IMPLICITA");
-        let results = this.visitChildren(ctx);
-        return results[0] * results[1];
-    }
-
     visitGeulssi(ctx) {
         console.log("VISITANDO ID");
         const id = ctx.GEULSSI().getText();
        
         if (!this.memory.has(id)) {
             this.addUniqueMessage(`Error: La variable "${id}" no ha sido declarada en la línea ${this.lineaActual}`);
-            //onsole.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
             return null;
         }
 
@@ -205,25 +226,7 @@ export default class CustomVisitor extends CompiladorVisitor {
             
 		return Math.floor(left / right);
     }
-    // Visit a parse tree produced by CompiladorParser#asignacion.
-	visitAsignacion(ctx) {
-        const idToken = ctx.GEULSSI().getText();
-        const value = ctx.expr() ? this.visit(ctx.expr()) : null;
-        
-        // Verificar si el identificador ya está en la memoria
-        if (this.memory.has(idToken)) {
-            this.console.push(`Error: El identificador "${idToken}" ya ha sido declarado.`);
-        } else {
-            this.memory.set(idToken, value);
-            this.alertsgood.push(`Variable "${idToken}" asignada con valor ${value}`);
-        }
-        // Ejemplo de agregar mensaje de éxito de forma única
-        const successMessage = `Variable "${idToken}" asignada con valor ${value}`;
-        this.addUniqueMessage(successMessage);
-
-        this.updateConsole();
-        return null;
-    }
+    
     visitDdaeng(ctx) {
 		console.log("VISITANDO ERRROR");
         this.console.push( ` 땡 ! Error de sintaxis en línea ${ctx.start.line}`);
