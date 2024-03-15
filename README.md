@@ -13,6 +13,13 @@ To start coding on **Macha** you need to know these basics:
 - All instructions on **Macha** are written on separated lines
 - The variables need to have the data type defined
 
+#### Example of start a code block
+  ```
+  chichak{
+  geum a
+  }
+```
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Configure your compiler of Macha Code
