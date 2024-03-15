@@ -237,10 +237,57 @@ export default class CustomVisitor extends CompiladorVisitor {
 	visitImpresion(ctx) {
         console.log('VISTITANDO IMPRESION');
         const innerValue = this.visit(ctx.expr()); // Obtener el valor de la expresión a imprimir
+        console.log(innerValue);
         this.console.push(`${innerValue}`);
         this.updateConsole();
         return undefined;
     }
+    // Visit a parse tree produced by CompiladorParser#condicional.
+	visitCondicional(ctx) {
+        let condicion = this.visit(ctx.condicion());
+        if (condicion){
+            console.log(ctx.main());
+            this.visit(ctx.main());
+        }
+        return null;
+      }
+  
+  
+    // Visit a parse tree produced by CompiladorParser#condicion.
+    visitCondicion(ctx) {
+        let [valor_a,,valor_b] = this.visitChildren(ctx);
+        let signo= ctx.simbolo.text;
+        let resultado;
+
+        switch (signo){
+            case '>':
+                    resultado = valor_a > valor_b;
+                    break;
+            case '<':
+                    resultado = valor_a < valor_b;
+                    break;
+            case '>=':
+                    resultado = valor_a >= valor_b;
+                    break;
+            case '<=':
+                    resultado = valor_a <= valor_b;
+                    break;
+            case '||':
+                    resultado = valor_a || valor_b;
+                    break;
+            case '&&':
+                    resultado = valor_a && valor_b;
+                    break;
+            case '==':
+                    resultado = valor_a == valor_b
+                    break;
+            default:
+                    resultado = false;
+                    break
+        }
+        return resultado;
+     }
+  
   
   
     // Método para actualizar la consola con mensajes únicos

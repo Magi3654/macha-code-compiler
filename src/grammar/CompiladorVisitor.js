@@ -84,14 +84,26 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by CompiladorParser#ddaeng.
-	visitDdaeng(ctx) {
+	// Visit a parse tree produced by CompiladorParser#impresion.
+	visitImpresion(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
 
-	// Visit a parse tree produced by CompiladorParser#impresion.
-	visitImpresion(ctx) {
+	// Visit a parse tree produced by CompiladorParser#condicional.
+	visitCondicional(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by CompiladorParser#condicion.
+	visitCondicion(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by CompiladorParser#ddaeng.
+	visitDdaeng(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

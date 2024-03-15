@@ -3,31 +3,37 @@ import CommonRules;
 
 file: start+;
 
-start: CHICHAK '{' content '}';
+start: CHICHAK OPENKEY content CLOSEKEY;
 
 content: main*;
 
 main: declaracion
     | asignacion
     | impresion
+    | condicional
     | ddaeng
+
     ;
 
-declaracion: PR GEULSSI ('=' expr)? #validAssign
-           | PR ID = (CHINCHA | SUJJA) ('=' expr)? #invalidAssign
+declaracion: PR GEULSSI (EQUALS expr)?                #validAssign
+           | PR ID = (CHINCHA | SUJJA) (EQUALS expr)? #invalidAssign
            ;
            
-asignacion: PR GEULSSI '=' expr;
+asignacion: PR GEULSSI EQUALS expr;
 
-expr: '(' expr ')'                       #parentesis
+expr: PARENTH_A expr PARENTH_B                     #parentesis
     | expr operation=(GOPSSEM | NANU) expr         #muldiv
     | expr operation=(DO | PPAEDA) expr            #sumres
-    | GEULSSI                             #geulssi
-    | SUJJA                               #sujja
-    |expr expr                            #implicitMult
+    | GEULSSI                                      #geulssi
+    | SUJJA                                        #sujja
+    |expr expr                                     #implicitMult
     ;
 
 
-ddaeng: .+?;  
+ 
+impresion: PRINT PARENTH_A expr PARENTH_B;
 
-impresion: PRINT '(' expr ')';
+condicional: IF PARENTH_A condicion PARENTH_B OPENKEY main* CLOSEKEY;
+
+condicion: expr simbolo=(LOGIC|MATH) expr;
+ddaeng: .+?; 
