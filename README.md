@@ -10,15 +10,25 @@ This language has an understanding of the basic rules of programming, such as de
 
 To start coding on **Macha** you need to know these basics:
  
-- All instructions on **Macha** are written on separated lines
-- The variables need to have the data type defined
-- To code on **Macha** you need to start with the commant `chichak`
-- At the momment
-
-#### Example of start a code block
+- All instructions on **Macha** are written on separated lines.
+- The variables need to have the data type defined.
+- To code on **Macha** you need to start with the command `chichak`
+- You **need** to use `{ }` to include your code 
+- There's no need of **;** in Macha just write your code with no worries.
+- 
+##### Example of starting a code block
   ```
   chichak{
-  geum a
+  //All your code
+  }
+```
+###Variable declartions 
+There's at the moment just one type of data on *Macha* 
+-`geum`: Used for Integer values `3``2``2145`
+##### Example of declaration with Integer values block
+  ```
+  chichak{
+  geum a = 3654
   }
 ```
 
