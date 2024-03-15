@@ -12,6 +12,8 @@ To start coding on **Macha** you need to know these basics:
  
 - All instructions on **Macha** are written on separated lines
 - The variables need to have the data type defined
+- To code on **Macha** you need to start with the commant `chichak`
+- At the momment
 
 #### Example of start a code block
   ```
