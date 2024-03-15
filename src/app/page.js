@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { analizar } from '@/module/generador';
 
 
+
 const Page = () => {
   const [expressions, setExpressions] = useState('');
   const [result, setResult] = useState('');
@@ -39,9 +40,9 @@ const Page = () => {
 
   return (
     <main className="justify-between items-center h-screen bg-lime-100">
-      <div className="flex flex-col items-center">
-        <h1 className="text-4xl font-bold text-lime-900 mb-8">Bienvenido a Macha Code</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mx-8">
+      <div className="flex flex-col items-center">  
+        <img src='./logo-matcha.png' className='mb-8 mt-8 scale-75'/>
+         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mx-8">
           <section className="bg-white rounded-lg shadow-md p-8 mb-8">
             <h2 className="text-2xl font-bold mb-4 text-lime-900">Ingresa tu código</h2>
             <p className="text-lg text-center text-lime-700 mb-4">Codifica aquí</p>
