@@ -48,6 +48,12 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by CompiladorParser#impresion.
+	visitImpresion(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by CompiladorParser#parentesis.
 	visitParentesis(ctx) {
 	  return this.visitChildren(ctx);
@@ -62,6 +68,12 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by CompiladorParser#sujja.
 	visitSujja(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by CompiladorParser#string.
+	visitString(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
@@ -84,8 +96,8 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by CompiladorParser#impresion.
-	visitImpresion(ctx) {
+	// Visit a parse tree produced by CompiladorParser#condicionalBucle.
+	visitCondicionalBucle(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
@@ -96,14 +108,20 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by CompiladorParser#condicion.
-	visitCondicion(ctx) {
+	// Visit a parse tree produced by CompiladorParser#condicionalElseIf.
+	visitCondicionalElseIf(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
 
-	// Visit a parse tree produced by CompiladorParser#ddaeng.
-	visitDdaeng(ctx) {
+	// Visit a parse tree produced by CompiladorParser#condicionalElse.
+	visitCondicionalElse(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by CompiladorParser#condicion.
+	visitCondicion(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

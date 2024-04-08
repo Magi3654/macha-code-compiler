@@ -7,7 +7,7 @@ PR             :'geum'
                |'sam'
                ;
                 //geum - entero, hana - float, sam - char
-
+STRING:  '"' .*? '"' ;
 PARENTH_A: '(';
 PARENTH_B: ')';
 OPENKEY: '{';
@@ -18,9 +18,11 @@ DO             :       '+' ;
 PPAEDA         :       '-' ;
 EQUALS         :       '=' ;
 PRINT          :   'inswae';
-IF             :    'myeon'; 
+IF             :    'myeon';
+ELSE           :    'namochi'; 
 LOGIC          :    ('||'|'&&'|'==');
 MATH           :    ('<'|'>'|'<='|'>=');
+BOOLEAN        :    ('true'|'false');
 SUJJA: [0-9]+; //NUMEROS 
 GEULSSI: [a-zA-Z]+; //ID O LETRAS
 CHINCHA :[a-zA-Z0-9_+\-*/]+;

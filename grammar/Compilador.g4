@@ -9,9 +9,8 @@ content: main*;
 
 main: declaracion
     | asignacion
+    | condicionalBucle
     | impresion
-    | condicional
-    | ddaeng
 
     ;
 
@@ -21,19 +20,30 @@ declaracion: PR GEULSSI (EQUALS expr)?                #validAssign
            
 asignacion: PR GEULSSI EQUALS expr;
 
+impresion: PRINT PARENTH_A expr PARENTH_B;
+
 expr: PARENTH_A expr PARENTH_B                     #parentesis
     | expr operation=(GOPSSEM | NANU) expr         #muldiv
     | expr operation=(DO | PPAEDA) expr            #sumres
     | GEULSSI                                      #geulssi
     | SUJJA                                        #sujja
+    | STRING                                       #string
     |expr expr                                     #implicitMult
     ;
 
 
- 
-impresion: PRINT PARENTH_A expr PARENTH_B;
 
-condicional: IF PARENTH_A condicion PARENTH_B OPENKEY main* CLOSEKEY;
+condicionalBucle: condicional condicionalElseIf* condicionalElse?;
 
-condicion: expr simbolo=(LOGIC|MATH) expr;
-ddaeng: .+?; 
+condicional: IF PARENTH_A condicion PARENTH_B OPENKEY main* CLOSEKEY; 
+
+condicionalElseIf: ELSE condicional;
+
+condicionalElse: ELSE OPENKEY main* CLOSEKEY; 
+
+condicion:         simbolo=(LOGIC|MATH|BOOLEAN|STRING) 
+           | expr  simbolo=(LOGIC|MATH|BOOLEAN|STRING) expr
+           |condicion simbolo=(LOGIC|MATH|BOOLEAN|STRING) condicion
+           ;
+
+//ddaeng: .+?; 

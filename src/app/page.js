@@ -33,7 +33,6 @@ const Page = () => {
   const clearArea= ()=>{
     setExpressions('');
     setResult('');
-    setConsola('');
   };
 
   

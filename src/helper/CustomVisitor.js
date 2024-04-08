@@ -92,7 +92,7 @@ export default class CustomVisitor extends CompiladorVisitor {
         }
     
         // Obtener el valor de la expresión
-        let value = ctx.expr() ? this.visit(ctx.expr()) : '';
+        let value = ctx.expr() ? this.visit(ctx.expr()) : '없어';
         
         // Verificar si la expresión es null
         if (value === null) {
@@ -169,6 +169,15 @@ export default class CustomVisitor extends CompiladorVisitor {
         this.updateConsole();
         return null;
     }
+    // Visit a parse tree produced by CompiladorParser#impresion.
+    visitImpresion(ctx) {
+        console.log('VISTITANDO IMPRESION');
+        const innerValue = this.visit(ctx.expr()); // Obtener el valor de la expresión a imprimir
+        console.log(innerValue);
+        this.console.push(`${innerValue}`);
+        this.updateConsole();
+        return undefined;
+    }
         
     visitParentesis(ctx) {
         console.log("VISITANDO PARENTESIS");
@@ -187,6 +196,13 @@ export default class CustomVisitor extends CompiladorVisitor {
         console.log(ctx.SUJJA().getText());
         return parseInt(ctx.SUJJA().getText());
     }
+
+	// Visit a parse tree produced by CompiladorParser#string.
+	visitString(ctx) {
+
+        return ctx.getText();
+      }
+  
 
     visitSumres(ctx) {
         console.log("VISITANDO ENTRANDO EN LA SUMA");
@@ -227,68 +243,100 @@ export default class CustomVisitor extends CompiladorVisitor {
 		return Math.floor(left / right);
     }
     
-    visitDdaeng(ctx) {
+
+	// Visit a parse tree produced by CompiladorParser#condicionalBucle.
+	visitCondicionalBucle(ctx) {
+        console.log('condicional de bucle~!!!!!!');
+        let siExiste= this.visit(ctx.condicional())
+        console.log(siExiste);
+        if (!siExiste){
+            const elseIf= ctx.condicionalElseIf();
+            let siExiste=false;
+            for(let i=0; i<elseIf.length; i++){
+                siExiste=this.visit(elseIf[i]);
+                if (siExiste)break;
+            }
+            console.log(ctx.condicionalElse());
+            if(!siExiste&&ctx.condicionalElse()){
+				this.visit(ctx.condicionalElse())
+			} 
+         }
+      return null;
+    }
+    
+  
+    // Visit a parse tree produced by CompiladorParser#condicionalElseIf.
+	visitCondicionalElseIf(ctx) {
+        console.log('else if!!!');
+        return this.visit(ctx.condicional());
+      }
+  
+  
+    // Visit a parse tree produced by CompiladorParser#condicionalElse.
+    visitCondicionalElse(ctx) {
+        console.log('else!!!!!');
+        this.visit(ctx.main());
+        return null;
+      }
+     // Visit a parse tree produced by CompiladorParser#condicional.
+	visitCondicional(ctx) {
+        console.log('condicional!!!!!');
+        if(!ctx.condicion()) return false
+        
+        let res_condicion = this.visit(ctx.condicion());
+        if (res_condicion){
+            this.visit(ctx.main());
+        }
+        return res_condicion;
+      }
+  
+    // Visit a parse tree produced by CompiladorParser#condicion.
+    visitCondicion(ctx) {
+        console.log('condion!!! ');
+        let [valor_a,valor_b] = this.visit(ctx.expr());
+        console.log(ctx.expr());
+        let signo= ctx.simbolo.text;
+        console.log(signo);
+        switch (signo){
+            case '>':
+                    return  valor_a > valor_b;
+                   
+            case '<':
+                    return valor_a < valor_b;
+                    
+            case '>=':
+                    return valor_a >= valor_b;
+                    
+            case '<=':
+                    return valor_a <= valor_b;
+                    
+            case '||':
+                    return valor_a || valor_b;
+                    
+            case '&&':
+                    return valor_a && valor_b;
+                    
+            case '==':
+                    return valor_a == valor_b;
+                    
+            case 'true':
+                    return true;
+            case 'false':
+                    return false;
+            default:
+                   return false;
+                
+        }
+     }
+     /*
+     visitDdaeng(ctx) {
 		console.log("VISITANDO ERRROR");
         this.console.push( ` 땡 ! Error de sintaxis en línea ${ctx.start.line}`);
         this.updateConsole();
         return this.visitChildren(ctx);
     }
-    	// Visit a parse tree produced by CompiladorParser#impresion.
-	visitImpresion(ctx) {
-        console.log('VISTITANDO IMPRESION');
-        const innerValue = this.visit(ctx.expr()); // Obtener el valor de la expresión a imprimir
-        console.log(innerValue);
-        this.console.push(`${innerValue}`);
-        this.updateConsole();
-        return undefined;
-    }
-    // Visit a parse tree produced by CompiladorParser#condicional.
-	visitCondicional(ctx) {
-        let condicion = this.visit(ctx.condicion());
-        if (condicion){
-            console.log(ctx.main());
-            this.visit(ctx.main());
-        }
-        return null;
-      }
-  
-  
-    // Visit a parse tree produced by CompiladorParser#condicion.
-    visitCondicion(ctx) {
-        let [valor_a,,valor_b] = this.visitChildren(ctx);
-        let signo= ctx.simbolo.text;
-        let resultado;
-
-        switch (signo){
-            case '>':
-                    resultado = valor_a > valor_b;
-                    break;
-            case '<':
-                    resultado = valor_a < valor_b;
-                    break;
-            case '>=':
-                    resultado = valor_a >= valor_b;
-                    break;
-            case '<=':
-                    resultado = valor_a <= valor_b;
-                    break;
-            case '||':
-                    resultado = valor_a || valor_b;
-                    break;
-            case '&&':
-                    resultado = valor_a && valor_b;
-                    break;
-            case '==':
-                    resultado = valor_a == valor_b
-                    break;
-            default:
-                    resultado = false;
-                    break
-        }
-        return resultado;
-     }
-  
-  
+    
+  */
   
     // Método para actualizar la consola con mensajes únicos
     updateConsole() {
