@@ -225,6 +225,44 @@ export default class CustomVisitor extends CompiladorVisitor {
 
         return this.memory.get(id);
     }
+    // Visit a parse tree produced by CompiladorParser#condicion.
+    visitCondicion(ctx) {
+        console.log('condion!!! ');
+        let [valor_a,valor_b] = this.visit(ctx.expr());
+        console.log(ctx.expr());
+        let signo= ctx.simbolo.text;
+        console.log(signo);
+        switch (signo){
+            case '>':
+                    return  valor_a > valor_b;
+                   
+            case '<':
+                    return valor_a < valor_b;
+                    
+            case '>=':
+                    return valor_a >= valor_b;
+                    
+            case '<=':
+                    return valor_a <= valor_b;
+                    
+            case '||':
+                    return valor_a || valor_b;
+                    
+            case '&&':
+                    return valor_a && valor_b;
+                    
+            case '==':
+                    return valor_a == valor_b;
+                    
+            case 'true':
+                    return true;
+            case 'false':
+                    return false;
+            default:
+                   return false;
+                
+        }
+     }
 
     visitMuldiv(ctx) {
         console.log("VISITANDO MULTIPLICACION");
@@ -290,44 +328,7 @@ export default class CustomVisitor extends CompiladorVisitor {
         return res_condicion;
       }
   
-    // Visit a parse tree produced by CompiladorParser#condicion.
-    visitCondicion(ctx) {
-        console.log('condion!!! ');
-        let [valor_a,valor_b] = this.visit(ctx.expr());
-        console.log(ctx.expr());
-        let signo= ctx.simbolo.text;
-        console.log(signo);
-        switch (signo){
-            case '>':
-                    return  valor_a > valor_b;
-                   
-            case '<':
-                    return valor_a < valor_b;
-                    
-            case '>=':
-                    return valor_a >= valor_b;
-                    
-            case '<=':
-                    return valor_a <= valor_b;
-                    
-            case '||':
-                    return valor_a || valor_b;
-                    
-            case '&&':
-                    return valor_a && valor_b;
-                    
-            case '==':
-                    return valor_a == valor_b;
-                    
-            case 'true':
-                    return true;
-            case 'false':
-                    return false;
-            default:
-                   return false;
-                
-        }
-     }
+    
      /*
      visitDdaeng(ctx) {
 		console.log("VISITANDO ERRROR");

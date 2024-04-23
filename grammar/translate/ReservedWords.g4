@@ -1,0 +1,26 @@
+lexer grammar ReservedWords;
+
+PARENTH_A      :        '(';
+PARENTH_B      :        ')';
+OPENKEY        :        '{';
+CLOSEKEY       :        '}';
+EQUALS         :       '=' ;
+MULTI          :       '*' ;
+DIV            :       '/' ;
+SUM            :       '+' ;
+MIN            :       '-' ;
+DOUBLE_QUOTE   :       '"' ;
+SEMICOLON      :        ';';
+IF             :       'if';
+ELSE           :     'else'; 
+LOGIC          :    ('||'|'&&'|'=='|'true'|'false');
+MATH           :    ('<'|'>'|'<='|'>=');
+PRINT          :   'printf';
+MAIN           :    'void main()';
+CHAR           :    '"'[a-zA-Z]'"';
+INT            :    [0-9]+;
+FLOAT          : [0-9]+[.][0-9]+;
+STRING         :  '"' .*? '"' ;
+ID             : [a-zA-Z]([a-zA-Z0-9_]+)?;
+INVID          : [A-Za-z0-9+\-]+;
+WS             : [ \t\r\n]+ -> skip;

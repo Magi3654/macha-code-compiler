@@ -90,6 +90,12 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by CompiladorParser#condicion.
+	visitCondicion(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by CompiladorParser#muldiv.
 	visitMuldiv(ctx) {
 	  return this.visitChildren(ctx);
@@ -116,12 +122,6 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by CompiladorParser#condicionalElse.
 	visitCondicionalElse(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by CompiladorParser#condicion.
-	visitCondicion(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

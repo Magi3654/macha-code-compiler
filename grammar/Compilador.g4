@@ -25,6 +25,8 @@ impresion: PRINT PARENTH_A expr PARENTH_B;
 expr: PARENTH_A expr PARENTH_B                     #parentesis
     | expr operation=(GOPSSEM | NANU) expr         #muldiv
     | expr operation=(DO | PPAEDA) expr            #sumres
+    |simbolo=(LOGIC|MATH|BOOLEAN|STRING)            #condicion
+    |expr simbolo=(LOGIC|MATH|BOOLEAN|STRING) expr  #condicion
     | GEULSSI                                      #geulssi
     | SUJJA                                        #sujja
     | STRING                                       #string
@@ -35,15 +37,12 @@ expr: PARENTH_A expr PARENTH_B                     #parentesis
 
 condicionalBucle: condicional condicionalElseIf* condicionalElse?;
 
-condicional: IF PARENTH_A condicion PARENTH_B OPENKEY main* CLOSEKEY; 
+condicional: IF PARENTH_A expr PARENTH_B OPENKEY main* CLOSEKEY; 
 
 condicionalElseIf: ELSE condicional;
 
 condicionalElse: ELSE OPENKEY main* CLOSEKEY; 
 
-condicion:         simbolo=(LOGIC|MATH|BOOLEAN|STRING) 
-           | expr  simbolo=(LOGIC|MATH|BOOLEAN|STRING) expr
-           |condicion simbolo=(LOGIC|MATH|BOOLEAN|STRING) condicion
-           ;
+
 
 //ddaeng: .+?; 

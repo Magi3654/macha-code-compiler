@@ -1,6 +1,10 @@
 'use client'
 import React, { useState } from 'react';
 import { analizar } from '@/module/generador';
+import CodeMirror from '@uiw/react-codemirror';
+import {quietlight} from '@uiw/codemirror-theme-quietlight';
+
+
 
 
 
@@ -35,6 +39,8 @@ const Page = () => {
     setResult('');
   };
 
+
+
   
 
   return (
@@ -45,14 +51,20 @@ const Page = () => {
           <section className="bg-white rounded-lg shadow-md p-8 mb-8">
             <h2 className="text-2xl font-bold mb-4 text-lime-900">Ingresa tu código</h2>
             <p className="text-lg text-center text-lime-700 mb-4">Codifica aquí</p>
-            <div className="relative border border-lime-300 rounded-md">
-              <div className="absolute inset-y-0 left-0 px-2 py-2 text-sm text-gray-500 border-r border-lime-300 rounded-l-md">
-                {expressions.split('\n').map((line, index) => (
-                  <div key={index} className="mb-1">{index + 1}</div>
-                ))}
-              </div>
-              <textarea className="block w-full h-40 px-8 py-2 resize-none" id="input" cols='50' value={expressions} onChange={inputChange} placeholder="Codifica Aquí" />
-            </div>
+            <CodeMirror 
+            value={expressions}
+            theme={quietlight}
+            options={{
+              lineNumbers: true,
+              tabSize: 6,}}
+              style={{
+                borderRadius:'0.375rem',
+                width:'100%',
+                fontSize:'1rem',
+                fontWeight:'400',
+              }}
+              onChange={(e)=>setExpressions(e)}
+                className='overflow-y-auto max-h-[calc(100%-2rem)]'/>
             <div className='flex justify-between mt-4'>
               <button className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700" onClick={analizador}>
                 Traducir
