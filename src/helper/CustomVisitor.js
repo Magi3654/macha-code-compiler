@@ -225,7 +225,71 @@ export default class CustomVisitor extends CompiladorVisitor {
 
         return this.memory.get(id);
     }
-    // Visit a parse tree produced by CompiladorParser#condicion.
+
+    visitMuldiv(ctx) {
+        console.log("VISITANDO MULTIPLICACION");
+        //console.log(operation);
+        const left = this.visit(ctx.expr(0));
+		console.log(left);
+		const right = this.visit(ctx.expr(1));
+		console.log(right);
+        if (ctx.operation.type === CompiladorParser.GOPSSEM)  {
+            if (right === 0) {
+                this.console.push("오모! División por cero.");
+                this.updateConsole();
+                return null;
+            }return left * right ;}
+            
+		return Math.floor(left / right);
+    }
+    
+
+	// Visit a parse tree produced by CompiladorParser#condicionalBucle.
+	visitCondicionalBucle(ctx) {
+        console.log('condicional de bucle~!!!!!!');
+        let siExiste= this.visit(ctx.condicional())
+        //console.log(siExiste);
+        if (!siExiste){
+            const elseIf= ctx.condicionalElseIf();
+            let siExiste=false;
+            for(let i=0; i<elseIf.length; i++){
+                siExiste=this.visit(elseIf[i]);
+                if (siExiste)break;
+            }
+            //console.log(ctx.condicionalElse());
+            if(!siExiste&&ctx.condicionalElse()){
+				this.visit(ctx.condicionalElse())
+			} 
+         }
+      return null;
+    }
+    
+  
+    // Visit a parse tree produced by CompiladorParser#condicionalElseIf.
+	visitCondicionalElseIf(ctx) {
+        console.log('else if!!!');
+        return this.visit(ctx.condicional());
+      }
+  
+  
+    // Visit a parse tree produced by CompiladorParser#condicionalElse.
+    visitCondicionalElse(ctx) {
+        console.log('else!!!!!');
+        this.visit(ctx.main());
+        return null;
+      }
+     // Visit a parse tree produced by CompiladorParser#condicional.
+	visitCondicional(ctx) {
+        console.log('condicional!!!!!');
+        if(!ctx.expr()) return false
+        
+        let res_condicion = this.visit(ctx.expr());
+        if (res_condicion){
+            this.visit(ctx.main());
+        }
+        return res_condicion;
+      }
+      // Visit a parse tree produced by CompiladorParser#condicion.
     visitCondicion(ctx) {
         console.log('condion!!! ');
         let [valor_a,valor_b] = this.visit(ctx.expr());
@@ -263,70 +327,6 @@ export default class CustomVisitor extends CompiladorVisitor {
                 
         }
      }
-
-    visitMuldiv(ctx) {
-        console.log("VISITANDO MULTIPLICACION");
-        //console.log(operation);
-        const left = this.visit(ctx.expr(0));
-		console.log(left);
-		const right = this.visit(ctx.expr(1));
-		console.log(right);
-        if (ctx.operation.type === CompiladorParser.GOPSSEM)  {
-            if (right === 0) {
-                this.console.push("오모! División por cero.");
-                this.updateConsole();
-                return null;
-            }return left * right ;}
-            
-		return Math.floor(left / right);
-    }
-    
-
-	// Visit a parse tree produced by CompiladorParser#condicionalBucle.
-	visitCondicionalBucle(ctx) {
-        console.log('condicional de bucle~!!!!!!');
-        let siExiste= this.visit(ctx.condicional())
-        console.log(siExiste);
-        if (!siExiste){
-            const elseIf= ctx.condicionalElseIf();
-            let siExiste=false;
-            for(let i=0; i<elseIf.length; i++){
-                siExiste=this.visit(elseIf[i]);
-                if (siExiste)break;
-            }
-            console.log(ctx.condicionalElse());
-            if(!siExiste&&ctx.condicionalElse()){
-				this.visit(ctx.condicionalElse())
-			} 
-         }
-      return null;
-    }
-    
-  
-    // Visit a parse tree produced by CompiladorParser#condicionalElseIf.
-	visitCondicionalElseIf(ctx) {
-        console.log('else if!!!');
-        return this.visit(ctx.condicional());
-      }
-  
-  
-    // Visit a parse tree produced by CompiladorParser#condicionalElse.
-    visitCondicionalElse(ctx) {
-        console.log('else!!!!!');
-        this.visit(ctx.main());
-        return null;
-      }
-     // Visit a parse tree produced by CompiladorParser#condicional.
-	visitCondicional(ctx) {
-        console.log('condicional!!!!!');
-        if(!ctx.condicion()) return false
-        
-        let res_condicion = this.visit(ctx.condicion());
-        if (res_condicion){
-            this.visit(ctx.main());
-        }
-        return res_condicion;
-      }
   
     
      /*
