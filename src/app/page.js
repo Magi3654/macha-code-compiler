@@ -137,7 +137,7 @@ const Page = () => {
       <section className="bg-white rounded-lg shadow-md p-8 mt-4 mb-2 self-end mx-8">
           <h2 className="text-2xl font-bold mb-4 text-lime-900">Consola</h2>
           <textarea
-            className="block w-full px-8 py-2 resize-none border border-lime-300 text-red-500" // Estilos de color rojo
+            className="block w-full px-8 py-2 resize-none border border-lime-300 text-lime-700" // Estilos de color rojo
             id="consola"
             rows="8"
             // Mostrar mensajes de consola

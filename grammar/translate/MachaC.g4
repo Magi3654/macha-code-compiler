@@ -7,7 +7,7 @@ start: MAIN PARENTH_A PARENTH_B OPENKEY content CLOSEKEY;
 
 content: main*;
 
-main: declaration
+main: declaracion
     |asignacion
     |condicionalBucle
     |impresion 
@@ -23,7 +23,15 @@ expr: PARENTH_A expr PARENTH_B                     #parentesis
     | expr operation=(MULTI | DIV) expr         #muldiv
     | expr operation=(SUM | MIN ) expr            #sumres
     | ID                                      #geulssi
-    | IN                                        #sujja
+    | INT                                      #sujja
     | STRING                                       #string
     |expr expr                                     #implicitMult
     ;
+
+condicionalBucle: condicional condicionalElseIf* condicionalElse?;
+
+condicional: IF PARENTH_A expr PARENTH_B OPENKEY main* CLOSEKEY; 
+
+condicionalElseIf: ELSE condicional;
+
+condicionalElse: ELSE OPENKEY main* CLOSEKEY; 
