@@ -10,8 +10,8 @@ content: main*;
 main: declaracion
     | asignacion
     | condicionalBucle
+    | while
     | impresion
-
     ;
 
 declaracion: PR GEULSSI (EQUALS expr)?                #validAssign
@@ -42,6 +42,8 @@ condicional: IF PARENTH_A expr PARENTH_B OPENKEY main* CLOSEKEY;
 condicionalElseIf: ELSE condicional;
 
 condicionalElse: ELSE OPENKEY main* CLOSEKEY; 
+
+while: WHILE PARENTH_A expr PARENTH_B OPENKEY main* CLOSEKEY;
 
 
 

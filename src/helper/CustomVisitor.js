@@ -12,6 +12,7 @@ export default class CustomVisitor extends CompiladorVisitor {
         this.consola = document.getElementById('consola');
         this.lineaActual=1;
         this.errorSet = new Set();
+        this.maxLoopTime = 400;
     }
     // Método para agregar un mensaje de error al conjunto y luego imprimirlo si es único
     addUniqueError(message) {
@@ -153,6 +154,7 @@ export default class CustomVisitor extends CompiladorVisitor {
     visitAsignacion(ctx) {
         console.log('VISITANDO ASINGNACION');
         const idToken = ctx.GEULSSI().getText();
+        console.log(idToken);
         const value = ctx.expr() ? this.visit(ctx.expr()) : null;
         // Verificar si el identificador ya está en la memoria
         if (this.memory.has(idToken)) {
@@ -327,6 +329,23 @@ export default class CustomVisitor extends CompiladorVisitor {
                 
         }
      }
+
+	// Visit a parse tree produced by CompiladorParser#while.
+	visitWhile(ctx) {
+        console.log('WHILE!!!!');
+        if(!ctx.expr()) return false;
+        let condicion = this.visit(ctx.expr());
+        let desempeno = performance.now();
+        while(condicion){
+            this.visit(ctx.main());
+            condicion = this.visit(ctx.expr());
+            if (performance.now()- desempeno > this.maxLoopTime){
+                break;
+            }
+        }
+        return condicion;
+      }
+  
   
     
      /*

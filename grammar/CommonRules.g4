@@ -20,6 +20,7 @@ EQUALS          :       '=' ;
 PRINT           :   'inswae';
 IF              :    'myeon';
 ELSE            :    'namochi'; 
+WHILE           :   'geuttae';
 LOGIC           :    ('||'|'&&'|'==');
 MATH            :    ('<'|'>'|'<='|'>=');
 BOOLEAN         :    ('true'|'false');

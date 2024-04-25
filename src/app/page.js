@@ -13,6 +13,15 @@ const Page = () => {
 
     setExpressions(input);
   };
+  const changeText = (e)=>{
+    e.preventDefault();
+    const read = new FileReader();
+    read.readAsText(e.target.files[0]);
+    read.onload = (e) =>{
+      const file =e.target.result;
+      setExpressions(file)
+    }
+  }
 
   const analizador = () => {
     const inputWithOutComments = expressions.replace(
@@ -47,6 +56,7 @@ const Page = () => {
               <h2 className="text-2xl font-bold mb-4 text-lime-900">
                 Ingresa tu código
               </h2>
+              <input className='text-sm font-semibold text-lime-850' type="file" accept=".txt, .c" onChange={e => changeText(e)} />
               <p className="text-lg text-center text-lime-700 mb-4">
                 Codifica aquí
               </p>
@@ -76,7 +86,7 @@ const Page = () => {
                 <div className="flex justify-between mt-4">
                   <button
                     className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
-                    onClick={analizador}//Cambar para que traduzca
+                    onClick={'analizador'}//Cambar para que traduzca
                   >
                     Traducir
                   </button>
