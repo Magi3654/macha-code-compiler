@@ -56,7 +56,11 @@ const Page = () => {
               <h2 className="text-2xl font-bold mb-4 text-lime-900">
                 Ingresa tu código
               </h2>
-              <input className='text-sm font-semibold text-lime-850' type="file" accept=".txt, .c" onChange={e => changeText(e)} />
+              <button
+                    className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700" id="load-button"
+                    onClick={'analizador'}>
+                    <input id="carga" type="file" accept=".txt, .c" onChange={e => changeText(e)} />
+                </button>
               <p className="text-lg text-center text-lime-700 mb-4">
                 Codifica aquí
               </p>
