@@ -157,16 +157,14 @@ export default class CustomVisitor extends CompiladorVisitor {
         console.log(idToken);
         const value = ctx.expr() ? this.visit(ctx.expr()) : null;
         // Verificar si el identificador ya está en la memoria
-        if (this.memory.has(idToken)) {
-            this.console.push(`Error: El identificador "${idToken}" ya ha sido declarado.`);
-        } else {
+      
             this.memory.set(idToken, value);
             console.log(this.memory);
-            this.alertsgood.push(`Variable "${idToken}" asignada con valor ${value}`);
-        }
+            //this.alertsgood.push(`Variable "${idToken}" asignada con valor ${value}`);
+        
         // Ejemplo de agregar mensaje de éxito de forma única
-        const successMessage = `Variable "${idToken}" asignada con valor ${value}`;
-        this.addUniqueMessage(successMessage);
+       // const successMessage = `Variable "${idToken}" asignada con valor ${value}`;
+        //this.addUniqueMessage(successMessage);
 
         this.updateConsole();
         return null;
@@ -363,7 +361,7 @@ export default class CustomVisitor extends CompiladorVisitor {
         const consola = document.getElementById('consola');
         if (consola) {
             let uniqueMessages = Array.from(new Set(this.console)); // Eliminar mensajes duplicados
-            consola.innerHTML = uniqueMessages.join('<br/>').trim();
+            consola.innerHTML = uniqueMessages.join('\n').trim();
         }
     }
 }

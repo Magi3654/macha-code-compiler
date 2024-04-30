@@ -18,7 +18,7 @@ declaracion: PR GEULSSI (EQUALS expr)?                #validAssign
            | PR ID = (CHINCHA | SUJJA) (EQUALS expr)? #invalidAssign
            ;
            
-asignacion: PR GEULSSI EQUALS expr;
+asignacion: GEULSSI EQUALS expr;
 
 impresion: PRINT PARENTH_A expr PARENTH_B;
 
