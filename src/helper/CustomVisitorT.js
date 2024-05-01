@@ -1,20 +1,31 @@
 // Generated from ./grammar/translate/MachaC.g4 by ANTLR 4.13.1
 // jshint ignore: start
+import MachaCParser from '../translate/grammar/translate/MachaCParser.js';
+import MachaCVisitor from '../translate/grammar/translate/MachaCVisitor.js';
 import antlr4 from 'antlr4';
 
 // This class defines a complete generic visitor for a parse tree produced by MachaCParser.
 
-export default class MachaCVisitor extends antlr4.tree.ParseTreeVisitor {
+export default class CustomVisitorT extends MachaCVisitor{
+
+    constructor (){
+        super()
+        this.code=""
+    }
 
 	// Visit a parse tree produced by MachaCParser#file.
 	visitFile(ctx) {
-	  return this.visitChildren(ctx);
+        this.visitChildren(ctx);
+	  return this.code;
 	}
 
 
 	// Visit a parse tree produced by MachaCParser#start.
 	visitStart(ctx) {
-	  return this.visitChildren(ctx);
+        this.code +="chichak{";
+        this.visit(ctx.content());
+        this.code +="\n}";
+	  return 
 	}
 
 

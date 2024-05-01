@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { analizar } from "@/module/generador";
+import { translate } from "@/module/generatorT";
 import CodeMirror from "@uiw/react-codemirror";
 import { quietlight } from "@uiw/codemirror-theme-quietlight";
 
@@ -31,21 +32,23 @@ const Page = () => {
     const inputLines = inputWithOutComments.split("\n"); // Dividir el input en líneas
     const validLines = inputLines.filter((line) => line.trim().length > 0); // Filtrar líneas vacías con trim(eliminar espacios en blanco)
     const cleanInput = validLines.join("\n"); // Unir las líneas limpias nuevamente
-    //console.log(cleanInput);
-
-    //try {
     const calculadedResult = analizar(cleanInput);
-    /*setResult(calculadedResult.toString());
-      setConsola(''); // Limpiar mensajes de consola en caso de éxito
-    } catch (error) {
-      setConsola(`Error de sintaxis: ${error.message}`); // Actualizar mensajes de consola en caso de error
-    }*/
-  };
+    };
   const clearArea = () => {
     setExpressions("");
     setResult("");
   };
 
+  const traductor=()=>{
+    const inputWithOutComments = expressions.replace(
+      /(\/\/[^\n]*)|\/\*[\s\S]*?\*\//g,
+      ""
+    );
+    const inputLines = inputWithOutComments.split("\n"); // Dividir el input en líneas
+    const validLines = inputLines.filter((line) => line.trim().length > 0); // Filtrar líneas vacías con trim(eliminar espacios en blanco)
+    const cleanInput = validLines.join("\n"); // Unir las líneas limpias nuevamente
+    const calculadedResult = translate(cleanInput);
+  };
   return (
     <main className="justify-between items-center max-h-screen bg-lime-100">
       <div className="flex flex-col">
@@ -90,7 +93,7 @@ const Page = () => {
                 <div className="flex justify-between mt-4">
                   <button
                     className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
-                    onClick={'analizador'}//Cambar para que traduzca
+                    onClick={traductor}//Cambar para que traduzca
                   >
                     Traducir
                   </button>

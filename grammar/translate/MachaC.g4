@@ -3,7 +3,7 @@ import ReservedWords;
 
 file: start+;
 
-start: MAIN PARENTH_A PARENTH_B OPENKEY content CLOSEKEY;
+start: MAIN PARENTH_A PARENTH_B OPENKEY content CLOSEKEY SEMICOLON;
 
 content: main*;
 
