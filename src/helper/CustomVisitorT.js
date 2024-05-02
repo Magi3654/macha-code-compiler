@@ -12,6 +12,24 @@ export default class CustomVisitorT extends MachaCVisitor{
         super()
         this.code=""
     }
+	translatedPR(type) {
+		switch (type) {
+			case "int":
+				return "geum";
+			case "float":
+				return "hana";
+			case "char":
+				return "sam";
+			default:
+				return "";
+		}
+	}
+	
+	elseDetector(){
+		let status = this.code;
+		let size = this.code.length;
+		return "else" == status[size-4]+status[size-3]+status[size-2]+status[size-1]
+	}
 
 	// Visit a parse tree produced by MachaCParser#file.
 	visitFile(ctx) {
@@ -43,24 +61,41 @@ export default class CustomVisitorT extends MachaCVisitor{
 
 	// Visit a parse tree produced by MachaCParser#declaracion.
 	visitDeclaracion(ctx) {
-	  return this.visitChildren(ctx);
+		const PR = ctx.PR().getText();
+		let id = ctx.ID()? ctx.ID.getText() : ctx.id.text;
+
+		if (ctx.EQUALS()){
+			let expr = this.visit(ctx.value());
+			this.code+=`\n${this.translatedPR(PR)} ${id} = ${expr}`;
+		}else{
+			this.code +=`\n${this.translatedPR(PR)} ${expr}`
+		}
+	  return;
 	}
 
 
 	// Visit a parse tree produced by MachaCParser#asignacion.
 	visitAsignacion(ctx) {
-	  return this.visitChildren(ctx);
+		let id = ctx.ID().getText();
+		let expr = this.visit(ctx.expr());
+		this.code +=`\n${id}=${expr}`
+	  return ;
 	}
 
 
 	// Visit a parse tree produced by MachaCParser#impresion.
 	visitImpresion(ctx) {
-	  return this.visitChildren(ctx);
+
+		let main = this.visit(ctx.expr());
+		this.code+=`\ninswae(${main})`
+	  return ctx.getText();
 	}
 
 
 	// Visit a parse tree produced by MachaCParser#parentesis.
 	visitParentesis(ctx) {
+		
+
 	  return this.visitChildren(ctx);
 	}
 
@@ -103,25 +138,48 @@ export default class CustomVisitorT extends MachaCVisitor{
 
 	// Visit a parse tree produced by MachaCParser#condicionalBucle.
 	visitCondicionalBucle(ctx) {
-	  return this.visitChildren(ctx);
+		this.visit(ctx.condicional());
+		if (ctx.condicionalElseIf())this.visit(ctx.condicionalElseIf())
+		if (ctx.condicionalElse())this.visit(ctx.condicionalElse())
+
+		this.code += ``;
+
 	}
 
 
 	// Visit a parse tree produced by MachaCParser#condicional.
 	visitCondicional(ctx) {
-	  return this.visitChildren(ctx);
+		let condicion = this.visit(ctx.expr());
+		this.code += `${this.elseDetector()?"if":"\nmyeon"}(${condicion}){`;
+		this.visit(ctx.main())
+		this.code += `\n}`;
+	  return
 	}
 
 
 	// Visit a parse tree produced by MachaCParser#condicionalElseIf.
 	visitCondicionalElseIf(ctx) {
-	  return this.visitChildren(ctx);
+		this.code +=`\nnamochi`;
+		this.visit(ctx.condicional());
+	  return 
 	}
 
 
 	// Visit a parse tree produced by MachaCParser#condicionalElse.
 	visitCondicionalElse(ctx) {
-	  return this.visitChildren(ctx);
+		this.code +=`\nnamochi{`;
+		this.visit(ctx.main())
+		this.code += `\n}`;
+	  return 
+	}
+
+	// Visit a parse tree produced by MachaCParser#while.
+	visitWhile(ctx) {
+		let condicion = this.visit(ctx.expr());
+		this.code += `\ngeuttae(${condicion}){`;
+		this.visit(ctx.main());
+		this.code +=`\n}`;
+			return 
 	}
 
 

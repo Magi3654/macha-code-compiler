@@ -49,6 +49,7 @@ const Page = () => {
     const cleanInput = validLines.join("\n"); // Unir las líneas limpias nuevamente
     const calculadedResult = translate(cleanInput);
   };
+  
   return (
     <main className="justify-between items-center max-h-screen bg-lime-100">
       <div className="flex flex-col">

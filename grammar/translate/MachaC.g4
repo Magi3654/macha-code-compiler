@@ -13,7 +13,7 @@ main: declaracion
     |impresion 
     ;
 
-declaracion : ID (EQUALS expr)? ;
+declaracion : PR ID (EQUALS expr)? ;
 
 asignacion : ID EQUALS expr;
 
@@ -35,3 +35,6 @@ condicional: IF PARENTH_A expr PARENTH_B OPENKEY main* CLOSEKEY;
 condicionalElseIf: ELSE condicional;
 
 condicionalElse: ELSE OPENKEY main* CLOSEKEY; 
+
+while: WHILE PARENTH_A expr PARENTH_B OPENKEY main* CLOSEKEY;
+

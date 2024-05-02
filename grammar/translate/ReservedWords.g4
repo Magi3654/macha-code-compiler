@@ -1,5 +1,10 @@
 lexer grammar ReservedWords;
 
+PR             :'int'
+               |'float'
+               |'char'
+               ;
+
 PARENTH_A      :        '(';
 PARENTH_B      :        ')';
 OPENKEY        :        '{';
@@ -13,6 +18,7 @@ DOUBLE_QUOTE   :       '"' ;
 SEMICOLON      :        ';';
 IF             :       'if';
 ELSE           :     'else'; 
+WHILE          :    'while';
 LOGIC          :    ('||'|'&&'|'=='|'true'|'false');
 MATH           :    ('<'|'>'|'<='|'>=');
 PRINT          :   'printf';
