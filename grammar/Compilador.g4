@@ -23,7 +23,7 @@ asignacion: GEULSSI EQUALS expr;
 impresion: PRINT PARENTH_A expr PARENTH_B;
 
 expr: PARENTH_A expr PARENTH_B                      #parentesis
-    | expr operation=(GOPSSEM | NANU) expr          #muldiv
+    | expr operation=(GOPSSEM|NANU|PORCENT) expr    #muldiv
     | expr operation=(DO | PPAEDA) expr             #sumres
     |simbolo=(LOGIC|MATH|BOOLEAN)                   #condicion
     |expr simbolo=(LOGIC|MATH|BOOLEAN) expr         #condicion

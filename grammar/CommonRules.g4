@@ -17,6 +17,7 @@ NANU            :       '/' ;
 DO              :       '+' ;
 PPAEDA          :       '-' ;
 EQUALS          :       '=' ;
+PORCENT         :       '%' ;
 PRINT           :   'inswae';
 IF              :    'myeon';
 ELSE            :    'namochi'; 

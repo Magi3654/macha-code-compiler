@@ -64,10 +64,10 @@ export default class CustomVisitorT extends MachaCVisitor{
 	// Visit a parse tree produced by MachaCParser#declaracion.
 	visitDeclaracion(ctx) {
 		const PR = ctx.PR().getText();
-		let id = ctx.ID()? ctx.ID.getText() : ctx.id.text;
+		let id = ctx.ID()? ctx.ID().getText() : ctx.id.text;
 
 		if (ctx.EQUALS()){
-			let expr = this.visit(ctx.value());
+			let expr = this.visit(ctx.expr());
 			this.code+=`\n${this.translatedPR(PR)} ${id} = ${expr}`;
 		}else{
 			this.code +=`\n${this.translatedPR(PR)} ${expr}`
@@ -78,6 +78,7 @@ export default class CustomVisitorT extends MachaCVisitor{
 
 	// Visit a parse tree produced by MachaCParser#asignacion.
 	visitAsignacion(ctx) {
+		console.log(ctx.getText());
 		let id = ctx.ID().getText();
 		let expr = this.visit(ctx.expr());
 		this.code +=`\n${id}=${expr}`

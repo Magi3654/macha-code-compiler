@@ -238,7 +238,12 @@ export default class CustomVisitor extends CompiladorVisitor {
                 this.console.push("오모! División por cero.");
                 this.updateConsole();
                 return null;
-            }return left * right ;}
+            }
+            return left * right ;
+        }
+        if(ctx.operation.type === CompiladorParser.PORCENT){
+            return left % right;
+        }
             
 		return Math.floor(left / right);
     }
