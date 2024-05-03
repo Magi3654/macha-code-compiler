@@ -41,9 +41,11 @@ export default class CustomVisitorT extends MachaCVisitor{
 	// Visit a parse tree produced by MachaCParser#start.
 	visitStart(ctx) {
         this.code +="chichak{";
+		console.log(ctx.content());
         this.visit(ctx.content());
         this.code +="\n}";
-	  return 
+		console.log(this.code);
+		return this.code;
 	}
 
 
@@ -92,48 +94,7 @@ export default class CustomVisitorT extends MachaCVisitor{
 	}
 
 
-	// Visit a parse tree produced by MachaCParser#parentesis.
-	visitParentesis(ctx) {
-		
-
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#implicitMult.
-	visitImplicitMult(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#sujja.
-	visitSujja(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#string.
-	visitString(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#sumres.
-	visitSumres(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#geulssi.
-	visitGeulssi(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#muldiv.
-	visitMuldiv(ctx) {
-	  return this.visitChildren(ctx);
-	}
+	
 
 
 	// Visit a parse tree produced by MachaCParser#condicionalBucle.
@@ -182,6 +143,10 @@ export default class CustomVisitorT extends MachaCVisitor{
 			return 
 	}
 
+	visitExpr(ctx) {
+		return ctx.getText();
+	  }
+  
 
 
 }

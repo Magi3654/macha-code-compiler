@@ -39,4 +39,4 @@ WS=26
 'else'=14
 'while'=15
 'printf'=18
-'void main()'=19
+'void main'=19

@@ -48,44 +48,8 @@ export default class MachaCVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by MachaCParser#parentesis.
-	visitParentesis(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#implicitMult.
-	visitImplicitMult(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#sujja.
-	visitSujja(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#string.
-	visitString(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#sumres.
-	visitSumres(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#geulssi.
-	visitGeulssi(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MachaCParser#muldiv.
-	visitMuldiv(ctx) {
+	// Visit a parse tree produced by MachaCParser#expr.
+	visitExpr(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

@@ -22,7 +22,7 @@ WHILE          :    'while';
 LOGIC          :    ('||'|'&&'|'=='|'true'|'false');
 MATH           :    ('<'|'>'|'<='|'>=');
 PRINT          :   'printf';
-MAIN           :    'void main()';
+MAIN           :    'void main';
 CHAR           :    '"'[a-zA-Z]'"';
 INT            :    [0-9]+;
 FLOAT          : [0-9]+[.][0-9]+;

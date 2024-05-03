@@ -48,6 +48,7 @@ const Page = () => {
     const validLines = inputLines.filter((line) => line.trim().length > 0); // Filtrar líneas vacías con trim(eliminar espacios en blanco)
     const cleanInput = validLines.join("\n"); // Unir las líneas limpias nuevamente
     const calculadedResult = translate(cleanInput);
+    setResult(calculadedResult)
   };
   
   return (
@@ -61,8 +62,7 @@ const Page = () => {
                 Ingresa tu código
               </h2>
               <button
-                    className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700" id="load-button"
-                    onClick={'analizador'}>
+                    className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700" id="load-button">
                     <input id="carga" type="file" accept=".txt, .c" onChange={e => changeText(e)} />
                 </button>
               <p className="text-lg text-center text-lime-700 mb-4">

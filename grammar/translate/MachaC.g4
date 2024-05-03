@@ -19,13 +19,12 @@ asignacion : ID EQUALS expr;
 
 impresion: PRINT PARENTH_A expr PARENTH_B;
 
-expr: PARENTH_A expr PARENTH_B                     #parentesis
-    | expr operation=(MULTI | DIV) expr         #muldiv
-    | expr operation=(SUM | MIN ) expr            #sumres
-    | ID                                      #geulssi
-    | INT                                      #sujja
-    | STRING                                       #string
-    |expr expr                                     #implicitMult
+expr: PARENTH_A expr PARENTH_B                    
+    | expr operation=(MULTI | DIV) expr        
+    | expr operation=(SUM | MIN ) expr           
+    | ID                                   
+    | INT                                 
+    | STRING                                     
     ;
 
 condicionalBucle: condicional condicionalElseIf* condicionalElse?;
