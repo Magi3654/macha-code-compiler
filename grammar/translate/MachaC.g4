@@ -30,6 +30,8 @@ expr: PARENTH_A expr PARENTH_B
     | STRING                                     
     ;
 
+incremento: ID (SUM SUM| MIN MIN);
+
 condicionalBucle: condicional condicionalElseIf* condicionalElse?;
 
 condicional: IF PARENTH_A expr PARENTH_B OPENKEY main* CLOSEKEY; 

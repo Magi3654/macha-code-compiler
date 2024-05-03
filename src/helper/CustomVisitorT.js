@@ -85,6 +85,17 @@ export default class CustomVisitorT extends MachaCVisitor{
 		this.code +=`\n${id}=${expr}`
 	  return ;
 	}
+	// Visit a parse tree produced by MachaCParser#incremento.
+	visitIncremento(ctx) {
+		let id = ctx.ID().getText();
+		if (ctx.SUM().length>0){
+			this.code +=`\n${id}++`;
+		}else{
+			this.code +=`\n${id}--`;
+		}
+		return ;
+	  }
+  
 
 
 	// Visit a parse tree produced by MachaCParser#impresion.

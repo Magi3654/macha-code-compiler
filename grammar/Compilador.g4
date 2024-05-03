@@ -33,6 +33,7 @@ expr: PARENTH_A expr PARENTH_B                      #parentesis
     |expr expr                                      #implicitMult
     ;
 
+incremento: GEULSSI (DO DO|PPAEDA PPAEDA) ;
 
 
 condicionalBucle: condicional condicionalElseIf* condicionalElse?;

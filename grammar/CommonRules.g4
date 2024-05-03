@@ -22,7 +22,7 @@ PRINT           :   'inswae';
 IF              :    'myeon';
 ELSE            :    'namochi'; 
 WHILE           :   'geuttae';
-LOGIC           :    ('||'|'&&'|'==');
+LOGIC           :    ('||'|'&&'|'=='|'%');
 MATH            :    ('<'|'>'|'<='|'>='|'!=');
 BOOLEAN         :    ('true'|'false');
 STRING          :  '"' .*? '"' ;

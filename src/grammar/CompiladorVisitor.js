@@ -102,6 +102,12 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by CompiladorParser#incremento.
+	visitIncremento(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by CompiladorParser#condicionalBucle.
 	visitCondicionalBucle(ctx) {
 	  return this.visitChildren(ctx);

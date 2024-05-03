@@ -247,7 +247,20 @@ export default class CustomVisitor extends CompiladorVisitor {
             
 		return Math.floor(left / right);
     }
-    
+    // Visit a parse tree produced by CompiladorParser#incremento.
+	visitIncremento(ctx) {
+        const id = ctx.GEULSSI().getText();
+        const pr = this.getVariableType(id);
+        if (pr){
+            let reservada = this.reservadas[pr].find((reservada) => reservada.id === id );
+            if (ctx.DO().length > 0){
+                reservada.value = reservada.value + 1;
+            }else{
+                reservada.value = reservada.value - 1 ;
+            }
+        }
+        return this.visitChildren(ctx);
+      }
 
 	// Visit a parse tree produced by CompiladorParser#condicionalBucle.
 	visitCondicionalBucle(ctx) {

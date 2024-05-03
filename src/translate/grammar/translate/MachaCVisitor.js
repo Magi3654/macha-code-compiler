@@ -54,6 +54,12 @@ export default class MachaCVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by MachaCParser#incremento.
+	visitIncremento(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by MachaCParser#condicionalBucle.
 	visitCondicionalBucle(ctx) {
 	  return this.visitChildren(ctx);
