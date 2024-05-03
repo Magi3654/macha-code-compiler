@@ -23,7 +23,7 @@ IF              :    'myeon';
 ELSE            :    'namochi'; 
 WHILE           :   'geuttae';
 LOGIC           :    ('||'|'&&'|'==');
-MATH            :    ('<'|'>'|'<='|'>=');
+MATH            :    ('<'|'>'|'<='|'>='|'!=');
 BOOLEAN         :    ('true'|'false');
 STRING          :  '"' .*? '"' ;
 CHAR            : '"'[a-zA-Z ]?'"';

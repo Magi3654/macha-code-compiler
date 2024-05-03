@@ -24,8 +24,20 @@ const Page = () => {
     }
   }
 
-  const analizador = () => {
+  const traductor=()=>{
     const inputWithOutComments = expressions.replace(
+      /(\/\/[^\n]*)|\/\*[\s\S]*?\*\//g,
+      ""
+    );
+    const inputLines = inputWithOutComments.split("\n"); // Dividir el input en líneas
+    const validLines = inputLines.filter((line) => line.trim().length > 0); // Filtrar líneas vacías con trim(eliminar espacios en blanco)
+    const cleanInput = validLines.join("\n"); // Unir las líneas limpias nuevamente
+    const calculadedResult = translate(cleanInput);
+    setResult(calculadedResult)
+  };
+
+  const analizador = () => {
+    const inputWithOutComments = result.replace(
       /(\/\/[^\n]*)|\/\*[\s\S]*?\*\//g,
       ""
     );
@@ -37,18 +49,6 @@ const Page = () => {
   const clearArea = () => {
     setExpressions("");
     setResult("");
-  };
-
-  const traductor=()=>{
-    const inputWithOutComments = expressions.replace(
-      /(\/\/[^\n]*)|\/\*[\s\S]*?\*\//g,
-      ""
-    );
-    const inputLines = inputWithOutComments.split("\n"); // Dividir el input en líneas
-    const validLines = inputLines.filter((line) => line.trim().length > 0); // Filtrar líneas vacías con trim(eliminar espacios en blanco)
-    const cleanInput = validLines.join("\n"); // Unir las líneas limpias nuevamente
-    const calculadedResult = translate(cleanInput);
-    setResult(calculadedResult)
   };
   
   return (

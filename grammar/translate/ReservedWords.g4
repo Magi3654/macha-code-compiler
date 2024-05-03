@@ -22,7 +22,7 @@ ELSE           :     'else';
 WHILE          :    'while';
 LOGIC          :    ('||'|'&&'|'==');
 BOOLEAN        :    ('true'|'false');
-MATH           :    ('<'|'>'|'<='|'>=');
+MATH           :    ('<'|'>'|'<='|'>='|'!=');
 PRINT          :   'printf';
 MAIN           :    'void main';
 CHAR           :    '"'[a-zA-Z]'"';

@@ -70,7 +70,7 @@ export default class CustomVisitorT extends MachaCVisitor{
 			let expr = this.visit(ctx.expr());
 			this.code+=`\n${this.translatedPR(PR)} ${id} = ${expr}`;
 		}else{
-			this.code +=`\n${this.translatedPR(PR)} ${expr}`
+			this.code +=`\n${this.translatedPR(PR)} ${id}`
 		}
 	  return;
 	}
@@ -81,6 +81,7 @@ export default class CustomVisitorT extends MachaCVisitor{
 		console.log(ctx.getText());
 		let id = ctx.ID().getText();
 		let expr = this.visit(ctx.expr());
+		console.log(expr);
 		this.code +=`\n${id}=${expr}`
 	  return ;
 	}

@@ -21,7 +21,7 @@ asignacion : ID EQUALS expr;
 impresion: PRINT PARENTH_A expr PARENTH_B;
 
 expr: PARENTH_A expr PARENTH_B                    
-    | expr operation=(MULTI | DIV) expr        
+    | expr operation=(MULTI | DIV | PORCENT) expr        
     | expr operation=(SUM | MIN ) expr 
     |BOOLEAN                
     |expr simbolo=(LOGIC|MATH) expr                 

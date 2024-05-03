@@ -322,7 +322,8 @@ export default class CustomVisitor extends CompiladorVisitor {
                     
             case '==':
                     return valor_a == valor_b;
-                    
+            case '!=':
+                    return valor_a != valor_b;
             case 'true':
                     return true;
             case 'false':
