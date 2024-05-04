@@ -41,10 +41,10 @@ export default class CustomVisitorT extends MachaCVisitor{
 	// Visit a parse tree produced by MachaCParser#start.
 	visitStart(ctx) {
         this.code +="chichak{";
-		console.log(ctx.content());
+		//console.log(ctx.content());
         this.visit(ctx.content());
         this.code +="\n}";
-		console.log(this.code);
+		//console.log(this.code);
 		return this.code;
 	}
 
@@ -87,13 +87,15 @@ export default class CustomVisitorT extends MachaCVisitor{
 	}
 	// Visit a parse tree produced by MachaCParser#incremento.
 	visitIncremento(ctx) {
-		let id = ctx.ID().getText();
-		if (ctx.SUM().length>0){
-			this.code +=`\n${id}++`;
-		}else{
-			this.code +=`\n${id}--`;
+		const id = ctx.ID().getText();
+		if (ctx.SUM().length > 0) {
+			console.log('fhf');
+			this.code += `\n${id}++`;
+		} else {
+			this.code += `\n${id}--`;
 		}
-		return ;
+
+		return;
 	  }
   
 

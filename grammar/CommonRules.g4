@@ -29,5 +29,5 @@ STRING          :  '"' .*? '"' ;
 CHAR            : '"'[a-zA-Z ]?'"';
 SUJJA           : [^0-9.-]+; //NUMEROS 
 GEULSSI         : [a-zA-Z]+; //ID O LETRAS
-CHINCHA         :[a-zA-Z0-9_+\-*/]+;
+CHINCHA         :[a-zA-Z0-9_*/]+;
 GONG            :[ \t\r\n]+ -> skip; 

@@ -3,52 +3,54 @@
 import antlr4 from 'antlr4';
 import MachaCVisitor from './MachaCVisitor.js';
 
-const serializedATN = [4,1,28,156,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,28,160,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,1,0,4,0,30,8,0,11,0,12,0,31,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,5,
-2,42,8,2,10,2,12,2,45,9,2,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,3,
-3,58,8,3,1,4,1,4,1,4,1,4,3,4,64,8,4,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,6,
-1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,3,7,84,8,7,1,7,1,7,1,7,1,7,1,7,1,7,1,
-7,1,7,1,7,5,7,95,8,7,10,7,12,7,98,9,7,1,8,1,8,1,8,1,8,1,8,3,8,105,8,8,1,
-9,1,9,5,9,109,8,9,10,9,12,9,112,9,9,1,9,3,9,115,8,9,1,10,1,10,1,10,1,10,
-1,10,1,10,5,10,123,8,10,10,10,12,10,126,9,10,1,10,1,10,1,11,1,11,1,11,1,
-12,1,12,1,12,5,12,136,8,12,10,12,12,12,139,9,12,1,12,1,12,1,13,1,13,1,13,
-1,13,1,13,1,13,5,13,149,8,13,10,13,12,13,152,9,13,1,13,1,13,1,13,0,1,14,
-14,0,2,4,6,8,10,12,14,16,18,20,22,24,26,0,3,2,0,7,8,13,13,1,0,9,10,2,0,17,
-17,19,19,161,0,29,1,0,0,0,2,33,1,0,0,0,4,43,1,0,0,0,6,57,1,0,0,0,8,59,1,
-0,0,0,10,65,1,0,0,0,12,69,1,0,0,0,14,83,1,0,0,0,16,99,1,0,0,0,18,106,1,0,
-0,0,20,116,1,0,0,0,22,129,1,0,0,0,24,132,1,0,0,0,26,142,1,0,0,0,28,30,3,
-2,1,0,29,28,1,0,0,0,30,31,1,0,0,0,31,29,1,0,0,0,31,32,1,0,0,0,32,1,1,0,0,
-0,33,34,5,21,0,0,34,35,5,2,0,0,35,36,5,3,0,0,36,37,5,4,0,0,37,38,3,4,2,0,
-38,39,5,5,0,0,39,3,1,0,0,0,40,42,3,6,3,0,41,40,1,0,0,0,42,45,1,0,0,0,43,
-41,1,0,0,0,43,44,1,0,0,0,44,5,1,0,0,0,45,43,1,0,0,0,46,47,3,8,4,0,47,48,
-5,12,0,0,48,58,1,0,0,0,49,50,3,10,5,0,50,51,5,12,0,0,51,58,1,0,0,0,52,58,
-3,18,9,0,53,54,3,12,6,0,54,55,5,12,0,0,55,58,1,0,0,0,56,58,3,26,13,0,57,
-46,1,0,0,0,57,49,1,0,0,0,57,52,1,0,0,0,57,53,1,0,0,0,57,56,1,0,0,0,58,7,
-1,0,0,0,59,60,5,1,0,0,60,63,5,26,0,0,61,62,5,6,0,0,62,64,3,14,7,0,63,61,
-1,0,0,0,63,64,1,0,0,0,64,9,1,0,0,0,65,66,5,26,0,0,66,67,5,6,0,0,67,68,3,
-14,7,0,68,11,1,0,0,0,69,70,5,20,0,0,70,71,5,2,0,0,71,72,3,14,7,0,72,73,5,
-3,0,0,73,13,1,0,0,0,74,75,6,7,-1,0,75,76,5,2,0,0,76,77,3,14,7,0,77,78,5,
-3,0,0,78,84,1,0,0,0,79,84,5,18,0,0,80,84,5,26,0,0,81,84,5,23,0,0,82,84,5,
-25,0,0,83,74,1,0,0,0,83,79,1,0,0,0,83,80,1,0,0,0,83,81,1,0,0,0,83,82,1,0,
-0,0,84,96,1,0,0,0,85,86,10,7,0,0,86,87,7,0,0,0,87,95,3,14,7,8,88,89,10,6,
-0,0,89,90,7,1,0,0,90,95,3,14,7,7,91,92,10,4,0,0,92,93,7,2,0,0,93,95,3,14,
-7,5,94,85,1,0,0,0,94,88,1,0,0,0,94,91,1,0,0,0,95,98,1,0,0,0,96,94,1,0,0,
-0,96,97,1,0,0,0,97,15,1,0,0,0,98,96,1,0,0,0,99,104,5,26,0,0,100,101,5,9,
-0,0,101,105,5,9,0,0,102,103,5,10,0,0,103,105,5,10,0,0,104,100,1,0,0,0,104,
-102,1,0,0,0,105,17,1,0,0,0,106,110,3,20,10,0,107,109,3,22,11,0,108,107,1,
-0,0,0,109,112,1,0,0,0,110,108,1,0,0,0,110,111,1,0,0,0,111,114,1,0,0,0,112,
-110,1,0,0,0,113,115,3,24,12,0,114,113,1,0,0,0,114,115,1,0,0,0,115,19,1,0,
-0,0,116,117,5,14,0,0,117,118,5,2,0,0,118,119,3,14,7,0,119,120,5,3,0,0,120,
-124,5,4,0,0,121,123,3,6,3,0,122,121,1,0,0,0,123,126,1,0,0,0,124,122,1,0,
-0,0,124,125,1,0,0,0,125,127,1,0,0,0,126,124,1,0,0,0,127,128,5,5,0,0,128,
-21,1,0,0,0,129,130,5,15,0,0,130,131,3,20,10,0,131,23,1,0,0,0,132,133,5,15,
-0,0,133,137,5,4,0,0,134,136,3,6,3,0,135,134,1,0,0,0,136,139,1,0,0,0,137,
-135,1,0,0,0,137,138,1,0,0,0,138,140,1,0,0,0,139,137,1,0,0,0,140,141,5,5,
-0,0,141,25,1,0,0,0,142,143,5,16,0,0,143,144,5,2,0,0,144,145,3,14,7,0,145,
-146,5,3,0,0,146,150,5,4,0,0,147,149,3,6,3,0,148,147,1,0,0,0,149,152,1,0,
-0,0,150,148,1,0,0,0,150,151,1,0,0,0,151,153,1,0,0,0,152,150,1,0,0,0,153,
-154,5,5,0,0,154,27,1,0,0,0,13,31,43,57,63,83,94,96,104,110,114,124,137,150];
+2,42,8,2,10,2,12,2,45,9,2,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,
+3,3,3,59,8,3,1,4,1,4,1,4,1,4,3,4,65,8,4,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,6,
+1,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,3,7,85,8,7,1,7,1,7,1,7,1,7,1,7,1,
+7,1,7,1,7,1,7,5,7,96,8,7,10,7,12,7,99,9,7,1,8,1,8,3,8,103,8,8,1,8,1,8,1,
+8,1,8,3,8,109,8,8,1,9,1,9,5,9,113,8,9,10,9,12,9,116,9,9,1,9,3,9,119,8,9,
+1,10,1,10,1,10,1,10,1,10,1,10,5,10,127,8,10,10,10,12,10,130,9,10,1,10,1,
+10,1,11,1,11,1,11,1,12,1,12,1,12,5,12,140,8,12,10,12,12,12,143,9,12,1,12,
+1,12,1,13,1,13,1,13,1,13,1,13,1,13,5,13,153,8,13,10,13,12,13,156,9,13,1,
+13,1,13,1,13,0,1,14,14,0,2,4,6,8,10,12,14,16,18,20,22,24,26,0,3,2,0,7,8,
+13,13,1,0,9,10,2,0,17,17,19,19,167,0,29,1,0,0,0,2,33,1,0,0,0,4,43,1,0,0,
+0,6,58,1,0,0,0,8,60,1,0,0,0,10,66,1,0,0,0,12,70,1,0,0,0,14,84,1,0,0,0,16,
+100,1,0,0,0,18,110,1,0,0,0,20,120,1,0,0,0,22,133,1,0,0,0,24,136,1,0,0,0,
+26,146,1,0,0,0,28,30,3,2,1,0,29,28,1,0,0,0,30,31,1,0,0,0,31,29,1,0,0,0,31,
+32,1,0,0,0,32,1,1,0,0,0,33,34,5,21,0,0,34,35,5,2,0,0,35,36,5,3,0,0,36,37,
+5,4,0,0,37,38,3,4,2,0,38,39,5,5,0,0,39,3,1,0,0,0,40,42,3,6,3,0,41,40,1,0,
+0,0,42,45,1,0,0,0,43,41,1,0,0,0,43,44,1,0,0,0,44,5,1,0,0,0,45,43,1,0,0,0,
+46,47,3,8,4,0,47,48,5,12,0,0,48,59,1,0,0,0,49,50,3,10,5,0,50,51,5,12,0,0,
+51,59,1,0,0,0,52,59,3,18,9,0,53,59,3,26,13,0,54,55,3,12,6,0,55,56,5,12,0,
+0,56,59,1,0,0,0,57,59,3,16,8,0,58,46,1,0,0,0,58,49,1,0,0,0,58,52,1,0,0,0,
+58,53,1,0,0,0,58,54,1,0,0,0,58,57,1,0,0,0,59,7,1,0,0,0,60,61,5,1,0,0,61,
+64,5,26,0,0,62,63,5,6,0,0,63,65,3,14,7,0,64,62,1,0,0,0,64,65,1,0,0,0,65,
+9,1,0,0,0,66,67,5,26,0,0,67,68,5,6,0,0,68,69,3,14,7,0,69,11,1,0,0,0,70,71,
+5,20,0,0,71,72,5,2,0,0,72,73,3,14,7,0,73,74,5,3,0,0,74,13,1,0,0,0,75,76,
+6,7,-1,0,76,77,5,2,0,0,77,78,3,14,7,0,78,79,5,3,0,0,79,85,1,0,0,0,80,85,
+5,18,0,0,81,85,5,26,0,0,82,85,5,23,0,0,83,85,5,25,0,0,84,75,1,0,0,0,84,80,
+1,0,0,0,84,81,1,0,0,0,84,82,1,0,0,0,84,83,1,0,0,0,85,97,1,0,0,0,86,87,10,
+7,0,0,87,88,7,0,0,0,88,96,3,14,7,8,89,90,10,6,0,0,90,91,7,1,0,0,91,96,3,
+14,7,7,92,93,10,4,0,0,93,94,7,2,0,0,94,96,3,14,7,5,95,86,1,0,0,0,95,89,1,
+0,0,0,95,92,1,0,0,0,96,99,1,0,0,0,97,95,1,0,0,0,97,98,1,0,0,0,98,15,1,0,
+0,0,99,97,1,0,0,0,100,102,5,26,0,0,101,103,5,28,0,0,102,101,1,0,0,0,102,
+103,1,0,0,0,103,108,1,0,0,0,104,105,5,9,0,0,105,109,5,9,0,0,106,107,5,10,
+0,0,107,109,5,10,0,0,108,104,1,0,0,0,108,106,1,0,0,0,109,17,1,0,0,0,110,
+114,3,20,10,0,111,113,3,22,11,0,112,111,1,0,0,0,113,116,1,0,0,0,114,112,
+1,0,0,0,114,115,1,0,0,0,115,118,1,0,0,0,116,114,1,0,0,0,117,119,3,24,12,
+0,118,117,1,0,0,0,118,119,1,0,0,0,119,19,1,0,0,0,120,121,5,14,0,0,121,122,
+5,2,0,0,122,123,3,14,7,0,123,124,5,3,0,0,124,128,5,4,0,0,125,127,3,6,3,0,
+126,125,1,0,0,0,127,130,1,0,0,0,128,126,1,0,0,0,128,129,1,0,0,0,129,131,
+1,0,0,0,130,128,1,0,0,0,131,132,5,5,0,0,132,21,1,0,0,0,133,134,5,15,0,0,
+134,135,3,20,10,0,135,23,1,0,0,0,136,137,5,15,0,0,137,141,5,4,0,0,138,140,
+3,6,3,0,139,138,1,0,0,0,140,143,1,0,0,0,141,139,1,0,0,0,141,142,1,0,0,0,
+142,144,1,0,0,0,143,141,1,0,0,0,144,145,5,5,0,0,145,25,1,0,0,0,146,147,5,
+16,0,0,147,148,5,2,0,0,148,149,3,14,7,0,149,150,5,3,0,0,150,154,5,4,0,0,
+151,153,3,6,3,0,152,151,1,0,0,0,153,156,1,0,0,0,154,152,1,0,0,0,154,155,
+1,0,0,0,155,157,1,0,0,0,156,154,1,0,0,0,157,158,5,5,0,0,158,27,1,0,0,0,14,
+31,43,58,64,84,95,97,102,108,114,118,128,141,154];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -209,9 +211,10 @@ export default class MachaCParser extends antlr4.Parser {
 	    let localctx = new MainContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, MachaCParser.RULE_main);
 	    try {
-	        this.state = 57;
+	        this.state = 58;
 	        this._errHandler.sync(this);
-	        switch(this._input.LA(1)) {
+	        var la_ = this._interp.adaptivePredict(this._input,2,this._ctx);
+	        switch(la_) {
 	        case 1:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 46;
@@ -219,32 +222,41 @@ export default class MachaCParser extends antlr4.Parser {
 	            this.state = 47;
 	            this.match(MachaCParser.SEMICOLON);
 	            break;
-	        case 26:
+
+	        case 2:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 49;
 	            this.asignacion();
 	            this.state = 50;
 	            this.match(MachaCParser.SEMICOLON);
 	            break;
-	        case 14:
+
+	        case 3:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 52;
 	            this.condicionalBucle();
 	            break;
-	        case 20:
+
+	        case 4:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 53;
-	            this.impresion();
-	            this.state = 54;
-	            this.match(MachaCParser.SEMICOLON);
-	            break;
-	        case 16:
-	            this.enterOuterAlt(localctx, 5);
-	            this.state = 56;
 	            this.while_();
 	            break;
-	        default:
-	            throw new antlr4.error.NoViableAltException(this);
+
+	        case 5:
+	            this.enterOuterAlt(localctx, 5);
+	            this.state = 54;
+	            this.impresion();
+	            this.state = 55;
+	            this.match(MachaCParser.SEMICOLON);
+	            break;
+
+	        case 6:
+	            this.enterOuterAlt(localctx, 6);
+	            this.state = 57;
+	            this.incremento();
+	            break;
+
 	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -268,17 +280,17 @@ export default class MachaCParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 59;
-	        this.match(MachaCParser.PR);
 	        this.state = 60;
+	        this.match(MachaCParser.PR);
+	        this.state = 61;
 	        this.match(MachaCParser.ID);
-	        this.state = 63;
+	        this.state = 64;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        if(_la===6) {
-	            this.state = 61;
-	            this.match(MachaCParser.EQUALS);
 	            this.state = 62;
+	            this.match(MachaCParser.EQUALS);
+	            this.state = 63;
 	            this.expr(0);
 	        }
 
@@ -303,11 +315,11 @@ export default class MachaCParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, MachaCParser.RULE_asignacion);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 65;
-	        this.match(MachaCParser.ID);
 	        this.state = 66;
-	        this.match(MachaCParser.EQUALS);
+	        this.match(MachaCParser.ID);
 	        this.state = 67;
+	        this.match(MachaCParser.EQUALS);
+	        this.state = 68;
 	        this.expr(0);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -330,13 +342,13 @@ export default class MachaCParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, MachaCParser.RULE_impresion);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 69;
-	        this.match(MachaCParser.PRINT);
 	        this.state = 70;
-	        this.match(MachaCParser.PARENTH_A);
+	        this.match(MachaCParser.PRINT);
 	        this.state = 71;
-	        this.expr(0);
+	        this.match(MachaCParser.PARENTH_A);
 	        this.state = 72;
+	        this.expr(0);
+	        this.state = 73;
 	        this.match(MachaCParser.PARENTH_B);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -366,38 +378,38 @@ export default class MachaCParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 83;
+	        this.state = 84;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case 2:
-	            this.state = 75;
-	            this.match(MachaCParser.PARENTH_A);
 	            this.state = 76;
-	            this.expr(0);
+	            this.match(MachaCParser.PARENTH_A);
 	            this.state = 77;
+	            this.expr(0);
+	            this.state = 78;
 	            this.match(MachaCParser.PARENTH_B);
 	            break;
 	        case 18:
-	            this.state = 79;
+	            this.state = 80;
 	            this.match(MachaCParser.BOOLEAN);
 	            break;
 	        case 26:
-	            this.state = 80;
+	            this.state = 81;
 	            this.match(MachaCParser.ID);
 	            break;
 	        case 23:
-	            this.state = 81;
+	            this.state = 82;
 	            this.match(MachaCParser.INT);
 	            break;
 	        case 25:
-	            this.state = 82;
+	            this.state = 83;
 	            this.match(MachaCParser.STRING);
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 96;
+	        this.state = 97;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,6,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -406,18 +418,18 @@ export default class MachaCParser extends antlr4.Parser {
 	                    this.triggerExitRuleEvent();
 	                }
 	                _prevctx = localctx;
-	                this.state = 94;
+	                this.state = 95;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
 	                switch(la_) {
 	                case 1:
 	                    localctx = new ExprContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, MachaCParser.RULE_expr);
-	                    this.state = 85;
+	                    this.state = 86;
 	                    if (!( this.precpred(this._ctx, 7))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 7)");
 	                    }
-	                    this.state = 86;
+	                    this.state = 87;
 	                    localctx.operation = this._input.LT(1);
 	                    _la = this._input.LA(1);
 	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 8576) !== 0))) {
@@ -427,18 +439,18 @@ export default class MachaCParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 87;
+	                    this.state = 88;
 	                    this.expr(8);
 	                    break;
 
 	                case 2:
 	                    localctx = new ExprContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, MachaCParser.RULE_expr);
-	                    this.state = 88;
+	                    this.state = 89;
 	                    if (!( this.precpred(this._ctx, 6))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
 	                    }
-	                    this.state = 89;
+	                    this.state = 90;
 	                    localctx.operation = this._input.LT(1);
 	                    _la = this._input.LA(1);
 	                    if(!(_la===9 || _la===10)) {
@@ -448,18 +460,18 @@ export default class MachaCParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 90;
+	                    this.state = 91;
 	                    this.expr(7);
 	                    break;
 
 	                case 3:
 	                    localctx = new ExprContext(this, _parentctx, _parentState);
 	                    this.pushNewRecursionContext(localctx, _startState, MachaCParser.RULE_expr);
-	                    this.state = 91;
+	                    this.state = 92;
 	                    if (!( this.precpred(this._ctx, 4))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
 	                    }
-	                    this.state = 92;
+	                    this.state = 93;
 	                    localctx.simbolo = this._input.LT(1);
 	                    _la = this._input.LA(1);
 	                    if(!(_la===17 || _la===19)) {
@@ -469,13 +481,13 @@ export default class MachaCParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 93;
+	                    this.state = 94;
 	                    this.expr(5);
 	                    break;
 
 	                } 
 	            }
-	            this.state = 98;
+	            this.state = 99;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,6,this._ctx);
 	        }
@@ -499,23 +511,32 @@ export default class MachaCParser extends antlr4.Parser {
 	incremento() {
 	    let localctx = new IncrementoContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, MachaCParser.RULE_incremento);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 99;
+	        this.state = 100;
 	        this.match(MachaCParser.ID);
-	        this.state = 104;
+	        this.state = 102;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        if(_la===28) {
+	            this.state = 101;
+	            this.match(MachaCParser.WS);
+	        }
+
+	        this.state = 108;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case 9:
-	            this.state = 100;
+	            this.state = 104;
 	            this.match(MachaCParser.SUM);
-	            this.state = 101;
+	            this.state = 105;
 	            this.match(MachaCParser.SUM);
 	            break;
 	        case 10:
-	            this.state = 102;
+	            this.state = 106;
 	            this.match(MachaCParser.MIN);
-	            this.state = 103;
+	            this.state = 107;
 	            this.match(MachaCParser.MIN);
 	            break;
 	        default:
@@ -543,26 +564,26 @@ export default class MachaCParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 106;
-	        this.condicional();
 	        this.state = 110;
+	        this.condicional();
+	        this.state = 114;
 	        this._errHandler.sync(this);
-	        var _alt = this._interp.adaptivePredict(this._input,8,this._ctx)
+	        var _alt = this._interp.adaptivePredict(this._input,9,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
-	                this.state = 107;
+	                this.state = 111;
 	                this.condicionalElseIf(); 
 	            }
-	            this.state = 112;
+	            this.state = 116;
 	            this._errHandler.sync(this);
-	            _alt = this._interp.adaptivePredict(this._input,8,this._ctx);
+	            _alt = this._interp.adaptivePredict(this._input,9,this._ctx);
 	        }
 
-	        this.state = 114;
+	        this.state = 118;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        if(_la===15) {
-	            this.state = 113;
+	            this.state = 117;
 	            this.condicionalElse();
 	        }
 
@@ -588,27 +609,27 @@ export default class MachaCParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 116;
-	        this.match(MachaCParser.IF);
-	        this.state = 117;
-	        this.match(MachaCParser.PARENTH_A);
-	        this.state = 118;
-	        this.expr(0);
-	        this.state = 119;
-	        this.match(MachaCParser.PARENTH_B);
 	        this.state = 120;
-	        this.match(MachaCParser.OPENKEY);
+	        this.match(MachaCParser.IF);
+	        this.state = 121;
+	        this.match(MachaCParser.PARENTH_A);
+	        this.state = 122;
+	        this.expr(0);
+	        this.state = 123;
+	        this.match(MachaCParser.PARENTH_B);
 	        this.state = 124;
+	        this.match(MachaCParser.OPENKEY);
+	        this.state = 128;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 68239362) !== 0)) {
-	            this.state = 121;
+	            this.state = 125;
 	            this.main();
-	            this.state = 126;
+	            this.state = 130;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 127;
+	        this.state = 131;
 	        this.match(MachaCParser.CLOSEKEY);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -631,9 +652,9 @@ export default class MachaCParser extends antlr4.Parser {
 	    this.enterRule(localctx, 22, MachaCParser.RULE_condicionalElseIf);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 129;
+	        this.state = 133;
 	        this.match(MachaCParser.ELSE);
-	        this.state = 130;
+	        this.state = 134;
 	        this.condicional();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -657,21 +678,21 @@ export default class MachaCParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 132;
+	        this.state = 136;
 	        this.match(MachaCParser.ELSE);
-	        this.state = 133;
-	        this.match(MachaCParser.OPENKEY);
 	        this.state = 137;
+	        this.match(MachaCParser.OPENKEY);
+	        this.state = 141;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 68239362) !== 0)) {
-	            this.state = 134;
+	            this.state = 138;
 	            this.main();
-	            this.state = 139;
+	            this.state = 143;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 140;
+	        this.state = 144;
 	        this.match(MachaCParser.CLOSEKEY);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -695,27 +716,27 @@ export default class MachaCParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 142;
-	        this.match(MachaCParser.WHILE);
-	        this.state = 143;
-	        this.match(MachaCParser.PARENTH_A);
-	        this.state = 144;
-	        this.expr(0);
-	        this.state = 145;
-	        this.match(MachaCParser.PARENTH_B);
 	        this.state = 146;
-	        this.match(MachaCParser.OPENKEY);
+	        this.match(MachaCParser.WHILE);
+	        this.state = 147;
+	        this.match(MachaCParser.PARENTH_A);
+	        this.state = 148;
+	        this.expr(0);
+	        this.state = 149;
+	        this.match(MachaCParser.PARENTH_B);
 	        this.state = 150;
+	        this.match(MachaCParser.OPENKEY);
+	        this.state = 154;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 68239362) !== 0)) {
-	            this.state = 147;
+	            this.state = 151;
 	            this.main();
-	            this.state = 152;
+	            this.state = 156;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 153;
+	        this.state = 157;
 	        this.match(MachaCParser.CLOSEKEY);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -936,12 +957,16 @@ class MainContext extends antlr4.ParserRuleContext {
 	    return this.getTypedRuleContext(CondicionalBucleContext,0);
 	};
 
+	while_() {
+	    return this.getTypedRuleContext(WhileContext,0);
+	};
+
 	impresion() {
 	    return this.getTypedRuleContext(ImpresionContext,0);
 	};
 
-	while_() {
-	    return this.getTypedRuleContext(WhileContext,0);
+	incremento() {
+	    return this.getTypedRuleContext(IncrementoContext,0);
 	};
 
 	accept(visitor) {
@@ -1215,6 +1240,10 @@ class IncrementoContext extends antlr4.ParserRuleContext {
 	    }
 	};
 
+
+	WS() {
+	    return this.getToken(MachaCParser.WS, 0);
+	};
 
 	accept(visitor) {
 	    if ( visitor instanceof MachaCVisitor ) {

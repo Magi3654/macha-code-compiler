@@ -12,6 +12,7 @@ main: declaracion
     | condicionalBucle
     | while
     | impresion
+    |incremento
     ;
 
 declaracion: PR GEULSSI (EQUALS expr)?                #validAssign
@@ -33,7 +34,7 @@ expr: PARENTH_A expr PARENTH_B                      #parentesis
     |expr expr                                      #implicitMult
     ;
 
-incremento: GEULSSI (DO DO|PPAEDA PPAEDA) ;
+incremento: GEULSSI GONG? (DO DO |PPAEDA PPAEDA);
 
 
 condicionalBucle: condicional condicionalElseIf* condicionalElse?;

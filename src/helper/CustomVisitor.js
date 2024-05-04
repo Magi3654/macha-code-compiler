@@ -35,6 +35,38 @@ export default class CustomVisitor extends CompiladorVisitor {
             this.updateConsole();
         }
     }
+
+    getVariableType(reservada_name) {
+		let reservada_type = undefined;
+
+		for (let key in this.reservadas) {
+			for (let reservada of this.reservadas[key]) {
+				if (reservada.id == reservada_name) {
+					reservada_type = key;
+					break;
+				}
+			}
+
+			if (reservada_type) {
+				break;
+			}
+		}
+
+		return reservada_type;
+	}
+
+
+	getVariableValue(reservada_name, reservada_type) {
+		for (let reservada of this.reservadas[reservada_type]) {
+			if (reservada.id == reservada_name) {
+				return reservada.value;
+			}
+		}
+
+		return undefined;
+	}
+
+
     // Visit a parse tree produced by CompiladorParser#file.
     visitFile(ctx) {
         console.log("VISITANDO FILE");
@@ -249,8 +281,11 @@ export default class CustomVisitor extends CompiladorVisitor {
     }
     // Visit a parse tree produced by CompiladorParser#incremento.
 	visitIncremento(ctx) {
+        console.log('VISITA EL INCREMENTO');
         const id = ctx.GEULSSI().getText();
+        console.log(id);
         const pr = this.getVariableType(id);
+        
         if (pr){
             let reservada = this.reservadas[pr].find((reservada) => reservada.id === id );
             if (ctx.DO().length > 0){

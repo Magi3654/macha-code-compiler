@@ -10,8 +10,9 @@ content: main*;
 main: declaracion SEMICOLON
     |asignacion SEMICOLON
     |condicionalBucle 
-    |impresion SEMICOLON
     |while
+    |impresion SEMICOLON
+    |incremento
     ;
 
 declaracion : PR ID (EQUALS expr)? ;
@@ -30,7 +31,8 @@ expr: PARENTH_A expr PARENTH_B
     | STRING                                     
     ;
 
-incremento: ID (SUM SUM| MIN MIN);
+incremento: ID WS? (SUM SUM | MIN MIN)
+            ;
 
 condicionalBucle: condicional condicionalElseIf* condicionalElse?;
 
