@@ -8,6 +8,11 @@ export default class CustomVisitor extends CompiladorVisitor {
         super();
         this.memory = new HashMap();
         this.console = [];
+        this.reservadas = {
+            geum: [],
+			hana: [],
+			sam: [],
+        };
         this.alertsgood = [];
         this.consola = document.getElementById('consola');
         this.lineaActual=1;
@@ -35,6 +40,20 @@ export default class CustomVisitor extends CompiladorVisitor {
             this.updateConsole();
         }
     }
+    variableExist(reservada_name) {
+		let isVariableDefined = false;
+		for (let key in this.reservadas) {
+			if (isVariableDefined) {
+				break;
+			} else {
+				isVariableDefined = !!this.reservadas[key].find(
+					(reservada) => this.reservadas.id === reservada_name
+				);
+			}
+		}
+
+		return isVariableDefined;
+	}
 
     getVariableType(reservada_name) {
 		let reservada_type = undefined;
@@ -53,6 +72,33 @@ export default class CustomVisitor extends CompiladorVisitor {
 		}
 
 		return reservada_type;
+	}
+    assertTypeWithValue(type, value) {
+		let exist = false;
+		switch (type) {
+			case "geum":
+				isValid = /(^[0-9]+$)|(^-[0-9]+$)/.test(value);
+				break;
+
+			case "hana":
+				isValid = /[0-9]+\.[0-9]+/.test(value);
+				break;
+
+			case "sam":
+				isValid = /^[a-zA-Z]$/.test(value);
+				break;
+
+			default:
+				const error = document.getElementById('error');
+				const contenedorError = document.getElementById('contenedorError');
+				const lineNumber = ctx.start.line; // Obtener el número de línea de inicio
+
+				error.innerHTML += `Syntax error on line ${lineNumber}: El tipo de dato "${type}" no existe. <br>`;
+				contenedorError.classList.remove('hidden');
+				break;
+		}
+
+		return exist;
 	}
 
 
