@@ -47,7 +47,7 @@ export default class CustomVisitor extends CompiladorVisitor {
 				break;
 			} else {
 				isVariableDefined = !!this.reservadas[key].find(
-					(reservada) => this.reservadas.id === reservada_name
+					(reservada) => this.reservada.id === reservada_name
 				);
 			}
 		}
@@ -73,6 +73,16 @@ export default class CustomVisitor extends CompiladorVisitor {
 
 		return reservada_type;
 	}
+    getVariableValue(reservada_name, reservada_type) {
+        for (let reservada of this.reservadas[reservada_type]) {
+            if (reservada.id == reservada_name) {
+                return reservada.value;
+            }
+        }
+
+        return undefined;
+    }
+
     assertTypeWithValue(type, value) {
 		let exist = false;
 		switch (type) {
@@ -102,21 +112,14 @@ export default class CustomVisitor extends CompiladorVisitor {
 	}
 
 
-	getVariableValue(reservada_name, reservada_type) {
-		for (let reservada of this.reservadas[reservada_type]) {
-			if (reservada.id == reservada_name) {
-				return reservada.value;
-			}
-		}
-
-		return undefined;
-	}
 
 
     // Visit a parse tree produced by CompiladorParser#file.
     visitFile(ctx) {
         console.log("VISITANDO FILE");
-        return this.visitChildren(ctx);
+        this.visitChildren(ctx);
+        
+        return [this.reservadas,this.alertsgood];
     }
     // Visit a parse tree produced by CompiladorParser#start.
     visitStart(ctx) {
@@ -133,6 +136,7 @@ export default class CustomVisitor extends CompiladorVisitor {
 	visitMain(ctx) {
         console.log("VISITANDO MAIN");
         console.log(ctx.getText());
+       
         return this.visitChildren(ctx);
     }
   
@@ -238,11 +242,6 @@ export default class CustomVisitor extends CompiladorVisitor {
       
             this.memory.set(idToken, value);
             console.log(this.memory);
-            //this.alertsgood.push(`Variable "${idToken}" asignada con valor ${value}`);
-        
-        // Ejemplo de agregar mensaje de éxito de forma única
-       // const successMessage = `Variable "${idToken}" asignada con valor ${value}`;
-        //this.addUniqueMessage(successMessage);
 
         this.updateConsole();
         return null;

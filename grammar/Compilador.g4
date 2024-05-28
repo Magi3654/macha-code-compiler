@@ -12,7 +12,7 @@ main: declaracion
     | condicionalBucle
     | while
     | impresion
-    |incremento
+    | incremento
     ;
 
 declaracion: PR GEULSSI (EQUALS expr)?                #validAssign
@@ -46,6 +46,9 @@ condicionalElseIf: ELSE condicional;
 condicionalElse: ELSE OPENKEY main* CLOSEKEY; 
 
 while: WHILE PARENTH_A expr PARENTH_B OPENKEY main* CLOSEKEY;
+
+for: FOR PARENTH_A declaracion  expr incremento PARENTH_B OPENKEY main CLOSEKEY;
+
 
 
 
