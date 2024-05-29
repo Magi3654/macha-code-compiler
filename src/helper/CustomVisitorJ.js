@@ -1,6 +1,7 @@
-import MachaJazParser from '../translate/grammar/translate/MachaCParser.js';
-import MachaJazVisitor from '../translate/grammar/translate/MachaCVisitor.js';
-import antlr4 from 'antlr4';
+import MachaJazParser from '@/jasmin/grammar/MachaJazParser.js';
+//import MachaJazVisitor from '../translate/grammar/translate/MachaCVisitor.js';
+import CompiladorVisitor from '@/grammar/CompiladorVisitor.js';
+
 
 export default class CustomVisitor extends CompiladorVisitor {
 
@@ -49,59 +50,51 @@ export default class CustomVisitor extends CompiladorVisitor {
         return  this.reservadas[GEULSSI].value;
     }
 
-    /*
+    ue
     declaracion(GEULSSI, VALUE){
         let defined = this.variableExist(GEULSSI);
         if(!defined){
             if(VALUE != undefined){
-                this.reservadas[GEULSSI] = {INDEX}
+                this.reservadas[GEULSSI] = {index: this.locals, value: VALUE};
+                this.jaz +=`\ninstore_${this.locals}\n`;
+            }else{
+                this.reservadas[GEULSSI]={
+                    index:this.locals,
+                    value: undefined,
+                };
             }
+            this.locals++;
+        }else{
+            this.addUniqueError(`Error: Repeticion de ${GEULSSI} declaracion `)
+            this.updateConsole();
         }
+        return GEULSSI;
     }
-    */ 
 
-    assertTypeWithValue(type, value) {
-		let exist = false;
-		switch (type) {
-			case "geum":
-				isValid = /(^[0-9]+$)|(^-[0-9]+$)/.test(value);
-				break;
-
-			case "hana":
-				isValid = /[0-9]+\.[0-9]+/.test(value);
-				break;
-
-			case "sam":
-				isValid = /^[a-zA-Z]$/.test(value);
-				break;
-
-			default:
-				const error = document.getElementById('error');
-				const contenedorError = document.getElementById('contenedorError');
-				const lineNumber = ctx.start.line; // Obtener el número de línea de inicio
-
-				error.innerHTML += `Syntax error on line ${lineNumber}: El tipo de dato "${type}" no existe. <br>`;
-				contenedorError.classList.remove('hidden');
-				break;
-		}
-
-		return exist;
+    generateLabel(label) {
+		return label + this.labelCounter++;
 	}
-
-
-
+    
 
     // Visit a parse tree produced by CompiladorParser#file.
     visitFile(ctx) {
         console.log("VISITANDO FILE");
         this.visitChildren(ctx);
         
-        return [this.reservadas,this.alertsgood];
+        return this.jaz;
     }
     // Visit a parse tree produced by CompiladorParser#start.
     visitStart(ctx) {
         console.log("VISITANDO START");
-        return this.visitChildren(ctx);
+        this.jaz +="\nreturn";
+        this.jaz +="\n.end method";
+        let titulo = `.class public CodigoJasmin
+        .super java/lang/Object
+        .method public static main([java/lang/String;)V
+        .limit stck ${this.stack}
+        ${this.locals?`.limit locals ${this.locals}\n`:""}`;
+
+        this.jaz = titulo + this.jaz;
     }
     // Visit a parse tree produced by CompiladorParser#content.
     visitContent(ctx) {
@@ -113,6 +106,9 @@ export default class CustomVisitor extends CompiladorVisitor {
 	visitMain(ctx) {
         console.log("VISITANDO MAIN");
         console.log(ctx.getText());
+        if (ctx.for()) return this.visitChildren(ctx);
+        if(ctx.while()) return this.visitChildren(ctx);
+        if(ctx.condicionalBucle())return this.visitChildren(ctx);
        
         return this.visitChildren(ctx);
     }
@@ -231,6 +227,26 @@ export default class CustomVisitor extends CompiladorVisitor {
         this.console.push(`${innerValue}`);
         this.updateConsole();
         return undefined;
+
+        /*{
+		console.log("log");
+		const valorTitulo = ctx.expr().getText();
+		const valor = this.visit(ctx.expr());
+		if (valor == "swap" || !isNaN(valor)) {
+			this.jaz +=
+				"\ninvokestatic java/lang/Integer/toString(I)Ljava/lang/String;";
+			this.jaz +=
+				"\ngetstatic java/lang/System/out Ljava/io/PrintStream;";
+			this.jaz += `\nswap`;
+		} else {
+			this.stack++;
+			this.jaz +=
+				"\ngetstatic java/lang/System/out Ljava/io/PrintStream;";
+			this.jaz += `\nldc ${valor}`;
+		}
+		this.jaz +=
+			"\ninvokevirtual java/io/PrintStream/println(Ljava/lang/String;)V\n";
+	}*/
     }
         
     visitParentesis(ctx) {
@@ -260,12 +276,16 @@ export default class CustomVisitor extends CompiladorVisitor {
 
     visitSumres(ctx) {
         console.log("VISITANDO ENTRANDO EN LA SUMA");
-        const left = this.visit(ctx.expr(0));
-		console.log(left);
-		const right = this.visit(ctx.expr(1));
-		console.log(right);
-		if (ctx.operation.type === CompiladorParser.DO) return left + right;
-		return left - right;
+        const operation_data = this.visitChildren(ctx);
+		let simbolo = ctx.operation.type;
+		this.stack += 2;
+		if (simbolo== MachaJazParser.PLUS) {
+			this.jaz += `\niadd\n`;
+			return "swap";
+		} else {
+			this.jaz += `\nisub\n`;
+			return "swap";
+		}
     }
 
     visitGeulssi(ctx) {
@@ -283,61 +303,112 @@ export default class CustomVisitor extends CompiladorVisitor {
     visitMuldiv(ctx) {
         console.log("VISITANDO MULTIPLICACION");
         //console.log(operation);
-        const left = this.visit(ctx.expr(0));
-		console.log(left);
-		const right = this.visit(ctx.expr(1));
-		console.log(right);
-        if (ctx.operation.type === CompiladorParser.GOPSSEM)  {
-            if (right === 0) {
-                this.console.push("오모! División por cero.");
-                this.updateConsole();
-                return null;
-            }
-            return left * right ;
-        }
-        if(ctx.operation.type === CompiladorParser.PORCENT){
-            return left % right;
-        }
-            
-		return Math.floor(left / right);
+        const operation_data = this.visitChildren(ctx);
+		let simbolo = ctx.operation.type;
+		this.stack += 2;
+		if (simbolo == MachaJazParser.GOPSSEM) {
+			this.jaz += `\nimul\n`;
+			return "swap";
+		}
+
+		if (simbolo == MachaJazParser.NANU) {
+			this.jaz += `\nidiv\n`;
+			return "swap";
+		}
+
+		if (simbolo == MachaJazParser.PORCENT) {
+			this.jaz += `\nirem\n`;
+			return "swap";
+		}
     }
     // Visit a parse tree produced by CompiladorParser#incremento.
 	visitIncremento(ctx) {
         console.log('VISITA EL INCREMENTO');
         const id = ctx.GEULSSI().getText();
         console.log(id);
-        const pr = this.getVariableType(id);
-        
-        if (pr){
-            let reservada = this.reservadas[pr].find((reservada) => reservada.id === id );
-            if (ctx.DO().length > 0){
-                reservada.value = reservada.value + 1;
-            }else{
-                reservada.value = reservada.value - 1 ;
-            }
+        console.log(ctx.DO().length > 0);
+		if (this.getVariableIndex(id) > -1) {
+			let variable = this.reservadas[id];
+			if (ctx.DO().length > 0) {
+				this.jaz += `\niinc ${variable.index} 1`;
+				variable.value = variable.value + 1;
+			} else {
+				this.jaz += `\niinc ${variable.index} -1`;
+				variable.value = variable.value - 1;
+			}
         }
         return this.visitChildren(ctx);
       }
 
 	// Visit a parse tree produced by CompiladorParser#condicionalBucle.
-	visitCondicionalBucle(ctx) {
-        console.log('condicional de bucle~!!!!!!');
-        let siExiste= this.visit(ctx.condicional())
-        //console.log(siExiste);
-        if (!siExiste){
-            const elseIf= ctx.condicionalElseIf();
-            let siExiste=false;
-            for(let i=0; i<elseIf.length; i++){
-                siExiste=this.visit(elseIf[i]);
-                if (siExiste)break;
-            }
-            //console.log(ctx.condicionalElse());
-            if(!siExiste&&ctx.condicionalElse()){
-				this.visit(ctx.condicionalElse())
-			} 
-         }
-      return null;
-    }
+	visitCondicionalBucle(ctx) {{
+		console.log("Chained conditional");
+		const endIfLabel = this.generateLabel("endIfLabel");
+		// How many elements of condiciones array will be skipped
+		let skipThreshold = 1;
+
+		// condiciones array contains the metadata of every condition
+		const condiciones = [];
+
+		// add if metadata at the start of the condiciones array
+		const [ifCondition, ifContent] = this.visit(ctx.condicional());
+		condiciones.push({
+			instruction: ifCondition,
+			content: ifContent,
+		});
+
+		// add elif metadata if exists
+		if (ctx.conditionalElseIf()) {
+			for (let elif of this.visit(ctx.conditionalElseIf())) {
+				condiciones.push({
+					instruction: elif[0],
+					content: elif[1],
+					label: this.generateLabel("elifLabel"),
+				});
+			}
+		}
+
+		// add else metadata if exists
+		let elseData = null;
+		if (ctx.conditionalELse()) {
+			skipThreshold++;
+			let elseLabel = this.generateLabel("elseLabel");
+			const elseContent = this.visit(ctx.conditionalElse());
+			condiciones.push({
+				label: elseLabel,
+			});
+
+			elseData = {
+				label: elseLabel,
+				content: elseContent,
+			};
+		}
+
+		// Set the end of the If as the last element of the condition array
+		condiciones.push({
+			label: endIfLabel,
+		});
+
+		// Generate translated code
+		for (let i = 0; i < condiciones.length - skipThreshold; i++) {
+			const condition = condiciones[i];
+			if (condition.label) {
+				this.jazminCode += `\n${condition.label}:`;
+			}
+			const instruction = this.visit(condicion.instruction);
+			this.jaz += `\n${instruction} ${condiciones[i + 1].label}`;
+			this.visit(condicion.content);
+			this.jaz += `\ngoto ${endIfLabel}\n`;
+		}
+
+		if (elseData) {
+			this.jaz += `\n${elseData.label}:`;
+			this.visit(elseData.content);
+		}
+
+		this.jaz += `\n${endIfLabel}:`;
+	}
+}
     
   
     // Visit a parse tree produced by CompiladorParser#condicionalElseIf.
@@ -350,19 +421,13 @@ export default class CustomVisitor extends CompiladorVisitor {
     // Visit a parse tree produced by CompiladorParser#condicionalElse.
     visitCondicionalElse(ctx) {
         console.log('else!!!!!');
-        this.visit(ctx.main());
-        return null;
+        return this.visit(ctx.main());
       }
      // Visit a parse tree produced by CompiladorParser#condicional.
 	visitCondicional(ctx) {
         console.log('condicional!!!!!');
-        if(!ctx.expr()) return false
         
-        let res_condicion = this.visit(ctx.expr());
-        if (res_condicion){
-            this.visit(ctx.main());
-        }
-        return res_condicion;
+        return [ctx.expr(), ctx.main()]
       }
       // Visit a parse tree produced by CompiladorParser#condicion.
     visitCondicion(ctx) {
@@ -407,30 +472,41 @@ export default class CustomVisitor extends CompiladorVisitor {
 	// Visit a parse tree produced by CompiladorParser#while.
 	visitWhile(ctx) {
         console.log('WHILE!!!!');
+		const whileStart = this.generateLabel("whileStartLabel");
+		const whileEnd = this.generateLabel("whileEndLabel");
+		this.jaz += `\n${whileStart}:`;
+		const instruction = this.visit(ctx.value());
+		this.jaz += `\n${instruction} ${whileEnd}`;
+		this.visit(ctx.main());
+		this.jaz += `\ngoto ${whileStart}`;
+		this.jaz += `\n${whileEnd}:`;
+      }
+  
+  
+	// Visit a parse tree produced by MachaJazParser#for.
+	visitFor(ctx) {
+        console.log('FOOOOOR');
+        if(!ctx.declaracion()) return false;
         if(!ctx.expr()) return false;
+        if(!ctx.incremento()) return false;
+
+        this.visit(ctx.declaracion());
         let condicion = this.visit(ctx.expr());
         let desempeno = performance.now();
         while(condicion){
             this.visit(ctx.main());
+            this.visit(ctx.incremento());
             condicion = this.visit(ctx.expr());
-            if (performance.now()- desempeno > this.maxLoopTime){
+
+            if(performance.now() - desempeno > this.maxLoopTime){
                 break;
             }
         }
         return condicion;
       }
   
-  
     
-     /*
-     visitDdaeng(ctx) {
-		console.log("VISITANDO ERRROR");
-        this.console.push( ` 땡 ! Error de sintaxis en línea ${ctx.start.line}`);
-        this.updateConsole();
-        return this.visitChildren(ctx);
-    }
-    
-  */
+
   
     // Método para actualizar la consola con mensajes únicos
     updateConsole() {

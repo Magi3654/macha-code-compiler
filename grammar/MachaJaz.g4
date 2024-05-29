@@ -1,7 +1,6 @@
 grammar MachaJaz;
 import CommonRules;
-grammar Compilador;
-import CommonRules;
+
 
 file: start+;
 

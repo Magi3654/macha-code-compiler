@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { analizar } from "@/module/generador";
 import { translate } from "@/module/generatorT";
+import { jasmin } from "@/module/generatorJ";
 import CodeMirror from "@uiw/react-codemirror";
 import { quietlight } from "@uiw/codemirror-theme-quietlight";
 

@@ -90,5 +90,11 @@ export default class MachaCVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by MachaCParser#for.
+	visitFor(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 
 }

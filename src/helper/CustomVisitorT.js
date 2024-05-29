@@ -82,7 +82,7 @@ export default class CustomVisitorT extends MachaCVisitor{
 		let id = ctx.ID().getText();
 		let expr = this.visit(ctx.expr());
 		console.log(expr);
-		this.code +=`\n${id}=${expr}`
+		this.code +=`\n${id}=${ctx.ig.text} ${expr}`
 	  return ;
 	}
 	// Visit a parse tree produced by MachaCParser#incremento.
@@ -155,11 +155,16 @@ export default class CustomVisitorT extends MachaCVisitor{
 		this.code += `\ngeuttae(${condicion}){`;
 		this.visit(ctx.main());
 		this.code +=`\n}`;
-			return 
+		return 
 	}
 
 	visitExpr(ctx) {
 		return ctx.getText();
+	  }
+  
+	// Visit a parse tree produced by MachaCParser#for.
+	visitFor(ctx) {
+		return this.visitChildren(ctx);
 	  }
   
 
