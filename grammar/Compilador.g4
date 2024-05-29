@@ -19,7 +19,9 @@ declaracion: PR GEULSSI (EQUALS expr)?                #validAssign
            | PR ID = (CHINCHA | SUJJA) (EQUALS expr)? #invalidAssign
            ;
            
-asignacion: GEULSSI EQUALS expr;
+asignacion: GEULSSI EQUALS expr
+            | GEULSSI SUMARIZER expr
+            ;
 
 impresion: PRINT PARENTH_A expr PARENTH_B;
 
@@ -52,4 +54,3 @@ for: FOR PARENTH_A declaracion  expr incremento PARENTH_B OPENKEY main CLOSEKEY;
 
 
 
-//ddaeng: .+?; 

@@ -18,6 +18,7 @@ DO              :       '+' ;
 PPAEDA          :       '-' ;
 EQUALS          :       '=' ;
 PORCENT         :       '%' ;
+SUMARIZER      :  ('+='|'-='|'*='|'/='|'%=');
 COMA            :        ',';
 PRINT           :   'inswae';
 IF              :    'myeon';

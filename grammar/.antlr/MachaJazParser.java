@@ -17,9 +17,9 @@ public class MachaJazParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		CHICHAK=1, PR=2, PARENTH_A=3, PARENTH_B=4, OPENKEY=5, CLOSEKEY=6, GOPSSEM=7, 
-		NANU=8, DO=9, PPAEDA=10, EQUALS=11, PORCENT=12, COMA=13, PRINT=14, IF=15, 
-		ELSE=16, FOR=17, WHILE=18, LOGIC=19, MATH=20, BOOLEAN=21, STRING=22, CHAR=23, 
-		SUJJA=24, GEULSSI=25, CHINCHA=26, GONG=27;
+		NANU=8, DO=9, PPAEDA=10, EQUALS=11, PORCENT=12, SUMARIZER=13, COMA=14, 
+		PRINT=15, IF=16, ELSE=17, FOR=18, WHILE=19, LOGIC=20, MATH=21, BOOLEAN=22, 
+		STRING=23, CHAR=24, SUJJA=25, GEULSSI=26, CHINCHA=27, GONG=28;
 	public static final int
 		RULE_file = 0, RULE_start = 1, RULE_content = 2, RULE_main = 3, RULE_declaracion = 4, 
 		RULE_asignacion = 5, RULE_impresion = 6, RULE_expr = 7, RULE_incremento = 8, 
@@ -37,17 +37,17 @@ public class MachaJazParser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, "'chichak'", null, "'('", "')'", "'{'", "'}'", "'*'", "'/'", "'+'", 
-			"'-'", "'='", "'%'", "','", "'inswae'", "'myeon'", "'namochi'", "'wihan'", 
-			"'geuttae'"
+			"'-'", "'='", "'%'", null, "','", "'inswae'", "'myeon'", "'namochi'", 
+			"'wihan'", "'geuttae'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, "CHICHAK", "PR", "PARENTH_A", "PARENTH_B", "OPENKEY", "CLOSEKEY", 
-			"GOPSSEM", "NANU", "DO", "PPAEDA", "EQUALS", "PORCENT", "COMA", "PRINT", 
-			"IF", "ELSE", "FOR", "WHILE", "LOGIC", "MATH", "BOOLEAN", "STRING", "CHAR", 
-			"SUJJA", "GEULSSI", "CHINCHA", "GONG"
+			"GOPSSEM", "NANU", "DO", "PPAEDA", "EQUALS", "PORCENT", "SUMARIZER", 
+			"COMA", "PRINT", "IF", "ELSE", "FOR", "WHILE", "LOGIC", "MATH", "BOOLEAN", 
+			"STRING", "CHAR", "SUJJA", "GEULSSI", "CHINCHA", "GONG"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -214,7 +214,7 @@ public class MachaJazParser extends Parser {
 			setState(43);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 33865732L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 67731460L) != 0)) {
 				{
 				{
 				setState(40);
@@ -645,7 +645,7 @@ public class MachaJazParser extends Parser {
 				setState(82);
 				((CondicionContext)_localctx).simbolo = _input.LT(1);
 				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 3670016L) != 0)) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 7340032L) != 0)) ) {
 					((CondicionContext)_localctx).simbolo = (Token)_errHandler.recoverInline(this);
 				}
 				else {
@@ -748,7 +748,7 @@ public class MachaJazParser extends Parser {
 						setState(95);
 						((CondicionContext)_localctx).simbolo = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 3670016L) != 0)) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 7340032L) != 0)) ) {
 							((CondicionContext)_localctx).simbolo = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -973,7 +973,7 @@ public class MachaJazParser extends Parser {
 			setState(132);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 33865732L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 67731460L) != 0)) {
 				{
 				{
 				setState(129);
@@ -1065,7 +1065,7 @@ public class MachaJazParser extends Parser {
 			setState(145);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 33865732L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 67731460L) != 0)) {
 				{
 				{
 				setState(142);
@@ -1133,7 +1133,7 @@ public class MachaJazParser extends Parser {
 			setState(158);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 33865732L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 67731460L) != 0)) {
 				{
 				{
 				setState(155);
@@ -1243,7 +1243,7 @@ public class MachaJazParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u001b\u00ae\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0004\u0001\u001c\u00ae\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
 		"\u0002\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004"+
 		"\u0002\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007"+
 		"\u0002\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b"+
@@ -1269,8 +1269,8 @@ public class MachaJazParser extends Parser {
 		"\u000e\u0001\u000e\u0001\u000e\u0001\u000e\u0001\u000e\u0001\u000e\u0001"+
 		"\u000e\u0001\u000e\u0001\u000e\u0001\u000e\u0001\u000e\u0000\u0001\u000e"+
 		"\u000f\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018"+
-		"\u001a\u001c\u0000\u0004\u0002\u0000\u0018\u0018\u001a\u001a\u0001\u0000"+
-		"\u0013\u0015\u0002\u0000\u0007\b\f\f\u0001\u0000\t\n\u00b7\u0000\u001f"+
+		"\u001a\u001c\u0000\u0004\u0002\u0000\u0019\u0019\u001b\u001b\u0001\u0000"+
+		"\u0014\u0016\u0002\u0000\u0007\b\f\f\u0001\u0000\t\n\u00b7\u0000\u001f"+
 		"\u0001\u0000\u0000\u0000\u0002#\u0001\u0000\u0000\u0000\u0004+\u0001\u0000"+
 		"\u0000\u0000\u00064\u0001\u0000\u0000\u0000\bB\u0001\u0000\u0000\u0000"+
 		"\nD\u0001\u0000\u0000\u0000\fH\u0001\u0000\u0000\u0000\u000eV\u0001\u0000"+
@@ -1289,19 +1289,19 @@ public class MachaJazParser extends Parser {
 		"\u000035\u0003\u0010\b\u00004.\u0001\u0000\u0000\u00004/\u0001\u0000\u0000"+
 		"\u000040\u0001\u0000\u0000\u000041\u0001\u0000\u0000\u000042\u0001\u0000"+
 		"\u0000\u000043\u0001\u0000\u0000\u00005\u0007\u0001\u0000\u0000\u0000"+
-		"67\u0005\u0002\u0000\u00007:\u0005\u0019\u0000\u000089\u0005\u000b\u0000"+
+		"67\u0005\u0002\u0000\u00007:\u0005\u001a\u0000\u000089\u0005\u000b\u0000"+
 		"\u00009;\u0003\u000e\u0007\u0000:8\u0001\u0000\u0000\u0000:;\u0001\u0000"+
 		"\u0000\u0000;C\u0001\u0000\u0000\u0000<=\u0005\u0002\u0000\u0000=@\u0007"+
 		"\u0000\u0000\u0000>?\u0005\u000b\u0000\u0000?A\u0003\u000e\u0007\u0000"+
 		"@>\u0001\u0000\u0000\u0000@A\u0001\u0000\u0000\u0000AC\u0001\u0000\u0000"+
 		"\u0000B6\u0001\u0000\u0000\u0000B<\u0001\u0000\u0000\u0000C\t\u0001\u0000"+
-		"\u0000\u0000DE\u0005\u0019\u0000\u0000EF\u0005\u000b\u0000\u0000FG\u0003"+
-		"\u000e\u0007\u0000G\u000b\u0001\u0000\u0000\u0000HI\u0005\u000e\u0000"+
+		"\u0000\u0000DE\u0005\u001a\u0000\u0000EF\u0005\u000b\u0000\u0000FG\u0003"+
+		"\u000e\u0007\u0000G\u000b\u0001\u0000\u0000\u0000HI\u0005\u000f\u0000"+
 		"\u0000IJ\u0005\u0003\u0000\u0000JK\u0003\u000e\u0007\u0000KL\u0005\u0004"+
 		"\u0000\u0000L\r\u0001\u0000\u0000\u0000MN\u0006\u0007\uffff\uffff\u0000"+
 		"NO\u0005\u0003\u0000\u0000OP\u0003\u000e\u0007\u0000PQ\u0005\u0004\u0000"+
-		"\u0000QW\u0001\u0000\u0000\u0000RW\u0007\u0001\u0000\u0000SW\u0005\u0019"+
-		"\u0000\u0000TW\u0005\u0018\u0000\u0000UW\u0005\u0016\u0000\u0000VM\u0001"+
+		"\u0000QW\u0001\u0000\u0000\u0000RW\u0007\u0001\u0000\u0000SW\u0005\u001a"+
+		"\u0000\u0000TW\u0005\u0019\u0000\u0000UW\u0005\u0017\u0000\u0000VM\u0001"+
 		"\u0000\u0000\u0000VR\u0001\u0000\u0000\u0000VS\u0001\u0000\u0000\u0000"+
 		"VT\u0001\u0000\u0000\u0000VU\u0001\u0000\u0000\u0000We\u0001\u0000\u0000"+
 		"\u0000XY\n\b\u0000\u0000YZ\u0007\u0002\u0000\u0000Zd\u0003\u000e\u0007"+
@@ -1311,7 +1311,7 @@ public class MachaJazParser extends Parser {
 		"\u0000c[\u0001\u0000\u0000\u0000c^\u0001\u0000\u0000\u0000ca\u0001\u0000"+
 		"\u0000\u0000dg\u0001\u0000\u0000\u0000ec\u0001\u0000\u0000\u0000ef\u0001"+
 		"\u0000\u0000\u0000f\u000f\u0001\u0000\u0000\u0000ge\u0001\u0000\u0000"+
-		"\u0000hj\u0005\u0019\u0000\u0000ik\u0005\u001b\u0000\u0000ji\u0001\u0000"+
+		"\u0000hj\u0005\u001a\u0000\u0000ik\u0005\u001c\u0000\u0000ji\u0001\u0000"+
 		"\u0000\u0000jk\u0001\u0000\u0000\u0000kp\u0001\u0000\u0000\u0000lm\u0005"+
 		"\t\u0000\u0000mq\u0005\t\u0000\u0000no\u0005\n\u0000\u0000oq\u0005\n\u0000"+
 		"\u0000pl\u0001\u0000\u0000\u0000pn\u0001\u0000\u0000\u0000q\u0011\u0001"+
@@ -1319,28 +1319,28 @@ public class MachaJazParser extends Parser {
 		"\u0000\u0000\u0000ux\u0001\u0000\u0000\u0000vt\u0001\u0000\u0000\u0000"+
 		"vw\u0001\u0000\u0000\u0000wz\u0001\u0000\u0000\u0000xv\u0001\u0000\u0000"+
 		"\u0000y{\u0003\u0018\f\u0000zy\u0001\u0000\u0000\u0000z{\u0001\u0000\u0000"+
-		"\u0000{\u0013\u0001\u0000\u0000\u0000|}\u0005\u000f\u0000\u0000}~\u0005"+
+		"\u0000{\u0013\u0001\u0000\u0000\u0000|}\u0005\u0010\u0000\u0000}~\u0005"+
 		"\u0003\u0000\u0000~\u007f\u0003\u000e\u0007\u0000\u007f\u0080\u0005\u0004"+
 		"\u0000\u0000\u0080\u0084\u0005\u0005\u0000\u0000\u0081\u0083\u0003\u0006"+
 		"\u0003\u0000\u0082\u0081\u0001\u0000\u0000\u0000\u0083\u0086\u0001\u0000"+
 		"\u0000\u0000\u0084\u0082\u0001\u0000\u0000\u0000\u0084\u0085\u0001\u0000"+
 		"\u0000\u0000\u0085\u0087\u0001\u0000\u0000\u0000\u0086\u0084\u0001\u0000"+
 		"\u0000\u0000\u0087\u0088\u0005\u0006\u0000\u0000\u0088\u0015\u0001\u0000"+
-		"\u0000\u0000\u0089\u008a\u0005\u0010\u0000\u0000\u008a\u008b\u0003\u0014"+
-		"\n\u0000\u008b\u0017\u0001\u0000\u0000\u0000\u008c\u008d\u0005\u0010\u0000"+
+		"\u0000\u0000\u0089\u008a\u0005\u0011\u0000\u0000\u008a\u008b\u0003\u0014"+
+		"\n\u0000\u008b\u0017\u0001\u0000\u0000\u0000\u008c\u008d\u0005\u0011\u0000"+
 		"\u0000\u008d\u0091\u0005\u0005\u0000\u0000\u008e\u0090\u0003\u0006\u0003"+
 		"\u0000\u008f\u008e\u0001\u0000\u0000\u0000\u0090\u0093\u0001\u0000\u0000"+
 		"\u0000\u0091\u008f\u0001\u0000\u0000\u0000\u0091\u0092\u0001\u0000\u0000"+
 		"\u0000\u0092\u0094\u0001\u0000\u0000\u0000\u0093\u0091\u0001\u0000\u0000"+
 		"\u0000\u0094\u0095\u0005\u0006\u0000\u0000\u0095\u0019\u0001\u0000\u0000"+
-		"\u0000\u0096\u0097\u0005\u0012\u0000\u0000\u0097\u0098\u0005\u0003\u0000"+
+		"\u0000\u0096\u0097\u0005\u0013\u0000\u0000\u0097\u0098\u0005\u0003\u0000"+
 		"\u0000\u0098\u0099\u0003\u000e\u0007\u0000\u0099\u009a\u0005\u0004\u0000"+
 		"\u0000\u009a\u009e\u0005\u0005\u0000\u0000\u009b\u009d\u0003\u0006\u0003"+
 		"\u0000\u009c\u009b\u0001\u0000\u0000\u0000\u009d\u00a0\u0001\u0000\u0000"+
 		"\u0000\u009e\u009c\u0001\u0000\u0000\u0000\u009e\u009f\u0001\u0000\u0000"+
 		"\u0000\u009f\u00a1\u0001\u0000\u0000\u0000\u00a0\u009e\u0001\u0000\u0000"+
 		"\u0000\u00a1\u00a2\u0005\u0006\u0000\u0000\u00a2\u001b\u0001\u0000\u0000"+
-		"\u0000\u00a3\u00a4\u0005\u0011\u0000\u0000\u00a4\u00a5\u0005\u0003\u0000"+
+		"\u0000\u00a3\u00a4\u0005\u0012\u0000\u0000\u00a4\u00a5\u0005\u0003\u0000"+
 		"\u0000\u00a5\u00a6\u0003\b\u0004\u0000\u00a6\u00a7\u0003\u000e\u0007\u0000"+
 		"\u00a7\u00a8\u0003\u0010\b\u0000\u00a8\u00a9\u0005\u0004\u0000\u0000\u00a9"+
 		"\u00aa\u0005\u0005\u0000\u0000\u00aa\u00ab\u0003\u0006\u0003\u0000\u00ab"+
