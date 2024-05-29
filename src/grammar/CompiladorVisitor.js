@@ -138,5 +138,11 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by CompiladorParser#for.
+	visitFor(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 
 }

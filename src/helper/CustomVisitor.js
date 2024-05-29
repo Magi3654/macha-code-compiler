@@ -258,7 +258,8 @@ export default class CustomVisitor extends CompiladorVisitor {
         
     visitParentesis(ctx) {
         console.log("VISITANDO PARENTESIS");
-        return this.visit(ctx.expr());
+        let visit = this.visitChildren(ctx);
+        return visit[1];
     }
     // Visit a parse tree produced by CompiladorParser#implicitMult.
 	visitImplicitMult(ctx) {
@@ -442,18 +443,32 @@ export default class CustomVisitor extends CompiladorVisitor {
         }
         return condicion;
       }
+
+      // Visit a parse tree produced by CompiladorParser#for.
+	visitFor(ctx) {
+        console.log('FOOOOOR');
+        if(!ctx.declaracion()) return false;
+        if(!ctx.expr()) return false;
+        if(!ctx.incremento()) return false;
+
+        this.visit(ctx.declaracion());
+        let condicion = this.visit(ctx.expr());
+        let desempeno = performance.now();
+        while(condicion){
+            this.visit(ctx.main());
+            this.visit(ctx.incremento());
+            condicion = this.visit(ctx.expr());
+
+            if(performance.now() - desempeno > this.maxLoopTime){
+                break;
+            }
+        }
+        return condicion
+      }
   
   
     
-     /*
-     visitDdaeng(ctx) {
-		console.log("VISITANDO ERRROR");
-        this.console.push( ` 땡 ! Error de sintaxis en línea ${ctx.start.line}`);
-        this.updateConsole();
-        return this.visitChildren(ctx);
-    }
-    
-  */
+
   
     // Método para actualizar la consola con mensajes únicos
     updateConsole() {
