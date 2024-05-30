@@ -471,7 +471,8 @@ export default class CustomVisitor extends CompiladorVisitor {
 
   
     // Método para actualizar la consola con mensajes únicos
-    updateConsole() {
+    updateConsole(){
+        console.log("Printing");
         const consola = document.getElementById('consola');
         if (consola) {
             let uniqueMessages = Array.from(new Set(this.console)); // Eliminar mensajes duplicados

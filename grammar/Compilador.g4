@@ -11,6 +11,7 @@ main: declaracion
     | asignacion
     | condicionalBucle
     | while
+    | for
     | impresion
     | incremento
     ;

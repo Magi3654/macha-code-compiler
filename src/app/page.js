@@ -47,6 +47,20 @@ const Page = () => {
     const cleanInput = validLines.join("\n"); // Unir las líneas limpias nuevamente
     const calculadedResult = analizar(cleanInput);
     };
+
+
+  const jasmino = () => {
+    const inputWithOutComments = result.replace(
+      /(\/\/[^\n]*)|\/\*[\s\S]*?\*\//g,
+      ""
+    );
+    console.log(result);
+    const inputLines = inputWithOutComments.split("\n"); // Dividir el input en líneas
+    const validLines = inputLines.filter((line) => line.trim().length > 0); // Filtrar líneas vacías con trim(eliminar espacios en blanco)
+    const cleanInput = validLines.join("\n"); // Unir las líneas limpias nuevamente
+    const calculadedResult = jasmin(cleanInput);
+    setResult(calculadedResult)
+  }  
   const clearArea = () => {
     setExpressions("");
     setResult("");
@@ -97,7 +111,7 @@ const Page = () => {
                     className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
                     onClick={traductor}//Cambar para que traduzca
                   >
-                    Traducir
+                    C a Macha
                   </button>
                   <button
                     className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
@@ -114,7 +128,7 @@ const Page = () => {
                 Traducción
               </h2>
               <p className="text-lg text-center text-lime-700 mb-4">
-                Tu nuevo código es:
+                Codigo traducido:
               </p>
               <div className="">
                 <div class="codemirror">
@@ -144,7 +158,13 @@ const Page = () => {
                     className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
                     onClick={analizador}
                   >
-                    Compilar
+                    Macha Code Ejecucion
+                  </button>
+                  <button
+                    className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
+                    onClick={jasmino}
+                  >
+                    Jasmin
                   </button>
                 </div>
               </div>

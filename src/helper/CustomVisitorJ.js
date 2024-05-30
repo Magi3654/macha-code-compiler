@@ -7,7 +7,7 @@ export default class CustomVisitor extends CompiladorVisitor {
 
     constructor(){
         super();
-        this.memory = new HashMap();
+        //this.memory = new HashMap();
         this.stack = 1;
         this.locals = 0;
         this.counter = 0;
@@ -43,72 +43,73 @@ export default class CustomVisitor extends CompiladorVisitor {
 		return !!this.reservadas[reservada_name];
 	}
 
-    getVariableIndex(GEULSSI) {
-        return this.reservadas[GEULSSI]? this.reservadas[GEULSSI].index: -1;
+    getVariableIndex(ID) {
+        return this.reservadas[ID]? this.reservadas[ID].index: -1;
     }
     getVariableValue(GEULSSI) {
-        return  this.reservadas[GEULSSI].value;
+        return  this.reservadas[ID].value;
     }
 
-    ue
-    declaracion(GEULSSI, VALUE){
-        let defined = this.variableExist(GEULSSI);
+    
+    declaracion(ID, VALUE){
+        let defined = this.variableExist(ID);
         if(!defined){
             if(VALUE != undefined){
-                this.reservadas[GEULSSI] = {index: this.locals, value: VALUE};
-                this.jaz +=`\ninstore_${this.locals}\n`;
+                this.reservadas[ID] = {index: this.locals, value: VALUE};
+                this.jaz +=`\nistore_${this.locals}\n`;
             }else{
-                this.reservadas[GEULSSI]={
-                    index:this.locals,
+                this.reservadas[ID]={
+                    index: this.locals,
                     value: undefined,
                 };
             }
             this.locals++;
         }else{
-            this.addUniqueError(`Error: Repeticion de ${GEULSSI} declaracion `)
+            this.addUniqueError(`Error: Repeticion de ${ID} declaracion `)
             this.updateConsole();
         }
-        return GEULSSI;
+        return ID;
     }
 
     generateLabel(label) {
-		return label + this.labelCounter++;
+		return label + this.counter++;
 	}
     
 
-    // Visit a parse tree produced by CompiladorParser#file.
+    // Visit a parse tree produced by MachaJazParser#file.
     visitFile(ctx) {
         console.log("VISITANDO FILE");
         this.visitChildren(ctx);
         
         return this.jaz;
     }
-    // Visit a parse tree produced by CompiladorParser#start.
+    // Visit a parse tree produced by MachaJazParser#start.
     visitStart(ctx) {
         console.log("VISITANDO START");
+        console.log("VISITANDO 2");
+        console.log(this.locals);
+        this.visit(ctx.content())
         this.jaz +="\nreturn";
         this.jaz +="\n.end method";
         let titulo = `.class public CodigoJasmin
         .super java/lang/Object
         .method public static main([java/lang/String;)V
-        .limit stck ${this.stack}
-        ${this.locals?`.limit locals ${this.locals}\n`:""}`;
+        .limit stack ${this.stack}
+        ${this.locals ? `.limit locals ${this.locals}\n` : ""}`;
 
         this.jaz = titulo + this.jaz;
+        return this.jaz
     }
-    // Visit a parse tree produced by CompiladorParser#content.
+    // Visit a parse tree produced by MachaJazParser#content.
     visitContent(ctx) {
         console.log("VISITANDO CONTENT");
         console.log(ctx.getText());
         return this.visitChildren(ctx);
     }
-	// Visit a parse tree produced by CompiladorParser#main.
+	// Visit a parse tree produced by MachaJazParser#main.
 	visitMain(ctx) {
         console.log("VISITANDO MAIN");
         console.log(ctx.getText());
-        if (ctx.for()) return this.visitChildren(ctx);
-        if(ctx.while()) return this.visitChildren(ctx);
-        if(ctx.condicionalBucle())return this.visitChildren(ctx);
        
         return this.visitChildren(ctx);
     }
@@ -126,7 +127,7 @@ export default class CustomVisitor extends CompiladorVisitor {
         }
     
         // Validar si hay un "=" en la línea actual
-        const hasEqualSymbol = ctx.children.some(child => child.type === CompiladorParser.ASIGNACION);
+        const hasEqualSymbol = ctx.children.some(child => child.type === MachaJazParser.ASIGNACION);
         if (!hasEqualSymbol) {
             this.addUniqueError(`Error de sintaxis: Falta el símbolo "=" en la línea ${this.lineaActual}`);
             return null;
@@ -135,7 +136,7 @@ export default class CustomVisitor extends CompiladorVisitor {
         // Validar si hay un número después del identificador
         if (ctx.children.length > 2) {
             const secondChild = ctx.children[1];
-            if (secondChild.type !== CompiladorParser.ASIGNACION) {
+            if (secondChild.type !== MachaJazParser.ASIGNACION) {
                 this.addUniqueError(`Error de sintaxis: Asignación inválida en la línea ${this.lineaActual}`);
                 return null;
             }
@@ -173,7 +174,7 @@ export default class CustomVisitor extends CompiladorVisitor {
             return null;
         }
     
-       
+       /*
         // Verificar si this.consola está definido antes de usarlo
         if (this.consola instanceof HTMLElement) {
             if (this.memory.has(idToken)) {
@@ -181,10 +182,17 @@ export default class CustomVisitor extends CompiladorVisitor {
             } else {
                 this.memory.set(idToken, value);
             }
-        }
-    
-        this.updateConsole();
-        return null;
+        }*/
+        let valor = this.visit(ctx.expr());
+		const ID = ctx.GEULSSI().getText();
+        console.log(ID);
+		const INDEX = this.getVariableIndex(ID);
+        console.log(INDEX);
+
+		if (INDEX > -1) {
+			this.reservadas[ID].value = valor;
+			this.jaz += `\nistore_${INDEX}\n`;
+		}
     }
     
     
@@ -205,32 +213,29 @@ export default class CustomVisitor extends CompiladorVisitor {
         }
         return null;
     }
-    // Visit a parse tree produced by CompiladorParser#asignacion.
+    // Visit a parse tree produced by MachaJazParser#asignacion.
     visitAsignacion(ctx) {
         console.log('VISITANDO ASINGNACION');
         const idToken = ctx.GEULSSI().getText();
         console.log(idToken);
         const value = ctx.expr() ? this.visit(ctx.expr()) : null;
         // Verificar si el identificador ya está en la memoria
-      
+      /*
             this.memory.set(idToken, value);
             console.log(this.memory);
-
+*/
         this.updateConsole();
         return null;
     }
-    // Visit a parse tree produced by CompiladorParser#impresion.
+    // Visit a parse tree produced by MachaJazParser#impresion.
     visitImpresion(ctx) {
         console.log('VISTITANDO IMPRESION');
-        const innerValue = this.visit(ctx.expr()); // Obtener el valor de la expresión a imprimir
+        /*const innerValue = this.visit(ctx.expr()); // Obtener el valor de la expresión a imprimir
         console.log(innerValue);
         this.console.push(`${innerValue}`);
         this.updateConsole();
         return undefined;
-
-        /*{
-		console.log("log");
-		const valorTitulo = ctx.expr().getText();
+*/
 		const valor = this.visit(ctx.expr());
 		if (valor == "swap" || !isNaN(valor)) {
 			this.jaz +=
@@ -246,14 +251,15 @@ export default class CustomVisitor extends CompiladorVisitor {
 		}
 		this.jaz +=
 			"\ninvokevirtual java/io/PrintStream/println(Ljava/lang/String;)V\n";
-	}*/
+	
     }
         
     visitParentesis(ctx) {
         console.log("VISITANDO PARENTESIS");
-        return this.visit(ctx.expr());
+        let visit = this.visitChildren(ctx)
+        return visit[1];
     }
-    // Visit a parse tree produced by CompiladorParser#implicitMult.
+    // Visit a parse tree produced by MachaJazParser#implicitMult.
 	visitImplicitMult(ctx) {
         console.log("VISITANDO implimul");
         let results = this.visitChildren(ctx);
@@ -264,12 +270,22 @@ export default class CustomVisitor extends CompiladorVisitor {
     visitSujja(ctx) {
         console.log("VISITANDO NUMEROS ");
         console.log(ctx.SUJJA().getText());
-        return parseInt(ctx.SUJJA().getText());
+        let valor;
+        this.stack++;
+        if(ctx.getText().includes(".")){
+            valor = parseFloat(ctx.getText());
+            this.jaz += `\nldc ${valor}`
+            return valor;
+        }else{
+            valor = Number(ctx.getText());
+            this.jaz += `\nldc ${valor}`;
+            return valor;
+        }
     }
 
-	// Visit a parse tree produced by CompiladorParser#string.
+	// Visit a parse tree produced by MachaJazParser#string.
 	visitString(ctx) {
-
+        console.log("VISITANDO STRING");
         return ctx.getText();
       }
   
@@ -291,13 +307,10 @@ export default class CustomVisitor extends CompiladorVisitor {
     visitGeulssi(ctx) {
         console.log("VISITANDO ID");
         const id = ctx.GEULSSI().getText();
-       
-        if (!this.memory.has(id)) {
-            this.addUniqueMessage(`Error: La variable "${id}" no ha sido declarada en la línea ${this.lineaActual}`);
-            return null;
-        }
-
-        return this.memory.get(id);
+       if (this.variableExist(id)){
+        this.jaz += `\niload_${this.reservadas[id].index}`;
+        return this.reservadas[id].value;
+       }
     }
 
     visitMuldiv(ctx) {
@@ -321,7 +334,7 @@ export default class CustomVisitor extends CompiladorVisitor {
 			return "swap";
 		}
     }
-    // Visit a parse tree produced by CompiladorParser#incremento.
+    // Visit a parse tree produced by MachaJazParser#incremento.
 	visitIncremento(ctx) {
         console.log('VISITA EL INCREMENTO');
         const id = ctx.GEULSSI().getText();
@@ -340,7 +353,7 @@ export default class CustomVisitor extends CompiladorVisitor {
         return this.visitChildren(ctx);
       }
 
-	// Visit a parse tree produced by CompiladorParser#condicionalBucle.
+	// Visit a parse tree produced by MachaJazParser#condicionalBucle.
 	visitCondicionalBucle(ctx) {{
 		console.log("Chained conditional");
 		const endIfLabel = this.generateLabel("endIfLabel");
@@ -358,8 +371,8 @@ export default class CustomVisitor extends CompiladorVisitor {
 		});
 
 		// add elif metadata if exists
-		if (ctx.conditionalElseIf()) {
-			for (let elif of this.visit(ctx.conditionalElseIf())) {
+		if (ctx.condicionalElseIf()) {
+			for (let elif of this.visit(ctx.condicionalElseIf())) {
 				condiciones.push({
 					instruction: elif[0],
 					content: elif[1],
@@ -370,10 +383,11 @@ export default class CustomVisitor extends CompiladorVisitor {
 
 		// add else metadata if exists
 		let elseData = null;
-		if (ctx.conditionalELse()) {
+		if (ctx.condicionalElse()) {
 			skipThreshold++;
 			let elseLabel = this.generateLabel("elseLabel");
-			const elseContent = this.visit(ctx.conditionalElse());
+			const elseContent = this.visit(ctx.condicionalElse());
+            console.log(elseContent);
 			condiciones.push({
 				label: elseLabel,
 			});
@@ -391,16 +405,16 @@ export default class CustomVisitor extends CompiladorVisitor {
 
 		// Generate translated code
 		for (let i = 0; i < condiciones.length - skipThreshold; i++) {
-			const condition = condiciones[i];
-			if (condition.label) {
-				this.jazminCode += `\n${condition.label}:`;
+			const condicion = condiciones[i];
+			if (condicion.label) {
+				this.jaz += `\n${condicion.label}:`;
 			}
 			const instruction = this.visit(condicion.instruction);
 			this.jaz += `\n${instruction} ${condiciones[i + 1].label}`;
 			this.visit(condicion.content);
 			this.jaz += `\ngoto ${endIfLabel}\n`;
 		}
-
+// no estoy segura si es necesario
 		if (elseData) {
 			this.jaz += `\n${elseData.label}:`;
 			this.visit(elseData.content);
@@ -411,25 +425,25 @@ export default class CustomVisitor extends CompiladorVisitor {
 }
     
   
-    // Visit a parse tree produced by CompiladorParser#condicionalElseIf.
+    // Visit a parse tree produced by MachaJazParser#condicionalElseIf.
 	visitCondicionalElseIf(ctx) {
         console.log('else if!!!');
         return this.visit(ctx.condicional());
       }
   
   
-    // Visit a parse tree produced by CompiladorParser#condicionalElse.
+    // Visit a parse tree produced by MachaJazParser#condicionalElse.
     visitCondicionalElse(ctx) {
         console.log('else!!!!!');
-        return this.visit(ctx.main());
+        return ctx.main();
       }
-     // Visit a parse tree produced by CompiladorParser#condicional.
+     // Visit a parse tree produced by MachaJazParser#condicional.
 	visitCondicional(ctx) {
         console.log('condicional!!!!!');
         
         return [ctx.expr(), ctx.main()]
       }
-      // Visit a parse tree produced by CompiladorParser#condicion.
+      // Visit a parse tree produced by MachaJazParser#condicion.
     visitCondicion(ctx) {
         console.log('condion!!! ');
         let [valor_a,valor_b] = this.visit(ctx.expr());
@@ -437,45 +451,51 @@ export default class CustomVisitor extends CompiladorVisitor {
         let signo= ctx.simbolo.text;
         console.log(signo);
         switch (signo){
-            case '>':
-                    return  valor_a > valor_b;
-                   
-            case '<':
-                    return valor_a < valor_b;
-                    
-            case '>=':
-                    return valor_a >= valor_b;
-                    
-            case '<=':
-                    return valor_a <= valor_b;
-                    
-            case '||':
-                    return valor_a || valor_b;
-                    
-            case '&&':
-                    return valor_a && valor_b;
-                    
-            case '==':
-                    return valor_a == valor_b;
-            case '!=':
-                    return valor_a != valor_b;
-            case 'true':
-                    return true;
-            case 'false':
-                    return false;
-            default:
-                   return false;
+            case ">":
+				return "if_icmple";
+
+			case "<":
+				//2
+				return "if_icmpge";
+
+			case ">=":
+				return "if_icmplt";
+
+			case "<=":
+				// 1
+				return "if_icmpgt";
+
+			case "||":
+				return valor_a || valor_b;
+
+			case "&&":
+				return valor_a && valor_b;
+
+			case "==":
+				return "if_icmpne";
+
+			case "!=":
+				return "if_icmpeq";
+
+			case "true":
+				return true;
+
+			case "false":
+				return false;
+
+			default:
+				return false;
                 
         }
      }
 
-	// Visit a parse tree produced by CompiladorParser#while.
+	// Visit a parse tree produced by MachaJazParser#while.
 	visitWhile(ctx) {
         console.log('WHILE!!!!');
 		const whileStart = this.generateLabel("whileStartLabel");
 		const whileEnd = this.generateLabel("whileEndLabel");
 		this.jaz += `\n${whileStart}:`;
-		const instruction = this.visit(ctx.value());
+		const instruction = this.visit(ctx.expr());
 		this.jaz += `\n${instruction} ${whileEnd}`;
 		this.visit(ctx.main());
 		this.jaz += `\ngoto ${whileStart}`;
