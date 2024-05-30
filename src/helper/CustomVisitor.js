@@ -111,6 +111,61 @@ export default class CustomVisitor extends CompiladorVisitor {
 		return exist;
 	}
 
+    assign(ID, VALUE, OPERATOR = '=') {
+		console.log("Assign");
+		const TYPE = this.getVariableType(ID);
+
+		if (TYPE) {
+			if (this.assertTypeWithValue(TYPE, VALUE)) {
+				let variable = this.reservadas[TYPE].find(
+					(variable) => variable.id === ID
+				);
+
+				switch (OPERATOR) {
+					case '=':
+						variable.value = VALUE;
+						break;
+
+					case '+=':
+						variable.value = variable.value + VALUE;
+						break;
+					
+					case '-=':
+						variable.value = variable.value - VALUE;
+						break;
+
+					case '*=':
+						variable.value = variable.value * VALUE;
+						break;
+
+					case '/=':
+						variable.value = variable.value / VALUE;
+						break;
+
+					case '%=':
+						variable.value = variable.value % VALUE;
+						break;
+				}
+				
+			} else {/*
+				this.logs.push({
+					type: "error",
+					header: "ERROR",
+					text: `Cant assign "${VALUE}" to type "${TYPE}"`,
+				});*/
+			}
+		} else {/*
+			this.logs.push({
+				type: "error",
+				header: "ERROR",
+				text: `Variable "${ID}" is not defined`,
+			});*/
+		}
+
+		return true;
+	}
+
+
 
 
 
@@ -233,7 +288,7 @@ export default class CustomVisitor extends CompiladorVisitor {
         return null;
     }
     // Visit a parse tree produced by CompiladorParser#asignacion.
-    visitAsignacion(ctx) {
+    visitSimpleAssign(ctx) {
         console.log('VISITANDO ASINGNACION');
         const idToken = ctx.GEULSSI().getText();
         console.log(idToken);
@@ -246,6 +301,17 @@ export default class CustomVisitor extends CompiladorVisitor {
         this.updateConsole();
         return null;
     }
+
+    // Visit a parse tree produced by CompiladorParser#sumarizerAssign.
+	visitSumarizerAssign(ctx) {
+        const ID = ctx.ID().getText();
+		const VALUE = this.visit(ctx.value());
+		const OPERATOR = ctx.SUMARIZER().getText();
+		
+		return this.assign(ID, VALUE, OPERATOR);
+        
+      }
+  
     // Visit a parse tree produced by CompiladorParser#impresion.
     visitImpresion(ctx) {
         console.log('VISTITANDO IMPRESION');
@@ -291,6 +357,25 @@ export default class CustomVisitor extends CompiladorVisitor {
 		if (ctx.operation.type === CompiladorParser.DO) return left + right;
 		return left - right;
     }
+
+    visitCompando(ctx) {
+        let [valor_a,valor_b] = this.visit(ctx.expr());
+        console.log(ctx.expr());
+        let signo= ctx.simbolo.text;
+        console.log(signo);
+        switch (signo){
+            
+			case "||":
+				return valor_a || valor_b;
+
+			case "&&":
+				return valor_a && valor_b;
+
+			default:
+				return false;
+                
+        }
+      }
 
     visitGeulssi(ctx) {
         console.log("VISITANDO ID");

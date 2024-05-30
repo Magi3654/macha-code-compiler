@@ -20,8 +20,8 @@ declaracion: PR GEULSSI (EQUALS expr)?                #validAssign
            | PR ID = (CHINCHA | SUJJA) (EQUALS expr)? #invalidAssign
            ;
            
-asignacion: GEULSSI EQUALS expr
-            | GEULSSI SUMARIZER expr
+asignacion: GEULSSI EQUALS expr                       #simpleAssign
+            | GEULSSI SUMARIZER expr                  #sumarizerAssign
             ;
 
 impresion: PRINT PARENTH_A expr PARENTH_B;
@@ -31,6 +31,7 @@ expr: PARENTH_A expr PARENTH_B                      #parentesis
     | expr operation=(DO | PPAEDA) expr             #sumres
     |simbolo=(LOGIC|MATH|BOOLEAN)                   #condicion
     |expr simbolo=(LOGIC|MATH|BOOLEAN) expr         #condicion
+    | expr simbolo=(AND|OR) expr                    #compando
     | GEULSSI                                       #geulssi
     | SUJJA                                         #sujja
     | STRING                                        #string

@@ -3,59 +3,60 @@
 import antlr4 from 'antlr4';
 import MachaJazVisitor from './MachaJazVisitor.js';
 
-const serializedATN = [4,1,27,174,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,30,178,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,1,0,4,0,32,8,0,11,0,12,0,33,1,1,1,1,1,1,1,1,1,1,1,2,
 5,2,42,8,2,10,2,12,2,45,9,2,1,3,1,3,1,3,1,3,1,3,1,3,3,3,53,8,3,1,4,1,4,1,
 4,1,4,3,4,59,8,4,1,4,1,4,1,4,1,4,3,4,65,8,4,3,4,67,8,4,1,5,1,5,1,5,1,5,1,
-6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,3,7,87,8,7,1,7,1,7,
-1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,5,7,100,8,7,10,7,12,7,103,9,7,1,8,1,
-8,3,8,107,8,8,1,8,1,8,1,8,1,8,3,8,113,8,8,1,9,1,9,5,9,117,8,9,10,9,12,9,
-120,9,9,1,9,3,9,123,8,9,1,10,1,10,1,10,1,10,1,10,1,10,5,10,131,8,10,10,10,
-12,10,134,9,10,1,10,1,10,1,11,1,11,1,11,1,12,1,12,1,12,5,12,144,8,12,10,
-12,12,12,147,9,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,1,13,5,13,157,8,13,
-10,13,12,13,160,9,13,1,13,1,13,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,
-14,1,14,1,14,0,1,14,15,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,0,4,2,0,24,
-24,26,26,1,0,19,21,2,0,7,8,12,12,1,0,9,10,183,0,31,1,0,0,0,2,35,1,0,0,0,
-4,43,1,0,0,0,6,52,1,0,0,0,8,66,1,0,0,0,10,68,1,0,0,0,12,72,1,0,0,0,14,86,
-1,0,0,0,16,104,1,0,0,0,18,114,1,0,0,0,20,124,1,0,0,0,22,137,1,0,0,0,24,140,
-1,0,0,0,26,150,1,0,0,0,28,163,1,0,0,0,30,32,3,2,1,0,31,30,1,0,0,0,32,33,
-1,0,0,0,33,31,1,0,0,0,33,34,1,0,0,0,34,1,1,0,0,0,35,36,5,1,0,0,36,37,5,5,
-0,0,37,38,3,4,2,0,38,39,5,6,0,0,39,3,1,0,0,0,40,42,3,6,3,0,41,40,1,0,0,0,
-42,45,1,0,0,0,43,41,1,0,0,0,43,44,1,0,0,0,44,5,1,0,0,0,45,43,1,0,0,0,46,
-53,3,8,4,0,47,53,3,10,5,0,48,53,3,18,9,0,49,53,3,26,13,0,50,53,3,12,6,0,
-51,53,3,16,8,0,52,46,1,0,0,0,52,47,1,0,0,0,52,48,1,0,0,0,52,49,1,0,0,0,52,
-50,1,0,0,0,52,51,1,0,0,0,53,7,1,0,0,0,54,55,5,2,0,0,55,58,5,25,0,0,56,57,
-5,11,0,0,57,59,3,14,7,0,58,56,1,0,0,0,58,59,1,0,0,0,59,67,1,0,0,0,60,61,
-5,2,0,0,61,64,7,0,0,0,62,63,5,11,0,0,63,65,3,14,7,0,64,62,1,0,0,0,64,65,
-1,0,0,0,65,67,1,0,0,0,66,54,1,0,0,0,66,60,1,0,0,0,67,9,1,0,0,0,68,69,5,25,
-0,0,69,70,5,11,0,0,70,71,3,14,7,0,71,11,1,0,0,0,72,73,5,14,0,0,73,74,5,3,
-0,0,74,75,3,14,7,0,75,76,5,4,0,0,76,13,1,0,0,0,77,78,6,7,-1,0,78,79,5,3,
-0,0,79,80,3,14,7,0,80,81,5,4,0,0,81,87,1,0,0,0,82,87,7,1,0,0,83,87,5,25,
-0,0,84,87,5,24,0,0,85,87,5,22,0,0,86,77,1,0,0,0,86,82,1,0,0,0,86,83,1,0,
-0,0,86,84,1,0,0,0,86,85,1,0,0,0,87,101,1,0,0,0,88,89,10,8,0,0,89,90,7,2,
-0,0,90,100,3,14,7,9,91,92,10,7,0,0,92,93,7,3,0,0,93,100,3,14,7,8,94,95,10,
-5,0,0,95,96,7,1,0,0,96,100,3,14,7,6,97,98,10,1,0,0,98,100,3,14,7,2,99,88,
-1,0,0,0,99,91,1,0,0,0,99,94,1,0,0,0,99,97,1,0,0,0,100,103,1,0,0,0,101,99,
-1,0,0,0,101,102,1,0,0,0,102,15,1,0,0,0,103,101,1,0,0,0,104,106,5,25,0,0,
-105,107,5,27,0,0,106,105,1,0,0,0,106,107,1,0,0,0,107,112,1,0,0,0,108,109,
-5,9,0,0,109,113,5,9,0,0,110,111,5,10,0,0,111,113,5,10,0,0,112,108,1,0,0,
-0,112,110,1,0,0,0,113,17,1,0,0,0,114,118,3,20,10,0,115,117,3,22,11,0,116,
-115,1,0,0,0,117,120,1,0,0,0,118,116,1,0,0,0,118,119,1,0,0,0,119,122,1,0,
-0,0,120,118,1,0,0,0,121,123,3,24,12,0,122,121,1,0,0,0,122,123,1,0,0,0,123,
-19,1,0,0,0,124,125,5,15,0,0,125,126,5,3,0,0,126,127,3,14,7,0,127,128,5,4,
-0,0,128,132,5,5,0,0,129,131,3,6,3,0,130,129,1,0,0,0,131,134,1,0,0,0,132,
-130,1,0,0,0,132,133,1,0,0,0,133,135,1,0,0,0,134,132,1,0,0,0,135,136,5,6,
-0,0,136,21,1,0,0,0,137,138,5,16,0,0,138,139,3,20,10,0,139,23,1,0,0,0,140,
-141,5,16,0,0,141,145,5,5,0,0,142,144,3,6,3,0,143,142,1,0,0,0,144,147,1,0,
-0,0,145,143,1,0,0,0,145,146,1,0,0,0,146,148,1,0,0,0,147,145,1,0,0,0,148,
-149,5,6,0,0,149,25,1,0,0,0,150,151,5,18,0,0,151,152,5,3,0,0,152,153,3,14,
-7,0,153,154,5,4,0,0,154,158,5,5,0,0,155,157,3,6,3,0,156,155,1,0,0,0,157,
-160,1,0,0,0,158,156,1,0,0,0,158,159,1,0,0,0,159,161,1,0,0,0,160,158,1,0,
-0,0,161,162,5,6,0,0,162,27,1,0,0,0,163,164,5,17,0,0,164,165,5,3,0,0,165,
-166,3,8,4,0,166,167,3,14,7,0,167,168,3,16,8,0,168,169,5,4,0,0,169,170,5,
-5,0,0,170,171,3,6,3,0,171,172,5,6,0,0,172,29,1,0,0,0,16,33,43,52,58,64,66,
-86,99,101,106,112,118,122,132,145,158];
+5,1,5,3,5,75,8,5,1,6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,
+3,7,91,8,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,5,7,104,8,7,10,7,
+12,7,107,9,7,1,8,1,8,3,8,111,8,8,1,8,1,8,1,8,1,8,3,8,117,8,8,1,9,1,9,5,9,
+121,8,9,10,9,12,9,124,9,9,1,9,3,9,127,8,9,1,10,1,10,1,10,1,10,1,10,1,10,
+5,10,135,8,10,10,10,12,10,138,9,10,1,10,1,10,1,11,1,11,1,11,1,12,1,12,1,
+12,5,12,148,8,12,10,12,12,12,151,9,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,
+1,13,5,13,161,8,13,10,13,12,13,164,9,13,1,13,1,13,1,14,1,14,1,14,1,14,1,
+14,1,14,1,14,1,14,1,14,1,14,1,14,0,1,14,15,0,2,4,6,8,10,12,14,16,18,20,22,
+24,26,28,0,4,2,0,27,27,29,29,2,0,20,20,23,24,2,0,7,8,12,12,1,0,9,10,188,
+0,31,1,0,0,0,2,35,1,0,0,0,4,43,1,0,0,0,6,52,1,0,0,0,8,66,1,0,0,0,10,74,1,
+0,0,0,12,76,1,0,0,0,14,90,1,0,0,0,16,108,1,0,0,0,18,118,1,0,0,0,20,128,1,
+0,0,0,22,141,1,0,0,0,24,144,1,0,0,0,26,154,1,0,0,0,28,167,1,0,0,0,30,32,
+3,2,1,0,31,30,1,0,0,0,32,33,1,0,0,0,33,31,1,0,0,0,33,34,1,0,0,0,34,1,1,0,
+0,0,35,36,5,1,0,0,36,37,5,5,0,0,37,38,3,4,2,0,38,39,5,6,0,0,39,3,1,0,0,0,
+40,42,3,6,3,0,41,40,1,0,0,0,42,45,1,0,0,0,43,41,1,0,0,0,43,44,1,0,0,0,44,
+5,1,0,0,0,45,43,1,0,0,0,46,53,3,8,4,0,47,53,3,10,5,0,48,53,3,18,9,0,49,53,
+3,26,13,0,50,53,3,12,6,0,51,53,3,16,8,0,52,46,1,0,0,0,52,47,1,0,0,0,52,48,
+1,0,0,0,52,49,1,0,0,0,52,50,1,0,0,0,52,51,1,0,0,0,53,7,1,0,0,0,54,55,5,2,
+0,0,55,58,5,28,0,0,56,57,5,11,0,0,57,59,3,14,7,0,58,56,1,0,0,0,58,59,1,0,
+0,0,59,67,1,0,0,0,60,61,5,2,0,0,61,64,7,0,0,0,62,63,5,11,0,0,63,65,3,14,
+7,0,64,62,1,0,0,0,64,65,1,0,0,0,65,67,1,0,0,0,66,54,1,0,0,0,66,60,1,0,0,
+0,67,9,1,0,0,0,68,69,5,28,0,0,69,70,5,11,0,0,70,75,3,14,7,0,71,72,5,28,0,
+0,72,73,5,13,0,0,73,75,3,14,7,0,74,68,1,0,0,0,74,71,1,0,0,0,75,11,1,0,0,
+0,76,77,5,15,0,0,77,78,5,3,0,0,78,79,3,14,7,0,79,80,5,4,0,0,80,13,1,0,0,
+0,81,82,6,7,-1,0,82,83,5,3,0,0,83,84,3,14,7,0,84,85,5,4,0,0,85,91,1,0,0,
+0,86,91,7,1,0,0,87,91,5,28,0,0,88,91,5,27,0,0,89,91,5,25,0,0,90,81,1,0,0,
+0,90,86,1,0,0,0,90,87,1,0,0,0,90,88,1,0,0,0,90,89,1,0,0,0,91,105,1,0,0,0,
+92,93,10,8,0,0,93,94,7,2,0,0,94,104,3,14,7,9,95,96,10,7,0,0,96,97,7,3,0,
+0,97,104,3,14,7,8,98,99,10,5,0,0,99,100,7,1,0,0,100,104,3,14,7,6,101,102,
+10,1,0,0,102,104,3,14,7,2,103,92,1,0,0,0,103,95,1,0,0,0,103,98,1,0,0,0,103,
+101,1,0,0,0,104,107,1,0,0,0,105,103,1,0,0,0,105,106,1,0,0,0,106,15,1,0,0,
+0,107,105,1,0,0,0,108,110,5,28,0,0,109,111,5,30,0,0,110,109,1,0,0,0,110,
+111,1,0,0,0,111,116,1,0,0,0,112,113,5,9,0,0,113,117,5,9,0,0,114,115,5,10,
+0,0,115,117,5,10,0,0,116,112,1,0,0,0,116,114,1,0,0,0,117,17,1,0,0,0,118,
+122,3,20,10,0,119,121,3,22,11,0,120,119,1,0,0,0,121,124,1,0,0,0,122,120,
+1,0,0,0,122,123,1,0,0,0,123,126,1,0,0,0,124,122,1,0,0,0,125,127,3,24,12,
+0,126,125,1,0,0,0,126,127,1,0,0,0,127,19,1,0,0,0,128,129,5,16,0,0,129,130,
+5,3,0,0,130,131,3,14,7,0,131,132,5,4,0,0,132,136,5,5,0,0,133,135,3,6,3,0,
+134,133,1,0,0,0,135,138,1,0,0,0,136,134,1,0,0,0,136,137,1,0,0,0,137,139,
+1,0,0,0,138,136,1,0,0,0,139,140,5,6,0,0,140,21,1,0,0,0,141,142,5,17,0,0,
+142,143,3,20,10,0,143,23,1,0,0,0,144,145,5,17,0,0,145,149,5,5,0,0,146,148,
+3,6,3,0,147,146,1,0,0,0,148,151,1,0,0,0,149,147,1,0,0,0,149,150,1,0,0,0,
+150,152,1,0,0,0,151,149,1,0,0,0,152,153,5,6,0,0,153,25,1,0,0,0,154,155,5,
+19,0,0,155,156,5,3,0,0,156,157,3,14,7,0,157,158,5,4,0,0,158,162,5,5,0,0,
+159,161,3,6,3,0,160,159,1,0,0,0,161,164,1,0,0,0,162,160,1,0,0,0,162,163,
+1,0,0,0,163,165,1,0,0,0,164,162,1,0,0,0,165,166,5,6,0,0,166,27,1,0,0,0,167,
+168,5,18,0,0,168,169,5,3,0,0,169,170,3,8,4,0,170,171,3,14,7,0,171,172,3,
+16,8,0,172,173,5,4,0,0,173,174,5,5,0,0,174,175,3,6,3,0,175,176,5,6,0,0,176,
+29,1,0,0,0,17,33,43,52,58,64,66,74,90,103,105,110,116,122,126,136,149,162];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -69,14 +70,14 @@ export default class MachaJazParser extends antlr4.Parser {
     static grammarFileName = "MachaJaz.g4";
     static literalNames = [ null, "'chichak'", null, "'('", "')'", "'{'", 
                             "'}'", "'*'", "'/'", "'+'", "'-'", "'='", "'%'", 
-                            "','", "'inswae'", "'myeon'", "'namochi'", "'wihan'", 
-                            "'geuttae'" ];
+                            null, "','", "'inswae'", "'myeon'", "'namochi'", 
+                            "'wihan'", "'geuttae'", null, "'&&'", "'||'" ];
     static symbolicNames = [ null, "CHICHAK", "PR", "PARENTH_A", "PARENTH_B", 
                              "OPENKEY", "CLOSEKEY", "GOPSSEM", "NANU", "DO", 
-                             "PPAEDA", "EQUALS", "PORCENT", "COMA", "PRINT", 
-                             "IF", "ELSE", "FOR", "WHILE", "LOGIC", "MATH", 
-                             "BOOLEAN", "STRING", "CHAR", "SUJJA", "GEULSSI", 
-                             "CHINCHA", "GONG" ];
+                             "PPAEDA", "EQUALS", "PORCENT", "SUMARIZER", 
+                             "COMA", "PRINT", "IF", "ELSE", "FOR", "WHILE", 
+                             "LOGIC", "AND", "OR", "MATH", "BOOLEAN", "STRING", 
+                             "CHAR", "SUJJA", "GEULSSI", "CHINCHA", "GONG" ];
     static ruleNames = [ "file", "start", "content", "main", "declaracion", 
                          "asignacion", "impresion", "expr", "incremento", 
                          "condicionalBucle", "condicional", "condicionalElseIf", 
@@ -187,7 +188,7 @@ export default class MachaJazParser extends antlr4.Parser {
 	        this.state = 43;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 33865732) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 269058052) !== 0)) {
 	            this.state = 40;
 	            this.main();
 	            this.state = 45;
@@ -307,7 +308,7 @@ export default class MachaJazParser extends antlr4.Parser {
 	            this.state = 61;
 	            localctx.ID = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(_la===24 || _la===26)) {
+	            if(!(_la===27 || _la===29)) {
 	                localctx.ID = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -347,13 +348,33 @@ export default class MachaJazParser extends antlr4.Parser {
 	    let localctx = new AsignacionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, MachaJazParser.RULE_asignacion);
 	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 68;
-	        this.match(MachaJazParser.GEULSSI);
-	        this.state = 69;
-	        this.match(MachaJazParser.EQUALS);
-	        this.state = 70;
-	        this.expr(0);
+	        this.state = 74;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,6,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            localctx = new SimpleAssignContext(this, localctx);
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 68;
+	            this.match(MachaJazParser.GEULSSI);
+	            this.state = 69;
+	            this.match(MachaJazParser.EQUALS);
+	            this.state = 70;
+	            this.expr(0);
+	            break;
+
+	        case 2:
+	            localctx = new SumarizerAssignContext(this, localctx);
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 71;
+	            this.match(MachaJazParser.GEULSSI);
+	            this.state = 72;
+	            this.match(MachaJazParser.SUMARIZER);
+	            this.state = 73;
+	            this.expr(0);
+	            break;
+
+	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -375,13 +396,13 @@ export default class MachaJazParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, MachaJazParser.RULE_impresion);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 72;
+	        this.state = 76;
 	        this.match(MachaJazParser.PRINT);
-	        this.state = 73;
+	        this.state = 77;
 	        this.match(MachaJazParser.PARENTH_A);
-	        this.state = 74;
+	        this.state = 78;
 	        this.expr(0);
-	        this.state = 75;
+	        this.state = 79;
 	        this.match(MachaJazParser.PARENTH_B);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -411,7 +432,7 @@ export default class MachaJazParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 86;
+	        this.state = 90;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case 3:
@@ -419,23 +440,23 @@ export default class MachaJazParser extends antlr4.Parser {
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 
-	            this.state = 78;
+	            this.state = 82;
 	            this.match(MachaJazParser.PARENTH_A);
-	            this.state = 79;
+	            this.state = 83;
 	            this.expr(0);
-	            this.state = 80;
+	            this.state = 84;
 	            this.match(MachaJazParser.PARENTH_B);
 	            break;
-	        case 19:
 	        case 20:
-	        case 21:
+	        case 23:
+	        case 24:
 	            localctx = new CondicionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 82;
+	            this.state = 86;
 	            localctx.simbolo = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 3670016) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 26214400) !== 0))) {
 	                localctx.simbolo = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -443,52 +464,52 @@ export default class MachaJazParser extends antlr4.Parser {
 	                this.consume();
 	            }
 	            break;
-	        case 25:
+	        case 28:
 	            localctx = new GeulssiContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 83;
+	            this.state = 87;
 	            this.match(MachaJazParser.GEULSSI);
 	            break;
-	        case 24:
+	        case 27:
 	            localctx = new SujjaContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 84;
+	            this.state = 88;
 	            this.match(MachaJazParser.SUJJA);
 	            break;
-	        case 22:
+	        case 25:
 	            localctx = new StringContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 85;
+	            this.state = 89;
 	            this.match(MachaJazParser.STRING);
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 101;
+	        this.state = 105;
 	        this._errHandler.sync(this);
-	        var _alt = this._interp.adaptivePredict(this._input,8,this._ctx)
+	        var _alt = this._interp.adaptivePredict(this._input,9,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
 	                if(this._parseListeners!==null) {
 	                    this.triggerExitRuleEvent();
 	                }
 	                _prevctx = localctx;
-	                this.state = 99;
+	                this.state = 103;
 	                this._errHandler.sync(this);
-	                var la_ = this._interp.adaptivePredict(this._input,7,this._ctx);
+	                var la_ = this._interp.adaptivePredict(this._input,8,this._ctx);
 	                switch(la_) {
 	                case 1:
 	                    localctx = new MuldivContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MachaJazParser.RULE_expr);
-	                    this.state = 88;
+	                    this.state = 92;
 	                    if (!( this.precpred(this._ctx, 8))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
 	                    }
-	                    this.state = 89;
+	                    this.state = 93;
 	                    localctx.operation = this._input.LT(1);
 	                    _la = this._input.LA(1);
 	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4480) !== 0))) {
@@ -498,18 +519,18 @@ export default class MachaJazParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 90;
+	                    this.state = 94;
 	                    this.expr(9);
 	                    break;
 
 	                case 2:
 	                    localctx = new SumresContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MachaJazParser.RULE_expr);
-	                    this.state = 91;
+	                    this.state = 95;
 	                    if (!( this.precpred(this._ctx, 7))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 7)");
 	                    }
-	                    this.state = 92;
+	                    this.state = 96;
 	                    localctx.operation = this._input.LT(1);
 	                    _la = this._input.LA(1);
 	                    if(!(_la===9 || _la===10)) {
@@ -519,47 +540,47 @@ export default class MachaJazParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 93;
+	                    this.state = 97;
 	                    this.expr(8);
 	                    break;
 
 	                case 3:
 	                    localctx = new CondicionContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MachaJazParser.RULE_expr);
-	                    this.state = 94;
+	                    this.state = 98;
 	                    if (!( this.precpred(this._ctx, 5))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
 	                    }
-	                    this.state = 95;
+	                    this.state = 99;
 	                    localctx.simbolo = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 3670016) !== 0))) {
+	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 26214400) !== 0))) {
 	                        localctx.simbolo = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 96;
+	                    this.state = 100;
 	                    this.expr(6);
 	                    break;
 
 	                case 4:
 	                    localctx = new ImplicitMultContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, MachaJazParser.RULE_expr);
-	                    this.state = 97;
+	                    this.state = 101;
 	                    if (!( this.precpred(this._ctx, 1))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
 	                    }
-	                    this.state = 98;
+	                    this.state = 102;
 	                    this.expr(2);
 	                    break;
 
 	                } 
 	            }
-	            this.state = 103;
+	            this.state = 107;
 	            this._errHandler.sync(this);
-	            _alt = this._interp.adaptivePredict(this._input,8,this._ctx);
+	            _alt = this._interp.adaptivePredict(this._input,9,this._ctx);
 	        }
 
 	    } catch( error) {
@@ -584,29 +605,29 @@ export default class MachaJazParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 104;
+	        this.state = 108;
 	        this.match(MachaJazParser.GEULSSI);
-	        this.state = 106;
+	        this.state = 110;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===27) {
-	            this.state = 105;
+	        if(_la===30) {
+	            this.state = 109;
 	            this.match(MachaJazParser.GONG);
 	        }
 
-	        this.state = 112;
+	        this.state = 116;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case 9:
-	            this.state = 108;
+	            this.state = 112;
 	            this.match(MachaJazParser.DO);
-	            this.state = 109;
+	            this.state = 113;
 	            this.match(MachaJazParser.DO);
 	            break;
 	        case 10:
-	            this.state = 110;
+	            this.state = 114;
 	            this.match(MachaJazParser.PPAEDA);
-	            this.state = 111;
+	            this.state = 115;
 	            this.match(MachaJazParser.PPAEDA);
 	            break;
 	        default:
@@ -634,26 +655,26 @@ export default class MachaJazParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 114;
-	        this.condicional();
 	        this.state = 118;
-	        this._errHandler.sync(this);
-	        var _alt = this._interp.adaptivePredict(this._input,11,this._ctx)
-	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
-	            if(_alt===1) {
-	                this.state = 115;
-	                this.condicionalElseIf(); 
-	            }
-	            this.state = 120;
-	            this._errHandler.sync(this);
-	            _alt = this._interp.adaptivePredict(this._input,11,this._ctx);
-	        }
-
+	        this.condicional();
 	        this.state = 122;
 	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,12,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                this.state = 119;
+	                this.condicionalElseIf(); 
+	            }
+	            this.state = 124;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,12,this._ctx);
+	        }
+
+	        this.state = 126;
+	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===16) {
-	            this.state = 121;
+	        if(_la===17) {
+	            this.state = 125;
 	            this.condicionalElse();
 	        }
 
@@ -679,27 +700,27 @@ export default class MachaJazParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 124;
-	        this.match(MachaJazParser.IF);
-	        this.state = 125;
-	        this.match(MachaJazParser.PARENTH_A);
-	        this.state = 126;
-	        this.expr(0);
-	        this.state = 127;
-	        this.match(MachaJazParser.PARENTH_B);
 	        this.state = 128;
-	        this.match(MachaJazParser.OPENKEY);
+	        this.match(MachaJazParser.IF);
+	        this.state = 129;
+	        this.match(MachaJazParser.PARENTH_A);
+	        this.state = 130;
+	        this.expr(0);
+	        this.state = 131;
+	        this.match(MachaJazParser.PARENTH_B);
 	        this.state = 132;
+	        this.match(MachaJazParser.OPENKEY);
+	        this.state = 136;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 33865732) !== 0)) {
-	            this.state = 129;
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 269058052) !== 0)) {
+	            this.state = 133;
 	            this.main();
-	            this.state = 134;
+	            this.state = 138;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 135;
+	        this.state = 139;
 	        this.match(MachaJazParser.CLOSEKEY);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -722,9 +743,9 @@ export default class MachaJazParser extends antlr4.Parser {
 	    this.enterRule(localctx, 22, MachaJazParser.RULE_condicionalElseIf);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 137;
+	        this.state = 141;
 	        this.match(MachaJazParser.ELSE);
-	        this.state = 138;
+	        this.state = 142;
 	        this.condicional();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -748,21 +769,21 @@ export default class MachaJazParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 140;
+	        this.state = 144;
 	        this.match(MachaJazParser.ELSE);
-	        this.state = 141;
-	        this.match(MachaJazParser.OPENKEY);
 	        this.state = 145;
+	        this.match(MachaJazParser.OPENKEY);
+	        this.state = 149;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 33865732) !== 0)) {
-	            this.state = 142;
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 269058052) !== 0)) {
+	            this.state = 146;
 	            this.main();
-	            this.state = 147;
+	            this.state = 151;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 148;
+	        this.state = 152;
 	        this.match(MachaJazParser.CLOSEKEY);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -786,27 +807,27 @@ export default class MachaJazParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 150;
-	        this.match(MachaJazParser.WHILE);
-	        this.state = 151;
-	        this.match(MachaJazParser.PARENTH_A);
-	        this.state = 152;
-	        this.expr(0);
-	        this.state = 153;
-	        this.match(MachaJazParser.PARENTH_B);
 	        this.state = 154;
-	        this.match(MachaJazParser.OPENKEY);
+	        this.match(MachaJazParser.WHILE);
+	        this.state = 155;
+	        this.match(MachaJazParser.PARENTH_A);
+	        this.state = 156;
+	        this.expr(0);
+	        this.state = 157;
+	        this.match(MachaJazParser.PARENTH_B);
 	        this.state = 158;
+	        this.match(MachaJazParser.OPENKEY);
+	        this.state = 162;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 33865732) !== 0)) {
-	            this.state = 155;
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 269058052) !== 0)) {
+	            this.state = 159;
 	            this.main();
-	            this.state = 160;
+	            this.state = 164;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 161;
+	        this.state = 165;
 	        this.match(MachaJazParser.CLOSEKEY);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -829,23 +850,23 @@ export default class MachaJazParser extends antlr4.Parser {
 	    this.enterRule(localctx, 28, MachaJazParser.RULE_for);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 163;
-	        this.match(MachaJazParser.FOR);
-	        this.state = 164;
-	        this.match(MachaJazParser.PARENTH_A);
-	        this.state = 165;
-	        this.declaracion();
-	        this.state = 166;
-	        this.expr(0);
 	        this.state = 167;
-	        this.incremento();
+	        this.match(MachaJazParser.FOR);
 	        this.state = 168;
-	        this.match(MachaJazParser.PARENTH_B);
+	        this.match(MachaJazParser.PARENTH_A);
 	        this.state = 169;
-	        this.match(MachaJazParser.OPENKEY);
+	        this.declaracion();
 	        this.state = 170;
-	        this.main();
+	        this.expr(0);
 	        this.state = 171;
+	        this.incremento();
+	        this.state = 172;
+	        this.match(MachaJazParser.PARENTH_B);
+	        this.state = 173;
+	        this.match(MachaJazParser.OPENKEY);
+	        this.state = 174;
+	        this.main();
+	        this.state = 175;
 	        this.match(MachaJazParser.CLOSEKEY);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -877,21 +898,24 @@ MachaJazParser.DO = 9;
 MachaJazParser.PPAEDA = 10;
 MachaJazParser.EQUALS = 11;
 MachaJazParser.PORCENT = 12;
-MachaJazParser.COMA = 13;
-MachaJazParser.PRINT = 14;
-MachaJazParser.IF = 15;
-MachaJazParser.ELSE = 16;
-MachaJazParser.FOR = 17;
-MachaJazParser.WHILE = 18;
-MachaJazParser.LOGIC = 19;
-MachaJazParser.MATH = 20;
-MachaJazParser.BOOLEAN = 21;
-MachaJazParser.STRING = 22;
-MachaJazParser.CHAR = 23;
-MachaJazParser.SUJJA = 24;
-MachaJazParser.GEULSSI = 25;
-MachaJazParser.CHINCHA = 26;
-MachaJazParser.GONG = 27;
+MachaJazParser.SUMARIZER = 13;
+MachaJazParser.COMA = 14;
+MachaJazParser.PRINT = 15;
+MachaJazParser.IF = 16;
+MachaJazParser.ELSE = 17;
+MachaJazParser.FOR = 18;
+MachaJazParser.WHILE = 19;
+MachaJazParser.LOGIC = 20;
+MachaJazParser.AND = 21;
+MachaJazParser.OR = 22;
+MachaJazParser.MATH = 23;
+MachaJazParser.BOOLEAN = 24;
+MachaJazParser.STRING = 25;
+MachaJazParser.CHAR = 26;
+MachaJazParser.SUJJA = 27;
+MachaJazParser.GEULSSI = 28;
+MachaJazParser.CHINCHA = 29;
+MachaJazParser.GONG = 30;
 
 MachaJazParser.RULE_file = 0;
 MachaJazParser.RULE_start = 1;
@@ -1193,6 +1217,54 @@ class AsignacionContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MachaJazParser.RULE_asignacion;
     }
 
+
+	 
+		copyFrom(ctx) {
+			super.copyFrom(ctx);
+		}
+
+}
+
+
+class SumarizerAssignContext extends AsignacionContext {
+
+    constructor(parser, ctx) {
+        super(parser);
+        super.copyFrom(ctx);
+    }
+
+	GEULSSI() {
+	    return this.getToken(MachaJazParser.GEULSSI, 0);
+	};
+
+	SUMARIZER() {
+	    return this.getToken(MachaJazParser.SUMARIZER, 0);
+	};
+
+	expr() {
+	    return this.getTypedRuleContext(ExprContext,0);
+	};
+
+	accept(visitor) {
+	    if ( visitor instanceof MachaJazVisitor ) {
+	        return visitor.visitSumarizerAssign(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+MachaJazParser.SumarizerAssignContext = SumarizerAssignContext;
+
+class SimpleAssignContext extends AsignacionContext {
+
+    constructor(parser, ctx) {
+        super(parser);
+        super.copyFrom(ctx);
+    }
+
 	GEULSSI() {
 	    return this.getToken(MachaJazParser.GEULSSI, 0);
 	};
@@ -1207,7 +1279,7 @@ class AsignacionContext extends antlr4.ParserRuleContext {
 
 	accept(visitor) {
 	    if ( visitor instanceof MachaJazVisitor ) {
-	        return visitor.visitAsignacion(this);
+	        return visitor.visitSimpleAssign(this);
 	    } else {
 	        return visitor.visitChildren(this);
 	    }
@@ -1216,7 +1288,7 @@ class AsignacionContext extends antlr4.ParserRuleContext {
 
 }
 
-
+MachaJazParser.SimpleAssignContext = SimpleAssignContext;
 
 class ImpresionContext extends antlr4.ParserRuleContext {
 

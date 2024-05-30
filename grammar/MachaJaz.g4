@@ -20,9 +20,10 @@ declaracion: PR GEULSSI (EQUALS expr)?                #validAssign
            | PR ID = (CHINCHA | SUJJA) (EQUALS expr)? #invalidAssign
            ;
            
-asignacion: GEULSSI EQUALS expr;
-
-impresion: PRINT PARENTH_A expr PARENTH_B;
+asignacion : GEULSSI EQUALS expr                     #simpleAssign
+            | GEULSSI SUMARIZER expr                  #sumarizerAssign
+            ;
+impresion: PRINT PARENTH_A expr PARENTH_B;      
 
 expr: PARENTH_A expr PARENTH_B                      #parentesis
     | expr operation=(GOPSSEM|NANU|PORCENT) expr    #muldiv

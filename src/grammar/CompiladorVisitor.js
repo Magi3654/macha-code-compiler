@@ -42,8 +42,14 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by CompiladorParser#asignacion.
-	visitAsignacion(ctx) {
+	// Visit a parse tree produced by CompiladorParser#simpleAssign.
+	visitSimpleAssign(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by CompiladorParser#sumarizerAssign.
+	visitSumarizerAssign(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
@@ -80,6 +86,12 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by CompiladorParser#sumres.
 	visitSumres(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by CompiladorParser#compando.
+	visitCompando(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
