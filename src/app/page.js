@@ -9,6 +9,7 @@ import { quietlight } from "@uiw/codemirror-theme-quietlight";
 const Page = () => {
   const [expressions, setExpressions] = useState("");
   const [result, setResult] = useState("");
+  const [jazminCode, setJazminCode] = useState("");
 
   const inputChange = (e) => {
     const input = e.target.value;
@@ -66,6 +67,34 @@ const Page = () => {
     setResult("");
   };
   
+  const handleCompileJasmin = async (e) => {
+		e.preventDefault();
+
+		const filename = 'CodigoJasmin'
+		const response = await fetch('api/convert', {
+			method: 'POST',
+			headers: {
+			'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ code: jazminCode, filename }),
+		});
+
+		if (response.ok) {
+			const blob = await response.blob();
+			const url = window.URL.createObjectURL(blob);
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = `${filename}.class`;
+			document.body.appendChild(a);
+			a.click();
+			a.remove();
+		} else {
+			console.error('Error en la conversión');
+		}
+	};
+
+
+
   return (
     <main className="justify-between items-center max-h-screen bg-lime-100">
       <div className="flex flex-col">
@@ -111,13 +140,13 @@ const Page = () => {
                     className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
                     onClick={traductor}//Cambar para que traduzca
                   >
-                    C a Macha
+                    C to Macha
                   </button>
                   <button
                     className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
-                    onClick={clearArea}
+                    onClick={jasmino}
                   >
-                    Borrar código
+                    Macha to Jasmin
                   </button>
                 </div>
               </div>
@@ -127,6 +156,12 @@ const Page = () => {
               <h2 className="text-2xl font-bold mb-4 text-lime-900">
                 Traducción
               </h2>
+              <button
+                    className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
+                    onClick={clearArea}
+                  >
+                    Borrar código
+                  </button>
               <p className="text-lg text-center text-lime-700 mb-4">
                 Codigo traducido:
               </p>
@@ -158,14 +193,15 @@ const Page = () => {
                     className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
                     onClick={analizador}
                   >
-                    Macha Code Ejecucion
+                    Macha Code Run
                   </button>
                   <button
                     className="bg-lime-900 text-white rounded-md px-6 py-3 shadow-lg hover:bg-lime-700"
-                    onClick={jasmino}
+                    onClick={handleCompileJasmin}
                   >
-                    Jasmin
+                    Jasmin to Java
                   </button>
+                  
                 </div>
               </div>
             </section>

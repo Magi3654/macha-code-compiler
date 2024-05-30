@@ -66,12 +66,6 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by CompiladorParser#implicitMult.
-	visitImplicitMult(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
 	// Visit a parse tree produced by CompiladorParser#sujja.
 	visitSujja(ctx) {
 	  return this.visitChildren(ctx);
@@ -92,6 +86,12 @@ export default class CompiladorVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by CompiladorParser#compando.
 	visitCompando(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by CompiladorParser#snumber.
+	visitSnumber(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

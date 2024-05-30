@@ -9,19 +9,19 @@ const serializedATN = [4,1,30,182,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 5,2,42,8,2,10,2,12,2,45,9,2,1,3,1,3,1,3,1,3,1,3,1,3,1,3,3,3,54,8,3,1,4,1,
 4,1,4,1,4,3,4,60,8,4,1,4,1,4,1,4,1,4,3,4,66,8,4,3,4,68,8,4,1,5,1,5,1,5,1,
 5,1,5,1,5,3,5,76,8,5,1,6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,
-1,7,3,7,92,8,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,5,
+1,7,1,7,1,7,3,7,94,8,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,5,
 7,108,8,7,10,7,12,7,111,9,7,1,8,1,8,3,8,115,8,8,1,8,1,8,1,8,1,8,3,8,121,
 8,8,1,9,1,9,5,9,125,8,9,10,9,12,9,128,9,9,1,9,3,9,131,8,9,1,10,1,10,1,10,
 1,10,1,10,1,10,5,10,139,8,10,10,10,12,10,142,9,10,1,10,1,10,1,11,1,11,1,
 11,1,12,1,12,1,12,5,12,152,8,12,10,12,12,12,155,9,12,1,12,1,12,1,13,1,13,
 1,13,1,13,1,13,1,13,5,13,165,8,13,10,13,12,13,168,9,13,1,13,1,13,1,14,1,
 14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,0,1,14,15,0,2,4,6,8,10,12,
-14,16,18,20,22,24,26,28,0,5,2,0,27,27,29,29,2,0,20,20,23,24,2,0,7,8,12,12,
-1,0,9,10,1,0,21,22,194,0,31,1,0,0,0,2,35,1,0,0,0,4,43,1,0,0,0,6,53,1,0,0,
-0,8,67,1,0,0,0,10,75,1,0,0,0,12,77,1,0,0,0,14,91,1,0,0,0,16,112,1,0,0,0,
-18,122,1,0,0,0,20,132,1,0,0,0,22,145,1,0,0,0,24,148,1,0,0,0,26,158,1,0,0,
-0,28,171,1,0,0,0,30,32,3,2,1,0,31,30,1,0,0,0,32,33,1,0,0,0,33,31,1,0,0,0,
-33,34,1,0,0,0,34,1,1,0,0,0,35,36,5,1,0,0,36,37,5,5,0,0,37,38,3,4,2,0,38,
+14,16,18,20,22,24,26,28,0,5,2,0,27,27,29,29,1,0,9,10,2,0,20,20,23,24,2,0,
+7,8,12,12,1,0,21,22,194,0,31,1,0,0,0,2,35,1,0,0,0,4,43,1,0,0,0,6,53,1,0,
+0,0,8,67,1,0,0,0,10,75,1,0,0,0,12,77,1,0,0,0,14,93,1,0,0,0,16,112,1,0,0,
+0,18,122,1,0,0,0,20,132,1,0,0,0,22,145,1,0,0,0,24,148,1,0,0,0,26,158,1,0,
+0,0,28,171,1,0,0,0,30,32,3,2,1,0,31,30,1,0,0,0,32,33,1,0,0,0,33,31,1,0,0,
+0,33,34,1,0,0,0,34,1,1,0,0,0,35,36,5,1,0,0,36,37,5,5,0,0,37,38,3,4,2,0,38,
 39,5,6,0,0,39,3,1,0,0,0,40,42,3,6,3,0,41,40,1,0,0,0,42,45,1,0,0,0,43,41,
 1,0,0,0,43,44,1,0,0,0,44,5,1,0,0,0,45,43,1,0,0,0,46,54,3,8,4,0,47,54,3,10,
 5,0,48,54,3,18,9,0,49,54,3,26,13,0,50,54,3,28,14,0,51,54,3,12,6,0,52,54,
@@ -33,32 +33,32 @@ const serializedATN = [4,1,30,182,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 69,70,5,28,0,0,70,71,5,11,0,0,71,76,3,14,7,0,72,73,5,28,0,0,73,74,5,13,0,
 0,74,76,3,14,7,0,75,69,1,0,0,0,75,72,1,0,0,0,76,11,1,0,0,0,77,78,5,15,0,
 0,78,79,5,3,0,0,79,80,3,14,7,0,80,81,5,4,0,0,81,13,1,0,0,0,82,83,6,7,-1,
-0,83,84,5,3,0,0,84,85,3,14,7,0,85,86,5,4,0,0,86,92,1,0,0,0,87,92,7,1,0,0,
-88,92,5,28,0,0,89,92,5,27,0,0,90,92,5,25,0,0,91,82,1,0,0,0,91,87,1,0,0,0,
-91,88,1,0,0,0,91,89,1,0,0,0,91,90,1,0,0,0,92,109,1,0,0,0,93,94,10,9,0,0,
-94,95,7,2,0,0,95,108,3,14,7,10,96,97,10,8,0,0,97,98,7,3,0,0,98,108,3,14,
-7,9,99,100,10,6,0,0,100,101,7,1,0,0,101,108,3,14,7,7,102,103,10,5,0,0,103,
-104,7,4,0,0,104,108,3,14,7,6,105,106,10,1,0,0,106,108,3,14,7,2,107,93,1,
-0,0,0,107,96,1,0,0,0,107,99,1,0,0,0,107,102,1,0,0,0,107,105,1,0,0,0,108,
-111,1,0,0,0,109,107,1,0,0,0,109,110,1,0,0,0,110,15,1,0,0,0,111,109,1,0,0,
-0,112,114,5,28,0,0,113,115,5,30,0,0,114,113,1,0,0,0,114,115,1,0,0,0,115,
-120,1,0,0,0,116,117,5,9,0,0,117,121,5,9,0,0,118,119,5,10,0,0,119,121,5,10,
-0,0,120,116,1,0,0,0,120,118,1,0,0,0,121,17,1,0,0,0,122,126,3,20,10,0,123,
-125,3,22,11,0,124,123,1,0,0,0,125,128,1,0,0,0,126,124,1,0,0,0,126,127,1,
-0,0,0,127,130,1,0,0,0,128,126,1,0,0,0,129,131,3,24,12,0,130,129,1,0,0,0,
-130,131,1,0,0,0,131,19,1,0,0,0,132,133,5,16,0,0,133,134,5,3,0,0,134,135,
-3,14,7,0,135,136,5,4,0,0,136,140,5,5,0,0,137,139,3,6,3,0,138,137,1,0,0,0,
-139,142,1,0,0,0,140,138,1,0,0,0,140,141,1,0,0,0,141,143,1,0,0,0,142,140,
-1,0,0,0,143,144,5,6,0,0,144,21,1,0,0,0,145,146,5,17,0,0,146,147,3,20,10,
-0,147,23,1,0,0,0,148,149,5,17,0,0,149,153,5,5,0,0,150,152,3,6,3,0,151,150,
-1,0,0,0,152,155,1,0,0,0,153,151,1,0,0,0,153,154,1,0,0,0,154,156,1,0,0,0,
-155,153,1,0,0,0,156,157,5,6,0,0,157,25,1,0,0,0,158,159,5,19,0,0,159,160,
-5,3,0,0,160,161,3,14,7,0,161,162,5,4,0,0,162,166,5,5,0,0,163,165,3,6,3,0,
-164,163,1,0,0,0,165,168,1,0,0,0,166,164,1,0,0,0,166,167,1,0,0,0,167,169,
-1,0,0,0,168,166,1,0,0,0,169,170,5,6,0,0,170,27,1,0,0,0,171,172,5,18,0,0,
-172,173,5,3,0,0,173,174,3,8,4,0,174,175,3,14,7,0,175,176,3,16,8,0,176,177,
-5,4,0,0,177,178,5,5,0,0,178,179,3,6,3,0,179,180,5,6,0,0,180,29,1,0,0,0,17,
-33,43,53,59,65,67,75,91,107,109,114,120,126,130,140,153,166];
+0,83,84,5,3,0,0,84,85,3,14,7,0,85,86,5,4,0,0,86,94,1,0,0,0,87,88,7,1,0,0,
+88,94,3,14,7,7,89,94,7,2,0,0,90,94,5,28,0,0,91,94,5,27,0,0,92,94,5,25,0,
+0,93,82,1,0,0,0,93,87,1,0,0,0,93,89,1,0,0,0,93,90,1,0,0,0,93,91,1,0,0,0,
+93,92,1,0,0,0,94,109,1,0,0,0,95,96,10,9,0,0,96,97,7,3,0,0,97,108,3,14,7,
+10,98,99,10,8,0,0,99,100,7,1,0,0,100,108,3,14,7,9,101,102,10,5,0,0,102,103,
+7,2,0,0,103,108,3,14,7,6,104,105,10,4,0,0,105,106,7,4,0,0,106,108,3,14,7,
+5,107,95,1,0,0,0,107,98,1,0,0,0,107,101,1,0,0,0,107,104,1,0,0,0,108,111,
+1,0,0,0,109,107,1,0,0,0,109,110,1,0,0,0,110,15,1,0,0,0,111,109,1,0,0,0,112,
+114,5,28,0,0,113,115,5,30,0,0,114,113,1,0,0,0,114,115,1,0,0,0,115,120,1,
+0,0,0,116,117,5,9,0,0,117,121,5,9,0,0,118,119,5,10,0,0,119,121,5,10,0,0,
+120,116,1,0,0,0,120,118,1,0,0,0,121,17,1,0,0,0,122,126,3,20,10,0,123,125,
+3,22,11,0,124,123,1,0,0,0,125,128,1,0,0,0,126,124,1,0,0,0,126,127,1,0,0,
+0,127,130,1,0,0,0,128,126,1,0,0,0,129,131,3,24,12,0,130,129,1,0,0,0,130,
+131,1,0,0,0,131,19,1,0,0,0,132,133,5,16,0,0,133,134,5,3,0,0,134,135,3,14,
+7,0,135,136,5,4,0,0,136,140,5,5,0,0,137,139,3,6,3,0,138,137,1,0,0,0,139,
+142,1,0,0,0,140,138,1,0,0,0,140,141,1,0,0,0,141,143,1,0,0,0,142,140,1,0,
+0,0,143,144,5,6,0,0,144,21,1,0,0,0,145,146,5,17,0,0,146,147,3,20,10,0,147,
+23,1,0,0,0,148,149,5,17,0,0,149,153,5,5,0,0,150,152,3,6,3,0,151,150,1,0,
+0,0,152,155,1,0,0,0,153,151,1,0,0,0,153,154,1,0,0,0,154,156,1,0,0,0,155,
+153,1,0,0,0,156,157,5,6,0,0,157,25,1,0,0,0,158,159,5,19,0,0,159,160,5,3,
+0,0,160,161,3,14,7,0,161,162,5,4,0,0,162,166,5,5,0,0,163,165,3,6,3,0,164,
+163,1,0,0,0,165,168,1,0,0,0,166,164,1,0,0,0,166,167,1,0,0,0,167,169,1,0,
+0,0,168,166,1,0,0,0,169,170,5,6,0,0,170,27,1,0,0,0,171,172,5,18,0,0,172,
+173,5,3,0,0,173,174,3,8,4,0,174,175,3,14,7,0,175,176,3,16,8,0,176,177,5,
+4,0,0,177,178,5,5,0,0,178,179,3,6,3,0,179,180,5,6,0,0,180,29,1,0,0,0,17,
+33,43,53,59,65,67,75,93,107,109,114,120,126,130,140,153,166];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -109,11 +109,9 @@ export default class CompiladorParser extends antlr4.Parser {
     		case 1:
     			return this.precpred(this._ctx, 8);
     		case 2:
-    			return this.precpred(this._ctx, 6);
-    		case 3:
     			return this.precpred(this._ctx, 5);
-    		case 4:
-    			return this.precpred(this._ctx, 1);
+    		case 3:
+    			return this.precpred(this._ctx, 4);
     		default:
     			throw "No predicate with index:" + predIndex;
     	}
@@ -442,7 +440,7 @@ export default class CompiladorParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 91;
+	        this.state = 93;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case 3:
@@ -457,13 +455,31 @@ export default class CompiladorParser extends antlr4.Parser {
 	            this.state = 85;
 	            this.match(CompiladorParser.PARENTH_B);
 	            break;
+	        case 9:
+	        case 10:
+	            localctx = new SnumberContext(this, localctx);
+	            this._ctx = localctx;
+	            _prevctx = localctx;
+	            this.state = 87;
+	            localctx.operation = this._input.LT(1);
+	            _la = this._input.LA(1);
+	            if(!(_la===9 || _la===10)) {
+	                localctx.operation = this._errHandler.recoverInline(this);
+	            }
+	            else {
+	            	this._errHandler.reportMatch(this);
+	                this.consume();
+	            }
+	            this.state = 88;
+	            this.expr(7);
+	            break;
 	        case 20:
 	        case 23:
 	        case 24:
 	            localctx = new CondicionContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 87;
+	            this.state = 89;
 	            localctx.simbolo = this._input.LT(1);
 	            _la = this._input.LA(1);
 	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 26214400) !== 0))) {
@@ -478,21 +494,21 @@ export default class CompiladorParser extends antlr4.Parser {
 	            localctx = new GeulssiContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 88;
+	            this.state = 90;
 	            this.match(CompiladorParser.GEULSSI);
 	            break;
 	        case 27:
 	            localctx = new SujjaContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 89;
+	            this.state = 91;
 	            this.match(CompiladorParser.SUJJA);
 	            break;
 	        case 25:
 	            localctx = new StringContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 90;
+	            this.state = 92;
 	            this.match(CompiladorParser.STRING);
 	            break;
 	        default:
@@ -515,11 +531,11 @@ export default class CompiladorParser extends antlr4.Parser {
 	                case 1:
 	                    localctx = new MuldivContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, CompiladorParser.RULE_expr);
-	                    this.state = 93;
+	                    this.state = 95;
 	                    if (!( this.precpred(this._ctx, 9))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 9)");
 	                    }
-	                    this.state = 94;
+	                    this.state = 96;
 	                    localctx.operation = this._input.LT(1);
 	                    _la = this._input.LA(1);
 	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4480) !== 0))) {
@@ -529,18 +545,18 @@ export default class CompiladorParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 95;
+	                    this.state = 97;
 	                    this.expr(10);
 	                    break;
 
 	                case 2:
 	                    localctx = new SumresContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, CompiladorParser.RULE_expr);
-	                    this.state = 96;
+	                    this.state = 98;
 	                    if (!( this.precpred(this._ctx, 8))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
 	                    }
-	                    this.state = 97;
+	                    this.state = 99;
 	                    localctx.operation = this._input.LT(1);
 	                    _la = this._input.LA(1);
 	                    if(!(_la===9 || _la===10)) {
@@ -550,18 +566,18 @@ export default class CompiladorParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 98;
+	                    this.state = 100;
 	                    this.expr(9);
 	                    break;
 
 	                case 3:
 	                    localctx = new CondicionContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, CompiladorParser.RULE_expr);
-	                    this.state = 99;
-	                    if (!( this.precpred(this._ctx, 6))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
+	                    this.state = 101;
+	                    if (!( this.precpred(this._ctx, 5))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
 	                    }
-	                    this.state = 100;
+	                    this.state = 102;
 	                    localctx.simbolo = this._input.LT(1);
 	                    _la = this._input.LA(1);
 	                    if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 26214400) !== 0))) {
@@ -571,18 +587,18 @@ export default class CompiladorParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 101;
-	                    this.expr(7);
+	                    this.state = 103;
+	                    this.expr(6);
 	                    break;
 
 	                case 4:
 	                    localctx = new CompandoContext(this, new ExprContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, CompiladorParser.RULE_expr);
-	                    this.state = 102;
-	                    if (!( this.precpred(this._ctx, 5))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
+	                    this.state = 104;
+	                    if (!( this.precpred(this._ctx, 4))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
 	                    }
-	                    this.state = 103;
+	                    this.state = 105;
 	                    localctx.simbolo = this._input.LT(1);
 	                    _la = this._input.LA(1);
 	                    if(!(_la===21 || _la===22)) {
@@ -592,19 +608,8 @@ export default class CompiladorParser extends antlr4.Parser {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 104;
-	                    this.expr(6);
-	                    break;
-
-	                case 5:
-	                    localctx = new ImplicitMultContext(this, new ExprContext(this, _parentctx, _parentState));
-	                    this.pushNewRecursionContext(localctx, _startState, CompiladorParser.RULE_expr);
-	                    this.state = 105;
-	                    if (!( this.precpred(this._ctx, 1))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
-	                    }
 	                    this.state = 106;
-	                    this.expr(2);
+	                    this.expr(5);
 	                    break;
 
 	                } 
@@ -1423,37 +1428,6 @@ class ParentesisContext extends ExprContext {
 
 CompiladorParser.ParentesisContext = ParentesisContext;
 
-class ImplicitMultContext extends ExprContext {
-
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
-
-	expr = function(i) {
-	    if(i===undefined) {
-	        i = null;
-	    }
-	    if(i===null) {
-	        return this.getTypedRuleContexts(ExprContext);
-	    } else {
-	        return this.getTypedRuleContext(ExprContext,i);
-	    }
-	};
-
-	accept(visitor) {
-	    if ( visitor instanceof CompiladorVisitor ) {
-	        return visitor.visitImplicitMult(this);
-	    } else {
-	        return visitor.visitChildren(this);
-	    }
-	}
-
-
-}
-
-CompiladorParser.ImplicitMultContext = ImplicitMultContext;
-
 class SujjaContext extends ExprContext {
 
     constructor(parser, ctx) {
@@ -1581,6 +1555,39 @@ class CompandoContext extends ExprContext {
 }
 
 CompiladorParser.CompandoContext = CompandoContext;
+
+class SnumberContext extends ExprContext {
+
+    constructor(parser, ctx) {
+        super(parser);
+        this.operation = null;;
+        super.copyFrom(ctx);
+    }
+
+	expr() {
+	    return this.getTypedRuleContext(ExprContext,0);
+	};
+
+	DO() {
+	    return this.getToken(CompiladorParser.DO, 0);
+	};
+
+	PPAEDA() {
+	    return this.getToken(CompiladorParser.PPAEDA, 0);
+	};
+
+	accept(visitor) {
+	    if ( visitor instanceof CompiladorVisitor ) {
+	        return visitor.visitSnumber(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+CompiladorParser.SnumberContext = SnumberContext;
 
 class GeulssiContext extends ExprContext {
 

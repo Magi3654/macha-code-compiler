@@ -111,6 +111,51 @@ export default class CustomVisitor extends CompiladorVisitor {
 		return exist;
 	}
 
+    declare(ctx) {
+		const ID = ctx.GEULSSI().getText();
+
+		let is_variable_defined = this.variableExist(ID);
+		if (!is_variable_defined) {
+			this.variables[ID].push({ id: ID, value: undefined });
+		} else {/*
+			this.logs.push({
+				type: "error",
+				header: "ERROR",
+				text: `La declaracion de "${ID}" está repetida`,
+			});*/
+		}
+
+		return [ ID];
+	}
+
+    declareAndAssign(ctx) {
+		const ID = ctx.GEULSSI().getText();
+
+		let is_variable_defined = this.variableExist(ID);
+		if (!is_variable_defined) {
+			const VALUE = this.visit(ctx.expr());
+			if (this.assertTypeWithValue(VALUE)) {
+				this.variables[VALUE].push({ id: ID, value: VALUE });
+			} else {/*
+				this.logs.push({
+					type: "error",
+					header: "ERROR",
+					text: `No se puede asignar el valor "${VALUE}" al tipo de dato "${TYPE}"`,
+				});*/
+			}
+		} else {/*
+			this.logs.push({
+				type: "error",
+				header: "ERROR",
+				text: `La declaracion de "${ID}" está repetida`,
+			});*/
+		}
+
+		return [ID];
+	}
+
+
+
     assign(ID, VALUE, OPERATOR = '=') {
 		console.log("Assign");
 		const TYPE = this.getVariableType(ID);
@@ -264,6 +309,31 @@ export default class CustomVisitor extends CompiladorVisitor {
                 this.memory.set(idToken, value);
             }
         }
+
+        /*{
+		
+		let ID = ctx.GEULSSI().getText();
+		let VARIABLE_PATTERN = /^[A-Za-z]([A-Za-z0-9-_]+)?/;
+
+		if (VARIABLE_PATTERN.test(ID)) {
+			let result;
+			if (ctx.EQUALS()) {
+				result = this.declareAndAssign(ctx);
+			} else {
+				result = this.declare(ctx);
+			}
+
+			return result;
+		} else {/*
+			const TYPE = ctx.TYPE().getText();
+			this.logs.push({
+				type: "error",
+				header: "ERROR",
+				text: `ID "${ID}" is not a valid identifier`,
+			});*/
+
+			//return [ID];
+	 
     
         this.updateConsole();
         return null;
@@ -297,14 +367,20 @@ export default class CustomVisitor extends CompiladorVisitor {
       
             this.memory.set(idToken, value);
             console.log(this.memory);
-
+/*{
+		console.log("Assign");
+		const ID = ctx.GEULSSI().getText();
+		const VALUE = this.visit(ctx.expr());
+		
+		return this.assign(ID, VALUE);
+	}*/
         this.updateConsole();
         return null;
     }
 
     // Visit a parse tree produced by CompiladorParser#sumarizerAssign.
 	visitSumarizerAssign(ctx) {
-        const ID = ctx.ID().getText();
+        const ID = ctx.GEULSSI().getText();
 		const VALUE = this.visit(ctx.value());
 		const OPERATOR = ctx.SUMARIZER().getText();
 		
@@ -327,13 +403,6 @@ export default class CustomVisitor extends CompiladorVisitor {
         let visit = this.visitChildren(ctx);
         return visit[1];
     }
-    // Visit a parse tree produced by CompiladorParser#implicitMult.
-	visitImplicitMult(ctx) {
-        console.log("VISITANDO implimul");
-        let results = this.visitChildren(ctx);
-        return results[0] * results[1];
-      }
-  
 
     visitSujja(ctx) {
         console.log("VISITANDO NUMEROS ");
@@ -375,6 +444,13 @@ export default class CustomVisitor extends CompiladorVisitor {
 				return false;
                 
         }
+      }
+
+	// Visit a parse tree produced by CompiladorParser#snumber.
+	visitSnumber(ctx) {
+        let sign = ctx.operation.text;
+		let number = this.visit(ctx.expr());
+		return Number(`${sign}${number}`);
       }
 
     visitGeulssi(ctx) {

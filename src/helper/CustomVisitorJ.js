@@ -64,7 +64,7 @@ export default class CustomVisitor extends CompiladorVisitor {
         console.log("VISITANDO FILE");
         this.visitChildren(ctx);
         
-        return this.jaz;
+this.jazminCodimu;        return this.jaz;
     }
     // Visit a parse tree produced by MachaJazParser#start.
     visitStart(ctx) {
@@ -293,7 +293,7 @@ export default class CustomVisitor extends CompiladorVisitor {
     visitMuldiv(ctx) {
         console.log("VISITANDO MULTIPLICACION");
         //console.log(operation);
-        const operation_data = this.visitChildren(ctx);
+        //const operation_data = this.visitChildren(ctx);
 		let simbolo = ctx.operation.type;
 		this.stack += 2;
 		if (simbolo == MachaJazParser.GOPSSEM) {
