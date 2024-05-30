@@ -82,7 +82,7 @@ export default class CustomVisitorT extends MachaCVisitor{
 		let id = ctx.ID().getText();
 		let expr = this.visit(ctx.expr());
 		console.log(expr);
-		this.code +=`\n${id}=${ctx.ig.text} ${expr}`
+		this.code +=`\n${id}${ctx.ig.text}=${expr}`
 	  return ;
 	}
 	// Visit a parse tree produced by MachaCParser#incremento.
